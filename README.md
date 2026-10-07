@@ -1,12 +1,19 @@
 # Jepto MCP
 
-Your marketing data in Claude, ChatGPT, Cursor and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
+Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
 
 ```
 https://mcp.jepto.com
 ```
 
 Jepto runs this as a hosted, remote MCP server, so there's nothing to install or run. This repository is its documentation. You need a Jepto account with at least one data source connected; [start a free 14-day trial](https://app.jepto.com/sign-up) if you don't have one.
+
+## Who it's for
+
+- **Marketing teams** who want answers from Google Ads, GA4, Search Console and Meta Ads in one conversation instead of five dashboards.
+- **Agencies and consultants** managing many brands. One connection covers every brand in your Jepto account.
+- **Multi-location businesses** tracking Google Business Profile calls, direction requests and reviews across locations.
+- **Developers building agents** who need a hosted server with OAuth, a documented data model, and a confirmation step on every change.
 
 ## Connect
 
@@ -93,6 +100,43 @@ You don't need to name tools. Ask a question and the assistant picks the right o
 - "Create a CPA KPI for Homer's Donuts: under $50, monthly."
 - "Create a budget for Homer's Donuts: $1,500 over 65 days, all Google Ads campaigns."
 - "Pause the brand campaign in Homer's Donuts' Google Ads account."
+
+## Example questions by platform
+
+### Google Search Console
+
+- "Show me queries where my average position is between 5 and 15 and impressions are over 1,000 in the last 90 days."
+- "Which pages lost the most clicks this month compared with last month?"
+- "Break down clicks and CTR by device and country for the last 28 days."
+
+### Google Analytics 4 (GA4)
+
+- "Which landing pages drove the most conversions last month?"
+- "Compare sessions and conversion rate by default channel group, this quarter vs last."
+- "What's my purchase revenue by session source for the last 30 days?"
+
+### Google Ads
+
+- "Which campaigns had the highest cost per conversion last week?"
+- "Show search terms with spend over $100 and no conversions in the last 30 days."
+- "What's ROAS by campaign type this month?"
+
+### Meta Ads (Facebook and Instagram)
+
+- "Compare amount spent, CPM and link clicks for Facebook vs Instagram over the last 14 days."
+- "Which ads have the highest frequency this month?"
+- "Break down reach by age and gender for my prospecting campaigns."
+
+### Google Business Profile
+
+- "Which locations got the most calls and direction requests last month?"
+- "Show me unreplied reviews across all locations."
+- "Which search keywords found my profiles this month?"
+
+### Across platforms
+
+- "What were total spend, clicks and conversions across Google Ads, Meta Ads and Microsoft Ads last month?"
+- "Am I on track to hit this month's ad budget?"
 
 ## Tools
 
