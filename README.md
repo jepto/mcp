@@ -26,15 +26,11 @@ Jepto runs this as a hosted, remote MCP server, so there's nothing to install or
 
 ### Claude
 
-1. Go to **Settings → Connectors**.
-2. Choose **Add custom connector** and paste `https://mcp.jepto.com`.
-3. Click **Connect** and sign in to Jepto.
-
-Full steps with screenshots: [Connect Jepto MCP to Claude](https://www.jepto.com/help/connect-to-claude).
+Open the apps directory and search for "Jepto" or go to [https://claude.ai/directory/jepto](https://claude.ai/directory/jepto)
 
 ### ChatGPT
 
-Open the apps directory and search for "Jepto", or add a custom connector with the URL above. Then, in the composer, click **+ → More → Jepto**. The Jepto pill stays active for that conversation.
+Open the apps directory and search for "Jepto" or go to [https://chatgpt.com/plugins/jepto](https://chatgpt.com/plugins/jepto)
 
 ### Claude Code
 
@@ -219,7 +215,8 @@ More detail: [OAuth & Authentication](https://www.jepto.com/help/oauth-authentic
 
 - [Jepto MCP](https://www.jepto.com/integration/mcp)
 - [Jepto MCP Server Overview](https://www.jepto.com/help/mcp)
-- [Connect Jepto MCP to Claude](https://www.jepto.com/help/connect-to-claude)
+- [Jepto Data Model](https://www.jepto.com/help/data-model)
+- [Jepto Data Query](https://www.jepto.com/help/data-query)
 - [OAuth & Authentication](https://www.jepto.com/help/oauth-authentication)
 - [Pricing](https://www.jepto.com/pricing)
 - [Get support](https://www.jepto.com/help/submit-a-ticket)
