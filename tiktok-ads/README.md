@@ -24,7 +24,7 @@ TikTok Ads is read-only through the MCP: the assistant can query your data but c
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `tiktokAds.spend` | Spend | SUM | Currency | Total amount spent on ads during the reporting period in TikTok Ads Manager. |
 | `tiktokAds.impressions` | Impressions | SUM |  | Number of times your ads were shown. |

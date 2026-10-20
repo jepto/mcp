@@ -46,7 +46,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `facebookAds.impressions` | Impressions | SUM |  | The number of times your ads were on screen, including when the same person saw your ad more than once. |
 | `facebookAds.clicks` | Link clicks | SUM |  | Clicks on links in your ads that go to destinations such as your website, app, or a Meta experience. |

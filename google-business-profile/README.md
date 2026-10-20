@@ -29,7 +29,7 @@ Each location's profile details, categories, address and rating.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleBusinessProfile.profileRating` | Profile rating | Calculated | Decimal | Rating for the Profile as shown on Google. |
 | `googleBusinessProfile.totalReviewCount` | Total reviews | Calculated |  | Total number of reviews on the location as reported by Google Business Profile (value is updated daily). |
@@ -80,7 +80,7 @@ Customer reviews, star ratings and whether you've replied.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleBusinessProfile.reviewStarRating` | Star rating | AVG |  | Star rating from 1 to 5 given by the reviewer. |
 | `googleBusinessProfile.reviewCount` | Review count | COUNT_DISTINCT |  | Number of distinct reviews in the queried date range. |
@@ -150,7 +150,7 @@ Daily calls, direction requests, website clicks, bookings and Search and Maps im
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleBusinessProfile.searchImpressions` | Search impressions | SUM |  | Number of times the business profile appeared in Google Search results. (Desktop + Mobile) |
 | `googleBusinessProfile.searchImpressionsDesktop` | Search impressions (desktop) | SUM |  | Number of times the business profile appeared in Google Search results on desktop. |
@@ -179,7 +179,7 @@ The search terms people used to find each profile, by month.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleBusinessProfile.searchVolume` | Search Keyword Volume | SUM |  | Number of times users searched with this keyword and saw your business profile. Only keywords with a search volume greater than the threshold are included. |
 | `googleBusinessProfile.searchVolumeThreshold` | Search Keyword Threshold | SUM |  | Minimum search volume threshold at which keyword impressions are reported by Google. |

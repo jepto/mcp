@@ -1,6 +1,6 @@
-# Jepto AI Visibility MCP server
+# AI Visibility MCP server
 
-Connect Jepto AI Visibility to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask how ChatGPT, Gemini, Perplexity, Claude, Copilot and Google AI Mode answer the prompts you track: whether they name you, which sources they cite, the searches they run, what they claim about you and which competitors they name instead.
+Connect AI Visibility to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask how ChatGPT, Google AI Overviews, Google AI Mode, Perplexity, Gemini, Copilot and Claude answer the prompts you track: whether they name you, which sources they cite, the searches they run, what they claim about you and which competitors they name instead.
 
 ```
 https://mcp.jepto.com
@@ -55,7 +55,7 @@ Each AI engine answer to a tracked prompt, with whether it named or cited you.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.answers.answerCount` | Answer count | SUM |  | Number of AI engine answers for the selected filters. |
 | `aiVisibility.answers.mentionedCount` | Mentioned answers | SUM |  | Answers that mention the brand (numerator for namedRate rollups). |
@@ -96,7 +96,7 @@ The domains and pages AI engines cite, and how often.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.sources.citations` | Citations | SUM |  | Total citation count for the domain in the period. |
 | `aiVisibility.sources.citationShare` | Citation share | AVG |  | Share of all citations attributed to this domain (0–100). |
@@ -128,7 +128,7 @@ The searches AI engines ran while writing their answers (fan-out queries).
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.retrieval.occurrences` | Occurrences | SUM |  | How many times this query was used during AI answer generation. |
 | `aiVisibility.retrieval.searchConsolePosition` | Search Console position | AVG |  | Average Google Search Console position for this query when GSC is connected. |
@@ -151,7 +151,7 @@ Statements AI engines make about you, checked for accuracy.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.claim.claimCount` | Claim count | COUNT |  | Number of claim rows. |
 | `aiVisibility.claim.answerCount` | Answer count | COUNT_DISTINCT |  | Distinct answers that made the claim. |
@@ -194,7 +194,7 @@ The pages and passages behind each claim.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.claimSources.claimCount` | Claim count | COUNT_DISTINCT |  | Distinct claims the pages support. |
 
@@ -226,7 +226,7 @@ Which competitors are named and cited, and where they beat you.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.competitors.answerShare` | Answer share | AVG |  | Share of answer runs that named this entity (0–100). |
 | `aiVisibility.competitors.answerShareChange` | Answer share change | AVG |  | Period-over-period change in answer share. |
@@ -255,7 +255,7 @@ Headline totals: named rate, cited rate, share of voice and claim accuracy.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `aiVisibility.overview.answerCount` | Answer count | SUM |  | Number of AI engine answers for the selected filters. |
 | `aiVisibility.overview.mentionedCount` | Mentioned answers | SUM |  | Answers that mention the brand (numerator for namedRate rollups). |
@@ -286,7 +286,7 @@ Headline totals: named rate, cited rate, share of voice and claim accuracy.
 
 ## Links
 
-- [Jepto AI Visibility on jepto.com](https://www.jepto.com/data-sources/ai-visibility)
+- [AI Visibility on jepto.com](https://www.jepto.com/data-sources/ai-visibility)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

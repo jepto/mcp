@@ -23,7 +23,7 @@ X Ads is read-only through the MCP: the assistant can query your data but can't 
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `twitterAds.impressions` | Impressions | SUM |  | The number of times your ads were shown on X. |
 | `twitterAds.clicks` | Link clicks | SUM |  | The number of times users clicked your ad links. |

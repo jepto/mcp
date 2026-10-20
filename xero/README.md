@@ -28,7 +28,7 @@ Sales and purchase invoices with totals, amounts due, status and dates.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.invoices.total` | Total | SUM | Currency | Total value of the invoice including tax in the invoice currency. |
 | `xero.invoices.amountDue` | Amount due | SUM | Currency | Outstanding balance still owed on the invoice. |
@@ -61,7 +61,7 @@ Line items with quantity, unit amount, tax and account code.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.invoice_lines.quantity` | Quantity | SUM |  | Sum of quantities across invoice line items. |
 | `xero.invoice_lines.unitAmount` | Unit amount | SUM | Currency | Sum of unit prices before tax on line items. |
@@ -88,7 +88,7 @@ Customers and suppliers.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.contacts.contactCount` | Contacts | COUNT_DISTINCT |  | Number of distinct contacts in the result. |
 
@@ -109,7 +109,7 @@ Your chart of accounts.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.accounts.accountCount` | Accounts | COUNT_DISTINCT |  | Number of distinct chart of accounts entries. |
 
@@ -130,7 +130,7 @@ Payments received and made, and how long invoices took to pay.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.payments.amount` | Amount | SUM | Currency | Total payment amount in the payment currency. |
 | `xero.payments.paymentCount` | Payments | COUNT_DISTINCT |  | Number of distinct payments in the result. |
@@ -153,7 +153,7 @@ Your Xero organisation's details, base currency and financial year.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.organisation.organisationCount` | Organisations | COUNT_DISTINCT |  | Number of distinct Xero organisations synced for the connection. |
 
@@ -176,7 +176,7 @@ Profit and loss report lines by section, account and period.
 
 #### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `xero.profit_and_loss.amount` | Amount | SUM | Currency | P&L amount in organisation base currency from the Xero Reports API (tax-exclusive layout). Sum only with profit_and_loss.rowKind=account unless intentionally using a summary row. |
 | `xero.profit_and_loss.rowCount` | P&L rows | COUNT_DISTINCT |  | Number of distinct P&L report rows. |

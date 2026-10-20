@@ -24,7 +24,7 @@ Instagram Ads is read-only through the MCP: the assistant can query your data bu
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `instagramAds.impressions` | Impressions | SUM |  | The number of times your ads were on screen, including when the same person saw your ad more than once. |
 | `instagramAds.clicks` | Link clicks | SUM |  | Clicks on links in your ads that go to destinations such as your website, app, or a Meta experience. This is the primary “clicks” metric in Meta Ads Manager reports. |

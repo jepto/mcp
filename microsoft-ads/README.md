@@ -24,7 +24,7 @@ Microsoft Ads is read-only through the MCP: the assistant can query your data bu
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `microsoftAds.impressions` | Impressions | SUM |  | Number of times your ads were shown, including repeat views by the same person. |
 | `microsoftAds.clicks` | Clicks | SUM |  | Number of clicks on your ads during the reporting period. |

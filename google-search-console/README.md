@@ -58,7 +58,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleSearchConsole.clicks` | Clicks | SUM |  | Number of times users clicked through to your site from Google Search results. |
 | `googleSearchConsole.impressions` | Impressions | SUM |  | Number of times your pages appeared in Google Search results. |

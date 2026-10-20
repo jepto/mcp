@@ -195,7 +195,7 @@ Each source has its own page with example questions and every metric and dimensi
 | TikTok Ads | 203 | 55 | [tiktok-ads/](tiktok-ads/) |
 | X Ads | 3 | 3 | [x-ads/](x-ads/) |
 | Xero | 20 | 55 | [xero/](xero/) |
-| Jepto AI Visibility | 50 | 87 | [ai-visibility/](ai-visibility/) |
+| AI Visibility | 50 | 87 | [ai-visibility/](ai-visibility/) |
 <!-- sources:end -->
 
 Signing in to the MCP doesn't connect new platforms. [Connect a data source](https://www.jepto.com/help/connect-a-data-source) in Jepto first.

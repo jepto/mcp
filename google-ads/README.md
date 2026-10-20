@@ -60,7 +60,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleAds.clicks` | Clicks | SUM |  | Number of clicks on your ads during the reporting period. |
 | `googleAds.impressions` | Impressions | SUM |  | Number of times your ads were shown, including repeat views by the same person. |

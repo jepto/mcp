@@ -24,7 +24,7 @@ LinkedIn Ads is read-only through the MCP: the assistant can query your data but
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `linkedInAds.impressions` | Impressions | SUM |  | Number of times your ad was shown (or messages sent for Sponsored Messaging). |
 | `linkedInAds.clicks` | Clicks | SUM |  | Chargeable clicks on your LinkedIn ads during the reporting period. |

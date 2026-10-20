@@ -49,7 +49,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ### Metrics
 
-| Field | Label | Rollup | Format | Description |
+| Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
 | `googleAnalytics4.activeUsers` | Active users | MAX |  | Active users. Users who had an engaged session, or when Analytics collected first_visit or engagement_time from a page. |
 | `googleAnalytics4.totalUsers` | Total users | MAX |  | Users who logged at least one event, new or returning. |
