@@ -183,6 +183,25 @@ The MCP sees the sources connected in your Jepto account:
 - **AI search:** Jepto AI Visibility
 - **Your own data:** BigQuery tables you connect to Jepto
 
+Each source has its own page with example questions and every metric and dimension in the Jepto data model:
+
+<!-- sources:start -->
+| Data source | Metrics | Dimensions | Field reference |
+|---|---|---|---|
+| Google Ads | 12 | 69 | [google-ads/](google-ads/) |
+| Google Analytics 4 | 30 | 28 | [google-analytics-4/](google-analytics-4/) |
+| Google Search Console | 4 | 6 | [google-search-console/](google-search-console/) |
+| Google Business Profile | 29 | 70 | [google-business-profile/](google-business-profile/) |
+| Facebook Ads | 17 | 19 | [facebook-ads/](facebook-ads/) |
+| Instagram Ads | 20 | 18 | [instagram-ads/](instagram-ads/) |
+| LinkedIn Ads | 98 | 26 | [linkedin-ads/](linkedin-ads/) |
+| Microsoft Ads | 85 | 41 | [microsoft-ads/](microsoft-ads/) |
+| TikTok Ads | 203 | 55 | [tiktok-ads/](tiktok-ads/) |
+| X Ads | 3 | 3 | [x-ads/](x-ads/) |
+| Xero | 20 | 55 | [xero/](xero/) |
+| Jepto AI Visibility | 50 | 87 | [ai-visibility/](ai-visibility/) |
+<!-- sources:end -->
+
 Signing in to the MCP doesn't connect new platforms. [Connect a data source](https://www.jepto.com/help/connect-a-data-source) in Jepto first.
 
 ## Security and permissions

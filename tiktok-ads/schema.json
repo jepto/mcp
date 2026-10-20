@@ -1,0 +1,2552 @@
+{
+  "source": "tiktokAds",
+  "name": "TikTok Ads",
+  "schemaVersion": "1.0.2",
+  "entities": [
+    {
+      "name": "analytics",
+      "metrics": [
+        {
+          "name": "tiktokAds.spend",
+          "label": "Spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent on ads during the reporting period in TikTok Ads Manager.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ads were shown.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks to your destination URL (landing page) from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.reach",
+          "label": "Reach",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of unique users who saw your ads at least once.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "tiktokAds.result",
+          "label": "Results",
+          "kind": "metric",
+          "type": "number",
+          "description": "Times your ad delivered your selected optimization goal. Not available at campaign level—use ad group or ad breakdowns.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.conversion",
+          "label": "Conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Secondary conversion events attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerConversion",
+          "label": "Cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each conversion: spend divided by conversions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.conversionRate",
+          "label": "Conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a conversion: conversions ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.conversionRateV2",
+          "label": "Conversion rate (by clicks)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a conversion: conversions ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeConversion",
+          "label": "Real-time conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Conversions tracked in real time during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.realTimeCostPerConversion",
+          "label": "Real-time cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per conversion using real-time conversion data.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeConversionRate",
+          "label": "Real-time CVR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Real-time conversion rate: conversions ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeConversionRateV2",
+          "label": "Real-time CVR (by impressions)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Real-time conversion rate (v2): conversions ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.costPerResult",
+          "label": "Cost per result",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each result: spend divided by results (your selected optimization goal).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.resultRate",
+          "label": "Result rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that achieved your selected optimization goal: results ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeResult",
+          "label": "Real-time results",
+          "kind": "metric",
+          "type": "number",
+          "description": "Results tracked in real time during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.realTimeCostPerResult",
+          "label": "Real-time cost per result",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per result using real-time result data.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeResultRate",
+          "label": "Real-time result rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Real-time result rate: results ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.secondaryGoalResult",
+          "label": "Secondary goal results",
+          "kind": "metric",
+          "type": "number",
+          "description": "Secondary goal results attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerSecondaryGoalResult",
+          "label": "Cost per secondary goal result",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each secondary goal result.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.secondaryGoalResultRate",
+          "label": "Secondary goal result rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that achieved the secondary goal: secondary goal results ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalLandingPageView",
+          "label": "Total landing page views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of landing page views attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.cpc",
+          "label": "CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click (spend divided by clicks). Shown in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.cpm",
+          "label": "CPM",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per 1,000 impressions. Shown in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.ctr",
+          "label": "CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate: clicks divided by impressions. Shown as a percentage in TikTok Ads Manager.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.grossImpressions",
+          "label": "Gross impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total gross impressions including duplicate counts.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPer1000Reached",
+          "label": "Cost per 1,000 people reached",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost to reach 1,000 unique people (CPM-style reach efficiency).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.frequency",
+          "label": "Frequency",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of times each person saw your ad.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "tiktokAds.videoPlayActions",
+          "label": "Video plays",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad started playing.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoViewsP25",
+          "label": "Video views 25%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 25% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoViewsP50",
+          "label": "Video views 50%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 50% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoViewsP75",
+          "label": "Video views 75%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 75% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoViewsP100",
+          "label": "Video views 100%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to full completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoWatched2s",
+          "label": "Video watched 2s",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched for at least 2 seconds.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.videoWatched6s",
+          "label": "Video watched 6s",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched for at least 6 seconds.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.averageVideoPlay",
+          "label": "Avg video play duration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average duration users watched your video ad.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "tiktokAds.averageVideoPlayPerUser",
+          "label": "Avg video plays per user",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of times each user played your video ad.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "tiktokAds.engagedView",
+          "label": "Engaged views (6s)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of 6-second engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.paidEngagedView",
+          "label": "Paid engaged views (6s)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of paid 6-second engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.paidEngagementEngagedView",
+          "label": "Paid engagement views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of paid engagement engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.engagedView15s",
+          "label": "Engaged views (15s)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of 15-second engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.paidEngagedView15s",
+          "label": "Paid engaged views (15s)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of paid 15-second engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.paidEngagementEngagedView15s",
+          "label": "Paid engagement views (15s)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of paid engagement 15-second engaged views on your video ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.engagements",
+          "label": "Clicks (all)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total clicks on your ads, including destination, social, and interaction clicks. Separate from Clicks (destination) in TikTok Ads Manager.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.engagementRate",
+          "label": "Engagement rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in any engagement: engagements ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.likes",
+          "label": "Likes",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of likes on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.comments",
+          "label": "Comments",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of comments on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.shares",
+          "label": "Shares",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ads were shared.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.follows",
+          "label": "Follows",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of new followers gained from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.profileVisits",
+          "label": "Profile visits",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of visits to your TikTok profile from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.profileVisitsRate",
+          "label": "Profile visit rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that led to a profile visit: profile visits ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.clicksOnMusicDisc",
+          "label": "Music disc clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the music disc in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.duetClicks",
+          "label": "Duet clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the Duet button in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.stitchClicks",
+          "label": "Stitch clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the Stitch button in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.soundUsageClicks",
+          "label": "Sound usage clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the Use Sound option in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.anchorClicks",
+          "label": "Anchor clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on an anchor link in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.anchorClickRate",
+          "label": "Anchor click rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in an anchor click: anchor clicks ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.clicksOnHashtagChallenge",
+          "label": "Hashtag challenge clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the hashtag challenge in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixPageDurationAvg",
+          "label": "Instant Experience page duration avg.",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average time users spent on a page in Instant Experience ads (full-screen mobile experience).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.ixPageViewrateAvg",
+          "label": "Instant Experience page view rate avg.",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average percentage of an Instant Experience page viewed by users.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.ixVideoViews",
+          "label": "Instant Experience video views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Metric for full-screen Instant Experience ads - total video views.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixVideoViewsP25",
+          "label": "Instant Experience video views 25%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Video views at 25% completion in Instant Experience ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixVideoViewsP50",
+          "label": "Instant Experience video views 50%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Video views at 50% completion in Instant Experience ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixVideoViewsP75",
+          "label": "Instant Experience video views 75%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Video views at 75% completion in Instant Experience ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixVideoViewsP100",
+          "label": "Instant Experience video views 100%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Video views at 100% completion (fully watched) in Instant Experience ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ixAverageVideoPlay",
+          "label": "Instant Experience avg. video play",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of video plays per user in Instant Experience ads.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "tiktokAds.ttPlaylistVisit",
+          "label": "Playlist visits",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of visits to a TikTok playlist from your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.ttPlaylistVisitRate",
+          "label": "Playlist visit rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that led to a playlist visit: playlist visits ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.completePaymentRoas",
+          "label": "Complete payment ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend for complete payments: total complete payment value ÷ spend.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.completePayment",
+          "label": "Complete payments",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of complete payment events attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerCompletePayment",
+          "label": "Cost per complete payment",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per complete payment: spend ÷ complete payments.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.completePaymentRate",
+          "label": "Complete payment rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a complete payment: complete payments ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerCompletePayment",
+          "label": "Value per complete payment",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per complete payment event.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalCompletePaymentRate",
+          "label": "Total complete payment rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total impressions that resulted in a complete payment: complete payments ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.costPerLandingPageView",
+          "label": "Cost per landing page view",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per landing page view: spend ÷ landing page views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.landingPageViewRate",
+          "label": "Landing page view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a landing page view: landing page views ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPageview",
+          "label": "Total page views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of page views on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerPageview",
+          "label": "Cost per page view",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per page view: spend ÷ page views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageviewRate",
+          "label": "Page view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a page view: page views ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.avgValuePerPageview",
+          "label": "Avg value per page view",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per page view on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalValuePerPageview",
+          "label": "Total value per page view",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to page views on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.buttonClick",
+          "label": "Button clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of button clicks on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerButtonClick",
+          "label": "Cost per button click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per button click: spend ÷ button clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.buttonClickRate",
+          "label": "Button click rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a button click on your landing page: button clicks ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerButtonClick",
+          "label": "Value per button click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per button click on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalButtonClickValue",
+          "label": "Total button click value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to button click events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.webEventAddToCart",
+          "label": "(Page) Add to cart",
+          "kind": "metric",
+          "type": "number",
+          "description": "Web event measured on your landing page after an ad click.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerWebEventAddToCart",
+          "label": "Cost per add to cart (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per add-to-cart event on your landing page: spend ÷ add to carts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.webEventAddToCartRate",
+          "label": "(Page) Add to cart rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in an add-to-cart event on your landing page: add to carts ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerWebEventAddToCart",
+          "label": "Value per add to cart (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per add-to-cart event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalWebEventAddToCartValue",
+          "label": "Total add to cart value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to add-to-cart events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.initiateCheckout",
+          "label": "Initiate checkout",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of checkout initiations on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerInitiateCheckout",
+          "label": "Cost per initiate checkout",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per checkout initiation: spend ÷ initiate checkouts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.initiateCheckoutRate",
+          "label": "Initiate checkout rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a checkout initiation: initiate checkouts ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerInitiateCheckout",
+          "label": "Value per initiate checkout",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per checkout initiation on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalInitiateCheckoutValue",
+          "label": "Total initiate checkout value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to checkout initiations on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageEventSearch",
+          "label": "(Page) Search",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of search events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerPageEventSearch",
+          "label": "Cost per search (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per search event on your landing page: spend ÷ searches.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageEventSearchRate",
+          "label": "(Page) Search rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a search event on your landing page: searches ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerPageEventSearch",
+          "label": "Value per search (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per search event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPageEventSearchValue",
+          "label": "Total search value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to search events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebOrder",
+          "label": "(Page) Order",
+          "kind": "metric",
+          "type": "number",
+          "description": "Web event measured on your landing page after an ad click.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerOnWebOrder",
+          "label": "Cost per order (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per order on your landing page: spend ÷ orders.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebOrderRate",
+          "label": "(Page) Order rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in an order on your landing page: orders ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerOnWebOrder",
+          "label": "Value per order (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per order on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalOnWebOrderValue",
+          "label": "Total order value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to orders on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.addBilling",
+          "label": "Add billing",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of payment info additions attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerAddBilling",
+          "label": "Cost per add billing",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per payment info addition: spend ÷ add billing events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.addBillingRate",
+          "label": "Add billing rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a payment info addition: add billing events ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerAddBilling",
+          "label": "Value per add billing",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per payment info addition.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalAddBillingValue",
+          "label": "Total add billing value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to payment info addition events.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebAddToWishlist",
+          "label": "(Page) Add to wishlist",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of add-to-wishlist events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerOnWebAddToWishlist",
+          "label": "Cost per add to wishlist (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per add-to-wishlist event on your landing page: spend ÷ wishlist adds.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebAddToWishlistPerClick",
+          "label": "(Page) Add to wishlist per click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Wishlist add events per click on your landing page.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.valuePerOnWebAddToWishlist",
+          "label": "Value per add to wishlist (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per add-to-wishlist event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalOnWebAddToWishlistValue",
+          "label": "Total add to wishlist value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to add-to-wishlist events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebSubscribe",
+          "label": "(Page) Subscribe",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of subscription events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerOnWebSubscribe",
+          "label": "Cost per subscribe (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per subscription event on your landing page: spend ÷ subscribes.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onWebSubscribePerClick",
+          "label": "(Page) Subscribe per click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Subscription events per click on your landing page.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.valuePerOnWebSubscribe",
+          "label": "Value per subscribe (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per subscription event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalOnWebSubscribeValue",
+          "label": "Total subscribe value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to subscription events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.form",
+          "label": "Form submissions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of form submissions attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerForm",
+          "label": "Cost per form",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each form submission: spend ÷ form submissions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.formRate",
+          "label": "Form submission rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a form submission: form submissions ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerForm",
+          "label": "Value per form",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per form submission.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalFormValue",
+          "label": "Total form value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to form submissions.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.downloadStart",
+          "label": "Download starts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of download starts attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerDownloadStart",
+          "label": "Cost per download start",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per download start: spend ÷ download starts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.downloadStartRate",
+          "label": "Download start rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a download start: download starts ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerDownloadStart",
+          "label": "Value per download start",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per download start.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalDownloadStartValue",
+          "label": "Total download start value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to download start events.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.customPageEvents",
+          "label": "(Page) Custom events",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of custom events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerCustomPageEvent",
+          "label": "Cost per custom event (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per custom event on your landing page: spend ÷ custom events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.customPageEventRate",
+          "label": "(Page) Custom event rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a custom event on your landing page: custom events ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerCustomPageEvent",
+          "label": "Value per custom event (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per custom event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.customPageEventsValue",
+          "label": "Total custom event value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to custom events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageBrowseView",
+          "label": "(Page) Browse views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of browse events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerPageBrowseView",
+          "label": "Cost per browse view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per browse event on your landing page: spend ÷ browse views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageBrowseViewRate",
+          "label": "(Page) Browse view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a browse event on your landing page: browse views ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPageBrowseViewValue",
+          "label": "Total browse view value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to browse events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerPageBrowseView",
+          "label": "Value per browse view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per browse event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onlineConsult",
+          "label": "(Page) Online consults",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of online consult events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerOnlineConsult",
+          "label": "Cost per online consult (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per online consult event: spend ÷ online consults.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.onlineConsultRate",
+          "label": "Online consult rate (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in an online consult event: online consults ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerOnlineConsult",
+          "label": "Value per online consult (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per online consult event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalOnlineConsultValue",
+          "label": "Total online consult value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to online consult events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.userRegistration",
+          "label": "User registrations",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of user registration events attributed to your ads.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.costPerUserRegistration",
+          "label": "Cost per user registration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per user registration: spend ÷ user registrations.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.userRegistrationRate",
+          "label": "User registration rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a user registration: user registrations ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerUserRegistration",
+          "label": "Value per user registration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per user registration event.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.totalUserRegistrationValue",
+          "label": "Total user registration value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to user registration events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.pageContentViewEvents",
+          "label": "(Page) Content views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of content view events on your landing page attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerPageContentViewEvent",
+          "label": "Cost per content view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per content view event on your landing page: spend ÷ content views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.pageContentViewEventRate",
+          "label": "(Page) Content view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a content view on your landing page: content views ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerPageContentViewEvent",
+          "label": "Value per content view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per content view event on your landing page.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPageViewContentEventsValue",
+          "label": "Total content view value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to content view events on your landing page.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.productDetailsPageBrowse",
+          "label": "(Page) Product detail views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of product detail page views attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerProductDetailsPageBrowse",
+          "label": "Cost per product detail view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per product detail page view: spend ÷ product detail views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.productDetailsPageBrowseRate",
+          "label": "(Page) Product detail view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a product detail page view: product detail views ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerProductDetailsPageBrowse",
+          "label": "Value per product detail view (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per product detail page view.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalProductDetailsPageBrowseValue",
+          "label": "Total product detail view value (Page)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to product detail page views.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.billedCost",
+          "label": "Billed cost",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount billed to your account during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.cashSpend",
+          "label": "Cash spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Amount of spend charged against your cash balance.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.voucherSpend",
+          "label": "Voucher spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Amount of spend charged against your voucher balance.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.realTimeAppInstall",
+          "label": "Real-time app installs",
+          "kind": "metric",
+          "type": "number",
+          "description": "App installs tracked in real time during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.realTimeAppInstallCost",
+          "label": "Real-time app install cost",
+          "kind": "metric",
+          "type": "number",
+          "description": "Real-time cost per app install: spend ÷ real-time app installs.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.appInstall",
+          "label": "App installs",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of app installs attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerAppInstall",
+          "label": "Cost per app install",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per app install: spend ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.registration",
+          "label": "Registrations (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of registration events in your app attributed to your ads.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.costPerRegistration",
+          "label": "Cost per registration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each registration event: spend ÷ registrations.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.registrationRate",
+          "label": "Registration rate (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of app installs that resulted in a registration: registrations ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.totalRegistration",
+          "label": "Total registrations (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of registration events in your app attributed to your ads.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.costPerTotalRegistration",
+          "label": "Cost per total registration (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per registration in your app: spend ÷ total registrations.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.purchase",
+          "label": "Purchases (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of purchase events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerPurchase",
+          "label": "Cost per purchase",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each purchase: spend ÷ purchases.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.purchaseRate",
+          "label": "Purchase rate (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of app installs that resulted in a purchase: purchases ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPurchase",
+          "label": "Total purchases (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of purchase events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerTotalPurchase",
+          "label": "Cost per total purchase (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per purchase in your app: spend ÷ total purchases.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerTotalPurchase",
+          "label": "Value per purchase (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per purchase in your app.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalPurchaseValue",
+          "label": "Total purchase value (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to purchases in your app.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalActivePayRoas",
+          "label": "Total active pay ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend for active pay events: total active pay value ÷ spend.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "tiktokAds.appEventAddToCart",
+          "label": "Add to cart (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of add-to-cart events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerAppEventAddToCart",
+          "label": "Cost per add to cart (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per add-to-cart event in your app: spend ÷ add to carts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.appEventAddToCartRate",
+          "label": "Add to cart rate (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of app installs that resulted in an add-to-cart: add to carts ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalAppEventAddToCart",
+          "label": "Total add to cart (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of add-to-cart events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerTotalAppEventAddToCart",
+          "label": "Cost per total add to cart (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per total add-to-cart in your app: spend ÷ total add to carts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerTotalAppEventAddToCart",
+          "label": "Value per add to cart (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per add-to-cart event in your app.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalAppEventAddToCartValue",
+          "label": "Total add to cart value (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to add-to-cart events in your app.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.checkout",
+          "label": "Checkouts (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of checkout events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerCheckout",
+          "label": "Cost per checkout",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each checkout event: spend ÷ checkouts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.checkoutRate",
+          "label": "Checkout rate (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of app installs that resulted in a checkout: checkouts ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalCheckout",
+          "label": "Total checkouts (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of checkout events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerTotalCheckout",
+          "label": "Cost per total checkout (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per checkout in your app: spend ÷ total checkouts.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerCheckout",
+          "label": "Value per checkout (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per checkout event in your app.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalCheckoutValue",
+          "label": "Total checkout value (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to checkout events in your app.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.viewContent",
+          "label": "Content views (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of content view events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerViewContent",
+          "label": "Cost per content view (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per content view event in your app: spend ÷ content views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.viewContentRate",
+          "label": "Content view rate (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of app installs that resulted in a content view: content views ÷ app installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalViewContent",
+          "label": "Total content views (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of content view events in your app attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "tiktokAds.costPerTotalViewContent",
+          "label": "Cost per total content view (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per content view in your app: spend ÷ total content views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.valuePerTotalViewContent",
+          "label": "Value per content view (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average value per content view event in your app.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalViewContentValue",
+          "label": "Total content view value (App)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to content view events in your app.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "tiktokAds.totalCompletePaymentValue",
+          "label": "Total complete payment value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to complete payment events.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tiktokAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date when the ad metrics were recorded."
+        },
+        {
+          "name": "tiktokAds.statTimeHour",
+          "label": "Hour",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Hour when the ad metrics were recorded."
+        },
+        {
+          "name": "tiktokAds.advertiserId",
+          "label": "Advertiser ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the TikTok Ads account."
+        },
+        {
+          "name": "tiktokAds.advertiserName",
+          "label": "Advertiser name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the TikTok Ads account."
+        },
+        {
+          "name": "tiktokAds.currency",
+          "label": "Currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency used by the TikTok Ads account."
+        },
+        {
+          "name": "tiktokAds.campaignId",
+          "label": "Campaign ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the campaign in TikTok Ads."
+        },
+        {
+          "name": "tiktokAds.campaignName",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad campaign. Shown in campaign reports and breakdowns."
+        },
+        {
+          "name": "tiktokAds.adgroupId",
+          "label": "Ad group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad group in TikTok Ads."
+        },
+        {
+          "name": "tiktokAds.adgroupName",
+          "label": "Ad group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad group. Shown in ad group reports and breakdowns."
+        },
+        {
+          "name": "tiktokAds.adId",
+          "label": "Ad ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad in TikTok Ads."
+        },
+        {
+          "name": "tiktokAds.adName",
+          "label": "Ad",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad. Shown in ad-level reports and breakdowns."
+        },
+        {
+          "name": "tiktokAds.campaignBudgetMode",
+          "label": "Campaign budget mode",
+          "kind": "dimension",
+          "type": "string",
+          "description": "How the campaign budget is set (daily or lifetime)."
+        },
+        {
+          "name": "tiktokAds.campaignObjectiveType",
+          "label": "Campaign objective type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Advertising objective type for the campaign (e.g. Traffic, Conversions, App Install)."
+        },
+        {
+          "name": "tiktokAds.campaignBudget",
+          "label": "Campaign budget",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Daily or lifetime budget amount set for the campaign."
+        },
+        {
+          "name": "tiktokAds.campaignObjective",
+          "label": "Campaign objective",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Advertising objective for the campaign (e.g. Reach, Traffic, App Promotion)."
+        },
+        {
+          "name": "tiktokAds.campaignType",
+          "label": "Campaign type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of campaign (e.g. Auction, Reach & Frequency)."
+        },
+        {
+          "name": "tiktokAds.campaignOperationStatus",
+          "label": "Campaign status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the campaign (e.g. Active, Paused, Deleted)."
+        },
+        {
+          "name": "tiktokAds.campaignAutomationType",
+          "label": "Campaign automation type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of automation applied to the campaign (e.g. Smart Plus, standard)."
+        },
+        {
+          "name": "tiktokAds.countryCode",
+          "label": "Country code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country code of the audience who saw your ads."
+        },
+        {
+          "name": "tiktokAds.gender",
+          "label": "Gender",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Gender of the audience who saw your ads."
+        },
+        {
+          "name": "tiktokAds.age",
+          "label": "Age",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Age range of the audience who saw your ads."
+        },
+        {
+          "name": "tiktokAds.ac",
+          "label": "Audience network",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Audience network placement where the ad was shown."
+        },
+        {
+          "name": "tiktokAds.adgroupScheduleStartTime",
+          "label": "Ad group schedule start",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Start time of the ad group delivery schedule."
+        },
+        {
+          "name": "tiktokAds.adgroupScheduleEndTime",
+          "label": "Ad group schedule end",
+          "kind": "dimension",
+          "type": "string",
+          "description": "End time of the ad group delivery schedule."
+        },
+        {
+          "name": "tiktokAds.adgroupScheduledBudget",
+          "label": "Ad group scheduled budget",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Scheduled budget for the ad group."
+        },
+        {
+          "name": "tiktokAds.adgroupSecondaryStatus",
+          "label": "Ad group secondary status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Secondary delivery status of the ad group (e.g. Ad group not started, In review)."
+        },
+        {
+          "name": "tiktokAds.adgroupPlacements",
+          "label": "Ad group placements",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Ad placements selected for the ad group (e.g. TikTok, Pangle)."
+        },
+        {
+          "name": "tiktokAds.adgroupBidType",
+          "label": "Bid type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Bid strategy type for the ad group (e.g. Bid Cap, Lowest Cost)."
+        },
+        {
+          "name": "tiktokAds.adgroupScheduleType",
+          "label": "Schedule type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the ad group runs continuously or on a set schedule."
+        },
+        {
+          "name": "tiktokAds.adgroupIsSmartPerformanceCampaign",
+          "label": "Smart Performance Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the ad group belongs to a Smart Performance Campaign."
+        },
+        {
+          "name": "tiktokAds.adgroupBudget",
+          "label": "Ad group budget",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Budget set for the ad group."
+        },
+        {
+          "name": "tiktokAds.adgroupOperationStatus",
+          "label": "Ad group status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the ad group (e.g. Active, Paused, Deleted)."
+        },
+        {
+          "name": "tiktokAds.adgroupOptimizationEvent",
+          "label": "Optimization event",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Conversion event the ad group is optimizing towards."
+        },
+        {
+          "name": "tiktokAds.adgroupOptimizationGoal",
+          "label": "Optimization goal",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Goal the ad group is optimized for (e.g. Clicks, Conversions, Reach)."
+        },
+        {
+          "name": "tiktokAds.adgroupBillingEvent",
+          "label": "Billing event",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The event you are charged for in the ad group (e.g. CPC, CPM, CPV)."
+        },
+        {
+          "name": "tiktokAds.adgroupBudgetMode",
+          "label": "Ad group budget mode",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the ad group runs on a daily or lifetime budget."
+        },
+        {
+          "name": "tiktokAds.adgroupPromotionType",
+          "label": "Promotion type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Promotion type for the ad group (e.g. App, Website, TikTok video)."
+        },
+        {
+          "name": "tiktokAds.adCallToAction",
+          "label": "Call to action",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Call-to-action text shown on the ad (e.g. Shop Now, Learn More)."
+        },
+        {
+          "name": "tiktokAds.adLandingPageUrl",
+          "label": "Landing page URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Destination URL for the ad's landing page."
+        },
+        {
+          "name": "tiktokAds.adIdentityType",
+          "label": "Identity type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of identity used for the ad (e.g. TikTok account, Custom Identity)."
+        },
+        {
+          "name": "tiktokAds.adAppName",
+          "label": "App name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the app being promoted by the ad."
+        },
+        {
+          "name": "tiktokAds.adAdFormat",
+          "label": "Ad format",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Format of the ad (e.g. In-Feed, TopView, Brand Takeover)."
+        },
+        {
+          "name": "tiktokAds.adOperationStatus",
+          "label": "Ad status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the ad (e.g. Active, Paused, Deleted)."
+        },
+        {
+          "name": "tiktokAds.adIsAco",
+          "label": "ACO ad",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the ad uses Automated Creative Optimization (ACO)."
+        },
+        {
+          "name": "tiktokAds.adDisplayName",
+          "label": "Ad display name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display name shown for the ad in TikTok Ads Manager."
+        },
+        {
+          "name": "tiktokAds.adSecondaryStatus",
+          "label": "Ad secondary status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Secondary delivery status of the ad (e.g. Ad not started, In review)."
+        },
+        {
+          "name": "tiktokAds.adOptimizationEvent",
+          "label": "Ad optimization event",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Conversion event the ad is optimizing towards."
+        },
+        {
+          "name": "tiktokAds.adVastMoatEnabled",
+          "label": "Ad VAST MOAT enabled",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the ad has VAST MOAT viewability tracking enabled."
+        },
+        {
+          "name": "tiktokAds.adText",
+          "label": "Ad text",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Text or caption copy used in the ad creative."
+        },
+        {
+          "name": "tiktokAds.adTiktokItemId",
+          "label": "TikTok item ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the TikTok organic post used in a Spark Ad."
+        },
+        {
+          "name": "tiktokAds.creativeFormat",
+          "label": "Creative format",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Format of the ad creative (e.g. image, video)."
+        },
+        {
+          "name": "tiktokAds.creativeDuration",
+          "label": "Creative duration",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Duration of the video creative in seconds."
+        },
+        {
+          "name": "tiktokAds.adType",
+          "label": "Ad type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of TikTok ad (e.g. TopView, Brand Takeover, In-Feed Ad, Spark Ad)."
+        },
+        {
+          "name": "tiktokAds.searchTerms",
+          "label": "Search terms",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Search keyword entered by users that triggered your ad."
+        },
+        {
+          "name": "tiktokAds.placement",
+          "label": "Placement",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Placement where your ad was shown (e.g. TikTok In-Feed, Pangle)."
+        }
+      ]
+    }
+  ]
+}

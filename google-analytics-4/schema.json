@@ -1,0 +1,519 @@
+{
+  "source": "googleAnalytics4",
+  "name": "Google Analytics 4",
+  "schemaVersion": "1.1.2",
+  "entities": [
+    {
+      "name": "run_report",
+      "metrics": [
+        {
+          "name": "googleAnalytics4.activeUsers",
+          "label": "Active users",
+          "kind": "metric",
+          "type": "number",
+          "description": "Active users. Users who had an engaged session, or when Analytics collected first_visit or engagement_time from a page.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "googleAnalytics4.totalUsers",
+          "label": "Total users",
+          "kind": "metric",
+          "type": "number",
+          "description": "Users who logged at least one event, new or returning.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "googleAnalytics4.newUsers",
+          "label": "New users",
+          "kind": "metric",
+          "type": "number",
+          "description": "Users who interacted with your site or app for the first time.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "googleAnalytics4.sessions",
+          "label": "Sessions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Periods when users are actively engaged with your site or app.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.sessionsPerUser",
+          "label": "Sessions per user",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of sessions per user.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.engagedSessions",
+          "label": "Engaged sessions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Sessions that lasted longer than 10 seconds, had a conversion event, or had at least 2 page views.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.screenPageViews",
+          "label": "Page views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total count of screen or page views recorded.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.eventCount",
+          "label": "Events",
+          "kind": "metric",
+          "type": "number",
+          "description": "Count of event instances recorded.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.eventValue",
+          "label": "Event value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total monetary value attributed to user interactions with your site or app.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.itemViews",
+          "label": "Item views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total count of item views recorded.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.addToCarts",
+          "label": "Add-to-carts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times users added items to their shopping cart.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.itemsPurchased",
+          "label": "Items purchased",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of items purchased by users.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.purchaseRevenue",
+          "label": "Purchase revenue",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue generated from purchases, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.totalRevenue",
+          "label": "Total revenue",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue across all transaction types recorded, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.transactionsPerPurchaser",
+          "label": "Transactions per purchaser",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of transactions per user who made a purchase.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.averagePurchaseRevenue",
+          "label": "Avg. purchase revenue",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue generated per purchase transaction.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.purchaserRate",
+          "label": "Purchaser rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of active users who made a purchase: purchasers ÷ active users.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.conversions",
+          "label": "Conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of completed conversion actions you are measuring (e.g. purchases, sign-ups, leads).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.engagementRate",
+          "label": "Engagement rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of sessions that were engaged (lasted 10+ seconds, had a conversion, or had 2+ page views): engaged sessions ÷ total sessions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.userEngagementDuration",
+          "label": "User engagement duration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total time users spent engaged with your site or app, in seconds.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "googleAnalytics4.averageSessionDuration",
+          "label": "Avg. session duration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average duration of each session in seconds.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "googleAnalytics4.bounceRate",
+          "label": "Bounce rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of sessions that were not engaged sessions: non-engaged sessions ÷ total sessions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.totalAdCost",
+          "label": "Total ad cost",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent on linked ads (e.g. Google Ads), in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.advertiserAdClicks",
+          "label": "Ad clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.advertiserAdImpressions",
+          "label": "Ad impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ads were displayed to users.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAnalytics4.advertiserAdCostPerClick",
+          "label": "Ad CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click on your ads, calculated as total ad cost divided by clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAnalytics4.returnOnAdSpend",
+          "label": "ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend: attributed revenue divided by ad cost.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "googleAnalytics4.conversionRate",
+          "label": "Conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of sessions that resulted in a conversion: conversions ÷ sessions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Conversions ÷ Sessions"
+        },
+        {
+          "name": "googleAnalytics4.advertiserAdCtr",
+          "label": "Ad CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate for linked ads: ad clicks ÷ ad impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Ad clicks ÷ Ad impressions"
+        },
+        {
+          "name": "googleAnalytics4.adCostPerConversion",
+          "label": "Cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average ad spend per conversion: total ad cost ÷ conversions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Total ad cost ÷ Conversions"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleAnalytics4.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Calendar date for the report row."
+        },
+        {
+          "name": "googleAnalytics4.isoYearIsoWeek",
+          "label": "ISO year + week",
+          "kind": "dimension",
+          "type": "string",
+          "description": "ISO year and week number for the report row (e.g. 202305 = week 5 of 2023)."
+        },
+        {
+          "name": "googleAnalytics4.year",
+          "label": "Year",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Year of the report row. Used when reporting is grouped by calendar year."
+        },
+        {
+          "name": "googleAnalytics4.yearMonth",
+          "label": "Year + month",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Year and month of the report row (YYYYMM)."
+        },
+        {
+          "name": "googleAnalytics4.month",
+          "label": "Month",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Month of the report row (01–12)."
+        },
+        {
+          "name": "googleAnalytics4.week",
+          "label": "Week",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Week of the year (01–53)."
+        },
+        {
+          "name": "googleAnalytics4.dateHour",
+          "label": "Date + hour",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date and hour. Combined date and hour (YYYYMMDDHH)."
+        },
+        {
+          "name": "googleAnalytics4.dateHourMinute",
+          "label": "Date + hour + minute",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date, hour, and minute of the report row (YYYYMMDDHHmm)."
+        },
+        {
+          "name": "googleAnalytics4.country",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country associated with user activity."
+        },
+        {
+          "name": "googleAnalytics4.region",
+          "label": "Region",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Geographic region for user activity."
+        },
+        {
+          "name": "googleAnalytics4.city",
+          "label": "City",
+          "kind": "dimension",
+          "type": "string",
+          "description": "City associated with user activity."
+        },
+        {
+          "name": "googleAnalytics4.deviceCategory",
+          "label": "Device category",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Desktop, mobile, or tablet."
+        },
+        {
+          "name": "googleAnalytics4.platform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Platform used for the session (Web, iOS, Android)."
+        },
+        {
+          "name": "googleAnalytics4.platformDeviceCategory",
+          "label": "Platform + device",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Platform and device category combined (e.g. web / mobile, iOS / tablet)."
+        },
+        {
+          "name": "googleAnalytics4.browser",
+          "label": "Browser",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Web browser used for the session."
+        },
+        {
+          "name": "googleAnalytics4.operatingSystem",
+          "label": "Operating system",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Operating system of the device used in the session (e.g. Windows, iOS, Android)."
+        },
+        {
+          "name": "googleAnalytics4.sessionSource",
+          "label": "Session source",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Traffic source that brought the session (e.g. google, direct, newsletter)."
+        },
+        {
+          "name": "googleAnalytics4.sessionMedium",
+          "label": "Session medium",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Traffic medium for the session (e.g. cpc, organic, email)."
+        },
+        {
+          "name": "googleAnalytics4.sessionCampaignName",
+          "label": "Session campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Campaign name that brought the session."
+        },
+        {
+          "name": "googleAnalytics4.sessionDefaultChannelGroup",
+          "label": "Default channel group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Marketing channel group for the session (e.g. Paid Search, Organic)."
+        },
+        {
+          "name": "googleAnalytics4.firstUserSource",
+          "label": "First user source",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Traffic source that first acquired the user (e.g. google, direct)."
+        },
+        {
+          "name": "googleAnalytics4.firstUserMedium",
+          "label": "First user medium",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Traffic medium through which the user was first acquired (e.g. cpc, organic)."
+        },
+        {
+          "name": "googleAnalytics4.currencyCode",
+          "label": "Currency code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency code for the transaction data."
+        },
+        {
+          "name": "googleAnalytics4.eventName",
+          "label": "Event name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the collected event."
+        },
+        {
+          "name": "googleAnalytics4.pagePath",
+          "label": "Page path",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Path portion of the page URL."
+        },
+        {
+          "name": "googleAnalytics4.pageTitle",
+          "label": "Page title",
+          "kind": "dimension",
+          "type": "string",
+          "description": "HTML document title of the page as collected by Google Analytics."
+        },
+        {
+          "name": "googleAnalytics4.landingPage",
+          "label": "Landing page",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Page path where the session began."
+        },
+        {
+          "name": "googleAnalytics4.unifiedPagePathScreen",
+          "label": "Page path / screen name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unified path for both web pages and app screens."
+        }
+      ]
+    }
+  ]
+}

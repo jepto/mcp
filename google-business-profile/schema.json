@@ -1,0 +1,851 @@
+{
+  "source": "googleBusinessProfile",
+  "name": "Google Business Profile",
+  "schemaVersion": "1.1.11",
+  "entities": [
+    {
+      "name": "locations",
+      "label": "Locations",
+      "description": "Each location's profile details, categories, address and rating.",
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.profileRating",
+          "label": "Profile rating",
+          "kind": "metric",
+          "type": "number",
+          "description": "Rating for the Profile as shown on Google.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 1
+          },
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.totalReviewCount",
+          "label": "Total reviews",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of reviews on the location as reported by Google Business Profile (value is updated daily).",
+          "aggregation": "SUM",
+          "calculated": true
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleBusinessProfile.locationName",
+          "label": "Location name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the business location."
+        },
+        {
+          "name": "googleBusinessProfile.locationId",
+          "label": "Location ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the business location in Google Business Profile."
+        },
+        {
+          "name": "googleBusinessProfile.locationResourceName",
+          "label": "Location resource name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google identifier for this location in the form accounts/{accountId}/locations/{locationId}.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationLanguageCode",
+          "label": "Location language code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Language code for this business location (e.g. en, fr, de)."
+        },
+        {
+          "name": "googleBusinessProfile.storeCode",
+          "label": "Store code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Custom identifier assigned to the location in your Business Profile."
+        },
+        {
+          "name": "googleBusinessProfile.locationWebsite",
+          "label": "Website",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Website URL for this business location."
+        },
+        {
+          "name": "googleBusinessProfile.serviceArea",
+          "label": "Service area",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Geographic area where the business provides services (for service-area businesses)."
+        },
+        {
+          "name": "googleBusinessProfile.locationStatus",
+          "label": "Status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current status of the business location (e.g. Open, Closed, Suspended)."
+        },
+        {
+          "name": "googleBusinessProfile.locationDescription",
+          "label": "Business description",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Short description of the business shown on the profile.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressLines",
+          "label": "Street address",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Street address lines from the storefront address, joined for display.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressAdministrativeArea",
+          "label": "State / province",
+          "kind": "dimension",
+          "type": "string",
+          "description": "State or province from the storefront address.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressLocality",
+          "label": "City",
+          "kind": "dimension",
+          "type": "string",
+          "description": "City or town from the storefront address.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressPostalCode",
+          "label": "Postcode",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Postal code from the storefront address.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressRegionCode",
+          "label": "Country code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "CLDR region code for the storefront address country.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressSublocality",
+          "label": "Suburb",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Neighborhood or suburb from the storefront address when provided by Google Business Profile.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.addressLanguageCode",
+          "label": "Address language",
+          "kind": "dimension",
+          "type": "string",
+          "description": "BCP-47 language code for the storefront address text.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationFormattedAddress",
+          "label": "Address",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Formatted storefront address combining street, city, state, and postcode.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationPrimaryPhone",
+          "label": "Primary phone",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Main phone number customers can call to reach this business location directly.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationAdditionalPhones",
+          "label": "Additional phones",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Additional phone numbers listed for this business location beyond the primary number.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationPrimaryCategory",
+          "label": "Primary category",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Category that best describes the core business this location engages in.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationAdditionalCategories",
+          "label": "Additional categories",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Additional categories used to further describe this business location.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.regularHours",
+          "label": "Regular hours",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Standard weekly operating hours for the business location."
+        },
+        {
+          "name": "googleBusinessProfile.specialHours",
+          "label": "Special hours",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Special or holiday opening hours for the business location."
+        },
+        {
+          "name": "googleBusinessProfile.adWordsLocationExtensions",
+          "label": "Ads location extensions",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Google Ads location extension settings for this business location."
+        },
+        {
+          "name": "googleBusinessProfile.locationAdPhone",
+          "label": "Ads phone",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Phone number surfaced in Google Ads location extensions for this business.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.latlng",
+          "label": "LatLng Coordinates",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Geographic coordinates for the business location."
+        },
+        {
+          "name": "googleBusinessProfile.relationshipData",
+          "label": "Relationship data",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Related locations and chain data for this business location."
+        },
+        {
+          "name": "googleBusinessProfile.locationFollowers",
+          "label": "Followers",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Total number of followers for the location when reported by Google Business Profile."
+        },
+        {
+          "name": "googleBusinessProfile.openInfo",
+          "label": "Open info",
+          "kind": "dimension",
+          "type": "object",
+          "description": "Business hours and open/closed status for the location."
+        },
+        {
+          "name": "googleBusinessProfile.openInfoStatus",
+          "label": "Open status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the business location is currently open for business.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.attributes",
+          "label": "Business attributes",
+          "kind": "dimension",
+          "type": "object[]",
+          "description": "Attributes of the business (e.g. accessibility features, accepted payment methods)."
+        },
+        {
+          "name": "googleBusinessProfile.locationPrimaryServices",
+          "label": "Primary services",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Services listed for this business location, based on the primary category.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationAdditionalServices",
+          "label": "Additional services",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Services listed for this business location, based on the additional categories.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationMapsLink",
+          "label": "Maps Link",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google Maps URL for this business location.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.locationReviewLink",
+          "label": "Review Link",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google review URL for this business location.",
+          "calculated": true
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "label": "Reviews",
+      "description": "Customer reviews, star ratings and whether you've replied.",
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.reviewStarRating",
+          "label": "Star rating",
+          "kind": "metric",
+          "type": "number",
+          "description": "Star rating from 1 to 5 given by the reviewer.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "googleBusinessProfile.reviewCount",
+          "label": "Review count",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct reviews in the queried date range.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "googleBusinessProfile.repliedReviewCount",
+          "label": "Replied reviews",
+          "kind": "metric",
+          "type": "number",
+          "description": "Distinct reviews with an owner reply (reply date present).",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "googleBusinessProfile.unrepliedReviewCount",
+          "label": "Unreplied reviews",
+          "kind": "metric",
+          "type": "number",
+          "description": "Reviews in range without an owner reply.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Review count − Replied reviews"
+        },
+        {
+          "name": "googleBusinessProfile.replyRate",
+          "label": "Reply rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of reviews in range that have an owner reply.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Replied reviews ÷ Review count"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleBusinessProfile.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date for which the data was recorded."
+        },
+        {
+          "name": "googleBusinessProfile.reviewComment",
+          "label": "Review comment",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Text content of the customer's review."
+        },
+        {
+          "name": "googleBusinessProfile.reviewReply",
+          "label": "Review reply",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Business owner's reply to the customer review.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.reviewId",
+          "label": "Review ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the customer review."
+        },
+        {
+          "name": "googleBusinessProfile.reviewerName",
+          "label": "Reviewer name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the reviewer who left the feedback."
+        },
+        {
+          "name": "googleBusinessProfile.reviewerProfilePhotoUrl",
+          "label": "Reviewer photo URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Profile photo URL of the reviewer who left the feedback."
+        },
+        {
+          "name": "googleBusinessProfile.reviewReplyDate",
+          "label": "Review reply date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date and time when the business owner replied to the review.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.reviewUpdateTime",
+          "label": "Review updated",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date and time when the review was last updated."
+        }
+      ]
+    },
+    {
+      "name": "posts",
+      "label": "Posts",
+      "description": "Updates, offers and events published to your profiles.",
+      "metrics": [],
+      "dimensions": [
+        {
+          "name": "googleBusinessProfile.postId",
+          "label": "Post ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the local post."
+        },
+        {
+          "name": "googleBusinessProfile.postLanguageCode",
+          "label": "Post language code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Language code for the post (e.g. en, fr, de)."
+        },
+        {
+          "name": "googleBusinessProfile.postSummary",
+          "label": "Post Summary",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Text content of the post."
+        },
+        {
+          "name": "googleBusinessProfile.postTopicType",
+          "label": "Post topic type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of local post (e.g. Standard, Event, Offer)."
+        },
+        {
+          "name": "googleBusinessProfile.postScheduleDate",
+          "label": "Post schedule date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date the post is scheduled to be published."
+        },
+        {
+          "name": "googleBusinessProfile.postScheduleTime",
+          "label": "Post schedule time",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Time the post is scheduled to be published."
+        },
+        {
+          "name": "googleBusinessProfile.postMediaGoogleUrl",
+          "label": "Post media Google URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google-hosted URL for the first media item attached to the post.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.postCreateTime",
+          "label": "Post created",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date and time the post was created."
+        },
+        {
+          "name": "googleBusinessProfile.postUpdateTime",
+          "label": "Post last updated",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date and time the post was last updated."
+        },
+        {
+          "name": "googleBusinessProfile.postState",
+          "label": "Post state",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Lifecycle state of the local post."
+        },
+        {
+          "name": "googleBusinessProfile.postSearchUrl",
+          "label": "Post search URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google Search URL for the local post."
+        },
+        {
+          "name": "googleBusinessProfile.postAlertType",
+          "label": "Post alert type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Alert type when the post is an alert post."
+        },
+        {
+          "name": "googleBusinessProfile.postOfferCouponCode",
+          "label": "Post offer coupon code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Coupon code from the offer when the local post is an offer post.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.postEventTitle",
+          "label": "Post event title",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Title of the event for event-type local posts.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.postEventDetails",
+          "label": "Post event details",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Schedule and details for event-type local posts.",
+          "calculated": true
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "label": "Photos & media",
+      "description": "Photos and videos on each profile.",
+      "metrics": [],
+      "dimensions": [
+        {
+          "name": "googleBusinessProfile.authorType",
+          "label": "Author type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the media was uploaded by the business owner or a customer (owner, customer)."
+        },
+        {
+          "name": "googleBusinessProfile.mediaGoogleUrl",
+          "label": "Media URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Google-hosted URL for the media asset."
+        },
+        {
+          "name": "googleBusinessProfile.mediaFormat",
+          "label": "Media format",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Format of the media item (e.g. Photo, Video)."
+        },
+        {
+          "name": "googleBusinessProfile.mediaThumbnailUrl",
+          "label": "Media thumbnail URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "URL for the thumbnail image of the media."
+        },
+        {
+          "name": "googleBusinessProfile.mediaLocationAssociation",
+          "label": "Location association",
+          "kind": "dimension",
+          "type": "string",
+          "description": "How this media item is associated with the business location."
+        },
+        {
+          "name": "googleBusinessProfile.mediaDescription",
+          "label": "Media description",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Description text for the media item."
+        },
+        {
+          "name": "googleBusinessProfile.mediaWidth",
+          "label": "Media width",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Width of the media item in pixels.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.mediaHeight",
+          "label": "Media height",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Height of the media item in pixels.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.mediaAttributionName",
+          "label": "Media attribution name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display name of the customer who uploaded the media item.",
+          "calculated": true
+        },
+        {
+          "name": "googleBusinessProfile.mediaSourceUrl",
+          "label": "Media source URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Public source URL where the media item can be retrieved."
+        }
+      ]
+    },
+    {
+      "name": "performance",
+      "label": "Performance",
+      "description": "Daily calls, direction requests, website clicks, bookings and Search and Maps impressions.",
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.searchImpressions",
+          "label": "Search impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search results. (Desktop + Mobile)",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.searchImpressionsDesktop",
+          "label": "Search impressions (desktop)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search results on desktop.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.searchImpressionsMobile",
+          "label": "Search impressions (mobile)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search results on mobile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.mapsImpressions",
+          "label": "Maps impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Maps results. (Desktop + Mobile)",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.mapsImpressionsDesktop",
+          "label": "Maps impressions (desktop)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Maps results on desktop.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.mapsImpressionsMobile",
+          "label": "Maps impressions (mobile)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Maps results on mobile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.directionRequests",
+          "label": "Direction requests",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times users requested directions to the business location.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.webClicks",
+          "label": "Website clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the website link from the business profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.callClicks",
+          "label": "Call clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the phone number from the business profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.foodOrders",
+          "label": "Food orders",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of food orders placed through the business profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.conversations",
+          "label": "Messages",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of messages sent to the business through the profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.bookings",
+          "label": "Bookings",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of bookings made through the business profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the business profile. (Website + Call + Direction Requests)",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "(Website clicks + Call clicks) + Direction requests"
+        },
+        {
+          "name": "googleBusinessProfile.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search and Maps results. (Desktop + Mobile)",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Search impressions + Maps impressions"
+        },
+        {
+          "name": "googleBusinessProfile.desktopImpressions",
+          "label": "Impressions (desktop)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search and Maps on desktop. Multiple impressions by a unique user within a single day are counted once.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Search impressions (desktop) + Maps impressions (desktop)"
+        },
+        {
+          "name": "googleBusinessProfile.mobileImpressions",
+          "label": "Impressions (mobile)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the business profile appeared in Google Search and Maps on mobile. Multiple impressions by a unique user within a single day are counted once.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Search impressions (mobile) + Maps impressions (mobile)"
+        },
+        {
+          "name": "googleBusinessProfile.searchClickThroughRate",
+          "label": "Search CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of Search impressions that resulted in a website click: web clicks ÷ search impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Website clicks ÷ Search impressions"
+        },
+        {
+          "name": "googleBusinessProfile.mapsClickThroughRate",
+          "label": "Maps CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of Maps impressions that resulted in a website click: web clicks ÷ maps impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Website clicks ÷ Maps impressions"
+        },
+        {
+          "name": "googleBusinessProfile.callClickThroughRateSearch",
+          "label": "Call CTR (Search)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of Search impressions that resulted in a call click: call clicks ÷ search impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Call clicks ÷ Search impressions"
+        },
+        {
+          "name": "googleBusinessProfile.callClickThroughRateMaps",
+          "label": "Call CTR (Maps)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of Maps impressions that resulted in a call click: call clicks ÷ maps impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Call clicks ÷ Maps impressions"
+        }
+      ],
+      "dimensions": []
+    },
+    {
+      "name": "keywords",
+      "label": "Search keywords",
+      "description": "The search terms people used to find each profile, by month.",
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.searchVolume",
+          "label": "Search Keyword Volume",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times users searched with this keyword and saw your business profile. Only keywords with a search volume greater than the threshold are included.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleBusinessProfile.searchVolumeThreshold",
+          "label": "Search Keyword Threshold",
+          "kind": "metric",
+          "type": "number",
+          "description": "Minimum search volume threshold at which keyword impressions are reported by Google.",
+          "aggregation": "SUM"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleBusinessProfile.searchKeyword",
+          "label": "Search Keyword",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Search keyword that triggered an impression of your business profile."
+        },
+        {
+          "name": "googleBusinessProfile.isBranded",
+          "label": "Branded search",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "True when the search keyword contains the location title (case-insensitive). Requires locationName in the same query."
+        }
+      ]
+    }
+  ]
+}

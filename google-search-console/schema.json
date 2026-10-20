@@ -1,0 +1,92 @@
+{
+  "source": "googleSearchConsole",
+  "name": "Google Search Console",
+  "schemaVersion": "1.1.3",
+  "entities": [
+    {
+      "name": "search_analytics",
+      "metrics": [
+        {
+          "name": "googleSearchConsole.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times users clicked through to your site from Google Search results.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleSearchConsole.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your pages appeared in Google Search results.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleSearchConsole.ctr",
+          "label": "CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate: clicks divided by impressions. Shown as a percentage in Search Console.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleSearchConsole.position",
+          "label": "Average position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average ranking position of your pages in search results (lower is better).",
+          "aggregation": "AVG"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleSearchConsole.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date of the reporting period."
+        },
+        {
+          "name": "googleSearchConsole.country",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country where the search user was located."
+        },
+        {
+          "name": "googleSearchConsole.device",
+          "label": "Device",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Device category (mobile, desktop, or tablet) used for the search."
+        },
+        {
+          "name": "googleSearchConsole.page",
+          "label": "Page",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Page URL of your site that appeared in Google Search results."
+        },
+        {
+          "name": "googleSearchConsole.query",
+          "label": "Query",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Search terms users typed before seeing your site in results."
+        },
+        {
+          "name": "googleSearchConsole.searchAppearance",
+          "label": "Search appearance",
+          "kind": "dimension",
+          "type": "string",
+          "description": "How your content appeared in search results (e.g. AMP, rich result, web light, video)."
+        }
+      ]
+    }
+  ]
+}

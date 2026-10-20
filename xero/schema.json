@@ -1,0 +1,669 @@
+{
+  "source": "xero",
+  "name": "Xero",
+  "schemaVersion": "1.1.1",
+  "entities": [
+    {
+      "name": "invoices",
+      "label": "Invoices",
+      "description": "Sales and purchase invoices with totals, amounts due, status and dates.",
+      "metrics": [
+        {
+          "name": "xero.invoices.total",
+          "label": "Total",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value of the invoice including tax in the invoice currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.invoices.amountDue",
+          "label": "Amount due",
+          "kind": "metric",
+          "type": "number",
+          "description": "Outstanding balance still owed on the invoice.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.invoices.invoiceCount",
+          "label": "Invoices",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct invoices in the result.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "xero.invoices.outstanding",
+          "label": "Outstanding",
+          "kind": "metric",
+          "type": "number",
+          "description": "Amount still outstanding after payments: total minus amount due.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Total − Amount due"
+        },
+        {
+          "name": "xero.invoices.invoicePaidRate",
+          "label": "Paid rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of invoice total that has been paid: payments divided by invoice total.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Amount ÷ Total"
+        },
+        {
+          "name": "xero.invoices.totalBase",
+          "label": "Total (base currency)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Invoice total converted to the organisation base currency using the stored currency rate.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Total ÷ Currency rate"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.invoices.invoiceId",
+          "label": "Invoice ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the invoice in Xero."
+        },
+        {
+          "name": "xero.invoices.invoiceNumber",
+          "label": "Invoice number",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Human-readable invoice number shown in Xero."
+        },
+        {
+          "name": "xero.invoices.contactId",
+          "label": "Contact ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Xero contact linked to this invoice."
+        },
+        {
+          "name": "xero.invoices.contactName",
+          "label": "Contact name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the customer or supplier on the invoice."
+        },
+        {
+          "name": "xero.invoices.type",
+          "label": "Invoice type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the document is an accounts receivable or accounts payable invoice."
+        },
+        {
+          "name": "xero.invoices.status",
+          "label": "Status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current workflow status of the invoice in Xero. Jepto syncs all statuses including DRAFT, VOIDED, and DELETED — filter before reporting totals."
+        },
+        {
+          "name": "xero.invoices.date",
+          "label": "Invoice date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Issue date of the invoice used for reporting periods."
+        },
+        {
+          "name": "xero.invoices.dueDate",
+          "label": "Due date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date payment is due on the invoice."
+        },
+        {
+          "name": "xero.invoices.currencyCode",
+          "label": "Currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency code for invoice amounts."
+        },
+        {
+          "name": "xero.invoices.reference",
+          "label": "Reference",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Optional reference text entered on the invoice in Xero."
+        },
+        {
+          "name": "xero.invoices.fullyPaidOnDate",
+          "label": "Fully paid on",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date the invoice was fully paid in Xero."
+        },
+        {
+          "name": "xero.invoices.currencyRate",
+          "label": "Currency rate",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Exchange rate from invoice currency to the organisation base currency."
+        },
+        {
+          "name": "xero.invoices.lineAmountTypes",
+          "label": "Line amount types",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether invoice line amounts are Exclusive, Inclusive, or NoTax in Xero."
+        }
+      ]
+    },
+    {
+      "name": "invoice_lines",
+      "label": "Invoice lines",
+      "description": "Line items with quantity, unit amount, tax and account code.",
+      "metrics": [
+        {
+          "name": "xero.invoice_lines.quantity",
+          "label": "Quantity",
+          "kind": "metric",
+          "type": "number",
+          "description": "Sum of quantities across invoice line items.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "xero.invoice_lines.unitAmount",
+          "label": "Unit amount",
+          "kind": "metric",
+          "type": "number",
+          "description": "Sum of unit prices before tax on line items.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.invoice_lines.lineAmount",
+          "label": "Line amount",
+          "kind": "metric",
+          "type": "number",
+          "description": "Gross line amount from Xero. Not P&L-grade on its own — use lineAmountNet for expense/revenue analysis.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.invoice_lines.taxAmount",
+          "label": "Tax amount",
+          "kind": "metric",
+          "type": "number",
+          "description": "Tax component on invoice line items.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.invoice_lines.lineCount",
+          "label": "Line items",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct invoice line items.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "xero.invoice_lines.lineAmountNet",
+          "label": "Line amount (net)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Tax-exclusive line amount: line amount minus tax amount.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Line amount − Tax amount"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.invoice_lines.lineId",
+          "label": "Line ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for a line item on an invoice."
+        },
+        {
+          "name": "xero.invoice_lines.invoiceId",
+          "label": "Invoice ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Parent invoice for this line item."
+        },
+        {
+          "name": "xero.invoice_lines.description",
+          "label": "Description",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Text description of the line item."
+        },
+        {
+          "name": "xero.invoice_lines.accountCode",
+          "label": "Account code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Chart of accounts code assigned to the line."
+        },
+        {
+          "name": "xero.invoice_lines.accountName",
+          "label": "Account name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Chart of accounts name denormalised on the line."
+        },
+        {
+          "name": "xero.invoice_lines.taxType",
+          "label": "Tax type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Tax treatment applied to the line item."
+        },
+        {
+          "name": "xero.invoice_lines.date",
+          "label": "Line date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Invoice date carried on the line for time-based reporting."
+        }
+      ]
+    },
+    {
+      "name": "contacts",
+      "label": "Contacts",
+      "description": "Customers and suppliers.",
+      "metrics": [
+        {
+          "name": "xero.contacts.contactCount",
+          "label": "Contacts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct contacts in the result.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.contacts.contactId",
+          "label": "Contact ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the contact in Xero."
+        },
+        {
+          "name": "xero.contacts.name",
+          "label": "Contact name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display name of the customer or supplier in Xero."
+        },
+        {
+          "name": "xero.contacts.email",
+          "label": "Email",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Primary email address stored on the contact."
+        },
+        {
+          "name": "xero.contacts.isCustomer",
+          "label": "Is customer",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the contact is flagged as a customer in Xero."
+        },
+        {
+          "name": "xero.contacts.isSupplier",
+          "label": "Is supplier",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the contact is flagged as a supplier in Xero."
+        },
+        {
+          "name": "xero.contacts.updatedAt",
+          "label": "Updated at",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Last time the contact record was updated in Xero."
+        }
+      ]
+    },
+    {
+      "name": "accounts",
+      "label": "Accounts",
+      "description": "Your chart of accounts.",
+      "metrics": [
+        {
+          "name": "xero.accounts.accountCount",
+          "label": "Accounts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct chart of accounts entries.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.accounts.xeroAccountId",
+          "label": "Account ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the account in Xero."
+        },
+        {
+          "name": "xero.accounts.code",
+          "label": "Account code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Chart of accounts code used on transactions."
+        },
+        {
+          "name": "xero.accounts.name",
+          "label": "Account name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the account in the chart of accounts."
+        },
+        {
+          "name": "xero.accounts.accountType",
+          "label": "Account type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Xero account type such as revenue or expense."
+        },
+        {
+          "name": "xero.accounts.accountClass",
+          "label": "Account class",
+          "kind": "dimension",
+          "type": "string",
+          "description": "High-level classification of the account."
+        },
+        {
+          "name": "xero.accounts.status",
+          "label": "Status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the account is active in Xero."
+        }
+      ]
+    },
+    {
+      "name": "payments",
+      "label": "Payments",
+      "description": "Payments received and made, and how long invoices took to pay.",
+      "metrics": [
+        {
+          "name": "xero.payments.amount",
+          "label": "Amount",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total payment amount in the payment currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.payments.paymentCount",
+          "label": "Payments",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct payments in the result.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "xero.payments.daysToPay",
+          "label": "Days to pay",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average days between invoice date and payment date for invoices that have been paid.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Payment date − Invoice date"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.payments.paymentId",
+          "label": "Payment ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the payment in Xero."
+        },
+        {
+          "name": "xero.payments.invoiceId",
+          "label": "Invoice ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Invoice this payment was applied against."
+        },
+        {
+          "name": "xero.payments.contactId",
+          "label": "Contact ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Contact associated with the payment. Falls back to the linked invoice contact when the payment row has no contactId."
+        },
+        {
+          "name": "xero.payments.contactName",
+          "label": "Contact name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display name of the contact on the payment. Falls back to the linked invoice contact when the payment row has no denormalised name."
+        },
+        {
+          "name": "xero.payments.date",
+          "label": "Payment date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date the payment was recorded in Xero."
+        },
+        {
+          "name": "xero.payments.currencyCode",
+          "label": "Currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency code for the payment amount."
+        }
+      ]
+    },
+    {
+      "name": "organisation",
+      "label": "Organisation",
+      "description": "Your Xero organisation's details, base currency and financial year.",
+      "metrics": [
+        {
+          "name": "xero.organisation.organisationCount",
+          "label": "Organisations",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct Xero organisations synced for the connection.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.organisation.organisationId",
+          "label": "Organisation ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the Xero organisation."
+        },
+        {
+          "name": "xero.organisation.name",
+          "label": "Organisation name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Trading name of the Xero organisation."
+        },
+        {
+          "name": "xero.organisation.legalName",
+          "label": "Legal name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Legal entity name registered in Xero."
+        },
+        {
+          "name": "xero.organisation.baseCurrency",
+          "label": "Base currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Organisation base currency used for converted totals and P&L reporting."
+        },
+        {
+          "name": "xero.organisation.countryCode",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country code for the Xero organisation."
+        },
+        {
+          "name": "xero.organisation.financialYearEndMonth",
+          "label": "Financial year end month",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Month (1-12) when the organisation financial year ends in Xero."
+        },
+        {
+          "name": "xero.organisation.financialYearEndDay",
+          "label": "Financial year end day",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Day of month when the organisation financial year ends in Xero."
+        },
+        {
+          "name": "xero.organisation.updatedAt",
+          "label": "Updated at",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Last time organisation settings were updated in Xero."
+        }
+      ]
+    },
+    {
+      "name": "profit_and_loss",
+      "label": "Profit and loss",
+      "description": "Profit and loss report lines by section, account and period.",
+      "metrics": [
+        {
+          "name": "xero.profit_and_loss.amount",
+          "label": "Amount",
+          "kind": "metric",
+          "type": "number",
+          "description": "P&L amount in organisation base currency from the Xero Reports API (tax-exclusive layout). Sum only with profit_and_loss.rowKind=account unless intentionally using a summary row.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "xero.profit_and_loss.rowCount",
+          "label": "P&L rows",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct P&L report rows.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "xero.profit_and_loss.reportId",
+          "label": "Report row ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable primary key for a flattened P&L report row (section, account, period)."
+        },
+        {
+          "name": "xero.profit_and_loss.periodStart",
+          "label": "Period start",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Start date of the P&L report period."
+        },
+        {
+          "name": "xero.profit_and_loss.periodEnd",
+          "label": "Period end",
+          "kind": "dimension",
+          "type": "time",
+          "description": "End date of the P&L report period."
+        },
+        {
+          "name": "xero.profit_and_loss.section",
+          "label": "Section",
+          "kind": "dimension",
+          "type": "string",
+          "description": "P&L section such as Income or Less Operating Expenses."
+        },
+        {
+          "name": "xero.profit_and_loss.accountCode",
+          "label": "Account code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Chart of accounts code for the P&L row."
+        },
+        {
+          "name": "xero.profit_and_loss.accountName",
+          "label": "Account name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Account name from the Xero P&L report."
+        },
+        {
+          "name": "xero.profit_and_loss.rowKind",
+          "label": "Row kind",
+          "kind": "dimension",
+          "type": "string",
+          "description": "account for leaf account lines; summary for Xero subtotal rows such as Gross Profit or Net Profit. Filter rowKind=account when summing revenue or expense accounts to avoid double counting."
+        },
+        {
+          "name": "xero.profit_and_loss.currencyCode",
+          "label": "Currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Organisation base currency for P&L amounts."
+        },
+        {
+          "name": "xero.profit_and_loss.date",
+          "label": "Report date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Primary reporting date for P&L rows (period end)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+  "source": "linkedInAds",
+  "name": "LinkedIn Ads",
+  "schemaVersion": "1.0.3",
+  "entities": [
+    {
+      "name": "analytics",
+      "metrics": [
+        {
+          "name": "linkedInAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ad was shown (or messages sent for Sponsored Messaging).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Chargeable clicks on your LinkedIn ads during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.costInLocalCurrency",
+          "label": "Spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent in your account currency during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.spend",
+          "label": "Spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent in your account currency during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.costInUsd",
+          "label": "Cost (USD)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent in USD during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.costPerQualifiedLead",
+          "label": "Cost per qualified lead",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per qualified lead: spend ÷ qualified leads.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.conversions",
+          "label": "Website conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of website conversion events attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.externalWebsiteConversions",
+          "label": "Website conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of website conversion events attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.externalWebsitePostClickConversions",
+          "label": "Post-click conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Website conversions attributed to clicks on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.externalWebsitePostViewConversions",
+          "label": "Post-view conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Website conversions attributed to viewing your ads without clicking.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.conversionValueInLocalCurrency",
+          "label": "Conversion value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to conversion events in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.landingPageClicks",
+          "label": "Landing page clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks that directed users to your landing page.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.companyPageClicks",
+          "label": "Company page clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks to your LinkedIn company page from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.likes",
+          "label": "Likes",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of likes on your sponsored content.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.shares",
+          "label": "Shares",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your sponsored content was shared.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.comments",
+          "label": "Comments",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of comments on your sponsored content.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.commentLikes",
+          "label": "Comment likes",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of likes on comments on your sponsored content.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.reactions",
+          "label": "Reactions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of reactions (likes, loves, etc.) on your sponsored content.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.follows",
+          "label": "Follows",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of new LinkedIn page followers gained from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.totalEngagements",
+          "label": "Total engagements",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total engagement actions on your ads (clicks, reactions, shares, comments, etc.).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.otherEngagements",
+          "label": "Other engagements",
+          "kind": "metric",
+          "type": "number",
+          "description": "Other engagement actions on your sponsored content not counted separately.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.oneClickLeads",
+          "label": "Lead Gen Form submissions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of leads captured via LinkedIn's one-click Lead Gen Forms.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.oneClickLeadFormOpens",
+          "label": "Lead Gen Form opens",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Lead Gen Form was opened.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.qualifiedLeads",
+          "label": "Qualified leads",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of leads that matched your qualification criteria.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.validWorkEmailLeads",
+          "label": "Valid work email leads",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of leads with a verified work email address.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.talentLeads",
+          "label": "Talent leads",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of talent leads captured from LinkedIn Talent Insights ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.leadGenerationMailContactInfoShares",
+          "label": "InMail contact info shares",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times contact info was shared via a Sponsored InMail Lead Gen form.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.leadGenerationMailInterestedClicks",
+          "label": "InMail interested clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of interested clicks on Sponsored InMail Lead Gen messages.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.opens",
+          "label": "Opens",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Sponsored InMail or message ads were opened.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.sends",
+          "label": "Sends",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of Sponsored InMail or message ads sent.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.actionClicks",
+          "label": "Action clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the call-to-action button in your Sponsored InMail.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.adUnitClicks",
+          "label": "Ad unit clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the display ad unit within a Sponsored InMail.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.textUrlClicks",
+          "label": "Text URL clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on text links in your Sponsored InMail.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.jobApplications",
+          "label": "Job applications",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of job applications attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.postClickJobApplications",
+          "label": "Job applications (post-click)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Job applications attributed to clicks on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.postViewJobApplications",
+          "label": "Job applications (post-view)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Job applications attributed to viewing your ads without clicking.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.jobApplyClicks",
+          "label": "Job apply clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the Apply button from your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.postClickJobApplyClicks",
+          "label": "Job apply clicks (post-click)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Apply button clicks attributed to clicks on your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.postViewJobApplyClicks",
+          "label": "Job apply clicks (post-view)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Apply button clicks attributed to viewing your ads without clicking.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.registrations",
+          "label": "Event registrations",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of event registrations attributed to your ads.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.postClickRegistrations",
+          "label": "Event registrations (post-click)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Event registrations attributed to clicks on your ads.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.postViewRegistrations",
+          "label": "Event registrations (post-view)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Event registrations attributed to viewing your ads without clicking.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.videoViews",
+          "label": "Video views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was viewed.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoStarts",
+          "label": "Video starts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad started playing.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoCompletions",
+          "label": "Video completions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 97% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoFirstQuartileCompletions",
+          "label": "Video views 25%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 25% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoMidpointCompletions",
+          "label": "Video views 50%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 50% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoThirdQuartileCompletions",
+          "label": "Video views 75%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 75% completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.videoWatchTime",
+          "label": "Video watch time",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total time users spent watching your video ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.fullScreenPlays",
+          "label": "Full screen plays",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times users expanded your video ad to full screen.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.documentCompletions",
+          "label": "Document completions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Document Ad was scrolled to the final page.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.documentFirstQuartileCompletions",
+          "label": "Document viewed 25%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Document Ad was scrolled to at least 25% of pages.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.documentMidpointCompletions",
+          "label": "Document viewed 50%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Document Ad was scrolled to at least 50% of pages.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.documentThirdQuartileCompletions",
+          "label": "Document viewed 75%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Document Ad was scrolled to at least 75% of pages.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.downloadClicks",
+          "label": "Download clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the download icon in your Document Ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.subscriptionClicks",
+          "label": "Subscription clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the subscription button in your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.headlineClicks",
+          "label": "Headline clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the headline of your Sponsored Content ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.headlineImpressions",
+          "label": "Headline impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the headline of your Sponsored Content was displayed.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.approximateMemberReach",
+          "label": "Approximate member reach",
+          "kind": "metric",
+          "type": "number",
+          "description": "Estimated number of unique LinkedIn members who saw your ads.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "linkedInAds.averageDwellTime",
+          "label": "Average dwell time",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average time users spent with your ad in view.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "linkedInAds.audiencePenetration",
+          "label": "Audience penetration",
+          "kind": "metric",
+          "type": "number",
+          "description": "Proportion of your target audience that was reached by your ads: unique members reached ÷ total audience size.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "linkedInAds.cardClicks",
+          "label": "Card clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on the cards within your Carousel Ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.cardImpressions",
+          "label": "Card impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times the cards within your Carousel Ad were displayed.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralImpressions",
+          "label": "Viral impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ad was shown through organic sharing (likes, shares, follows) by members who engaged with it.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralClicks",
+          "label": "Viral clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on your ad that originated from organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralLikes",
+          "label": "Viral likes",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of likes on your ad that originated from organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralShares",
+          "label": "Viral shares",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ad was shared through organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralComments",
+          "label": "Viral comments",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of comments on your ad that originated from organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralLandingPageClicks",
+          "label": "Viral landing page clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of landing page clicks from viral distribution of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralTotalEngagements",
+          "label": "Viral total engagements",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total engagement actions from viral distribution of your ad (clicks, likes, shares, comments, etc.).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralExternalWebsiteConversions",
+          "label": "Viral website conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Website conversions attributed to viral (organic) distribution of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralExternalWebsitePostClickConversions",
+          "label": "Viral post-click conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Website conversions from clicks on a viral (organically shared) version of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralExternalWebsitePostViewConversions",
+          "label": "Viral post-view conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Website conversions from views of a viral (organically shared) version of your ad without clicking.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralVideoViews",
+          "label": "Viral video views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was viewed through organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralVideoStarts",
+          "label": "Viral video starts",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video started playing through organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralVideoCompletions",
+          "label": "Viral video completions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video was watched to at least 97% completion through organic viral distribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralOneClickLeads",
+          "label": "Viral Lead Gen Form submissions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Leads captured via Lead Gen Forms through viral (organic) distribution of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralCardClicks",
+          "label": "Viral card clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on carousel cards from viral (organic) distribution of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.viralCardImpressions",
+          "label": "Viral card impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times carousel cards were displayed through viral (organic) distribution of your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.eventViews",
+          "label": "Event views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your LinkedIn Event Ad was viewed.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.eventViewsOver15Seconds",
+          "label": "Event views 15s+",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Event Ad was viewed for more than 15 seconds.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.eventViewsOver30Seconds",
+          "label": "Event views 30s+",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Event Ad was viewed for more than 30 seconds.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.eventViewsOver2Minutes",
+          "label": "Event views 2min+",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your Event Ad was viewed for more than 2 minutes.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "linkedInAds.revenueAttributionMetrics",
+          "label": "Revenue attribution",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to your ads via LinkedIn's revenue attribution reporting.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "linkedInAds.ctr",
+          "label": "CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate: clicks divided by impressions, shown as a percentage.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Clicks ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.cpm",
+          "label": "CPM",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per 1,000 impressions in your account currency.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Spend ÷ Impressions) × 1,000"
+        },
+        {
+          "name": "linkedInAds.cpc",
+          "label": "CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click: spend divided by clicks.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Spend ÷ Clicks"
+        },
+        {
+          "name": "linkedInAds.costPerConversion",
+          "label": "Cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each conversion: spend divided by the number of conversion events.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Spend ÷ Website conversions"
+        },
+        {
+          "name": "linkedInAds.conversionRate",
+          "label": "Conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a website conversion: conversions ÷ clicks.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Website conversions ÷ Clicks"
+        },
+        {
+          "name": "linkedInAds.conversionRateByImpressions",
+          "label": "Conversion rate (by impressions)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a website conversion: conversions ÷ impressions.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Website conversions ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.engagementRate",
+          "label": "Engagement rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in an engagement action: total engagements ÷ impressions.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Total engagements ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.costPerLead",
+          "label": "Cost per lead",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each lead: spend divided by the number of lead events.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Spend ÷ Lead Gen Form submissions"
+        },
+        {
+          "name": "linkedInAds.leadRate",
+          "label": "Lead rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a Lead Gen Form submission: leads ÷ impressions.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Lead Gen Form submissions ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.roas",
+          "label": "ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend for this event: attributed revenue or value divided by spend.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Conversion value ÷ Spend"
+        },
+        {
+          "name": "linkedInAds.landingPageCtr",
+          "label": "Landing page CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a click to your landing page: landing page clicks ÷ impressions.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Landing page clicks ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.videoViewRate",
+          "label": "Video view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a video view: video views ÷ impressions.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Video views ÷ Impressions"
+        },
+        {
+          "name": "linkedInAds.videoCompletionRate",
+          "label": "Video completion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of video starts that were watched to at least 97% completion: video completions ÷ video starts.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Video completions ÷ Video starts"
+        },
+        {
+          "name": "linkedInAds.qualifiedLeadRate",
+          "label": "Qualified lead rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of Lead Gen Form submissions that were qualified leads: qualified leads ÷ total leads.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Qualified leads ÷ Lead Gen Form submissions"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "linkedInAds.pivotValues",
+          "label": "Breakdown values",
+          "kind": "dimension",
+          "type": "string[]",
+          "description": "Values identifying the breakdown category for this row (e.g. campaign name, country, device)."
+        },
+        {
+          "name": "linkedInAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date when the ad metrics were recorded."
+        },
+        {
+          "name": "linkedInAds.account",
+          "label": "Account",
+          "kind": "dimension",
+          "type": "string",
+          "description": "LinkedIn ad account associated with these results."
+        },
+        {
+          "name": "linkedInAds.campaignId",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the campaign in LinkedIn Campaign Manager."
+        },
+        {
+          "name": "linkedInAds.campaignName",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the campaign in LinkedIn Campaign Manager."
+        },
+        {
+          "name": "linkedInAds.creativeId",
+          "label": "Creative",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Performance broken down by sponsored creative (the ad unit users see)."
+        },
+        {
+          "name": "linkedInAds.campaignGroupId",
+          "label": "Campaign group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Campaign group (the folder level above campaigns) for these results."
+        },
+        {
+          "name": "linkedInAds.shareId",
+          "label": "Sponsored share",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for a specific sponsored share post."
+        },
+        {
+          "name": "linkedInAds.companyId",
+          "label": "Company",
+          "kind": "dimension",
+          "type": "string",
+          "description": "LinkedIn company page associated with these ad results."
+        },
+        {
+          "name": "linkedInAds.conversion",
+          "label": "Conversion",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Specific conversion rule or event used for attribution."
+        },
+        {
+          "name": "linkedInAds.country",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Member country where impressions or clicks occurred."
+        },
+        {
+          "name": "linkedInAds.region",
+          "label": "Region",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Member region within the selected country."
+        },
+        {
+          "name": "linkedInAds.county",
+          "label": "County",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Member county within the selected region."
+        },
+        {
+          "name": "linkedInAds.memberCompany",
+          "label": "Member company",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Company where LinkedIn members work, used for audience breakdowns."
+        },
+        {
+          "name": "linkedInAds.jobFunction",
+          "label": "Job function",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Job function of members who saw or engaged with your ads."
+        },
+        {
+          "name": "linkedInAds.jobTitle",
+          "label": "Job title",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Job title of members who saw or engaged with your ads."
+        },
+        {
+          "name": "linkedInAds.seniority",
+          "label": "Seniority",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Seniority level of members who saw or engaged with your ads."
+        },
+        {
+          "name": "linkedInAds.industry",
+          "label": "Industry",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Industry of members who saw or engaged with your ads."
+        },
+        {
+          "name": "linkedInAds.companySize",
+          "label": "Company size",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Size band of companies where members work."
+        },
+        {
+          "name": "linkedInAds.device",
+          "label": "Device",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Device type where the ad was shown (for example, desktop or mobile)."
+        },
+        {
+          "name": "linkedInAds.placement",
+          "label": "Placement",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Where the ad appeared on LinkedIn (feed, sidebar, etc.)."
+        },
+        {
+          "name": "linkedInAds.servingLocation",
+          "label": "Serving location",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the impression was served on LinkedIn (onsite) or on the audience network (offsite)."
+        },
+        {
+          "name": "linkedInAds.cardIndex",
+          "label": "Carousel card",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Index of the card in a carousel creative when multiple cards are shown."
+        },
+        {
+          "name": "linkedInAds.eventStage",
+          "label": "Event stage",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stage of a LinkedIn event campaign (before, during, or after the live event)."
+        },
+        {
+          "name": "linkedInAds.conversationNode",
+          "label": "Conversation node",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Step in a sponsored messaging conversation flow."
+        },
+        {
+          "name": "linkedInAds.objectiveType",
+          "label": "Objective",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Campaign objective type (for example brand awareness or lead generation)."
+        }
+      ]
+    }
+  ]
+}

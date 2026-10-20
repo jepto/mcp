@@ -1,0 +1,63 @@
+{
+  "source": "twitterAds",
+  "name": "X Ads",
+  "schemaVersion": "1.0.2",
+  "entities": [
+    {
+      "name": "analytics",
+      "metrics": [
+        {
+          "name": "twitterAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "The number of times your ads were shown on X.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "twitterAds.clicks",
+          "label": "Link clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "The number of times users clicked your ad links.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "twitterAds.spend",
+          "label": "Spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent on ads in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "twitterAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Date of the reporting period."
+        },
+        {
+          "name": "twitterAds.campaignId",
+          "label": "Campaign ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the X (Twitter) campaign."
+        },
+        {
+          "name": "twitterAds.segment",
+          "label": "Segment",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Audience or placement segment applied to the report (e.g. gender, age group, platform, device)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "source": "instagramAds",
+  "name": "Instagram Ads",
+  "schemaVersion": "1.2.3",
+  "entities": [
+    {
+      "name": "insights",
+      "metrics": [
+        {
+          "name": "instagramAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "The number of times your ads were on screen, including when the same person saw your ad more than once.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "instagramAds.clicks",
+          "label": "Link clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Clicks on links in your ads that go to destinations such as your website, app, or a Meta experience. This is the primary “clicks” metric in Meta Ads Manager reports.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "instagramAds.spend",
+          "label": "Amount spent",
+          "kind": "metric",
+          "type": "number",
+          "description": "Estimated total amount spent on your ads during the reporting period, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.reach",
+          "label": "Reach",
+          "kind": "metric",
+          "type": "number",
+          "description": "The number of people who saw your ads at least once. Reach is an estimated metric.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "instagramAds.frequency",
+          "label": "Frequency",
+          "kind": "metric",
+          "type": "number",
+          "description": "The average number of times each person saw your ad (impressions divided by reach).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "instagramAds.uniqueClicks",
+          "label": "Unique link clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "The number of people who performed at least one link click. Differs from link clicks when the same person clicks multiple times.",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "instagramAds.ctr",
+          "label": "CTR (all)",
+          "kind": "metric",
+          "type": "number",
+          "description": "The percentage of impressions that received any click type (all clicks divided by impressions).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.uniqueCtr",
+          "label": "Unique CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "The percentage of people who saw your ad and clicked a link (unique link clicks divided by reach).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.cpc",
+          "label": "CPC (all)",
+          "kind": "metric",
+          "type": "number",
+          "description": "The average cost for each click of any type (amount spent divided by all clicks).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.cpm",
+          "label": "CPM",
+          "kind": "metric",
+          "type": "number",
+          "description": "The average cost per 1,000 impressions (amount spent divided by impressions, ×1,000).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.cpp",
+          "label": "Cost per purchase",
+          "kind": "metric",
+          "type": "number",
+          "description": "The average cost for each purchase attributed to your ads.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.actions",
+          "label": "Actions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Counts of specific action types on your ads (for example purchases, leads, or other standard events), often used with action breakdowns.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "instagramAds.actionValues",
+          "label": "Action value",
+          "kind": "metric",
+          "type": "number",
+          "description": "The total monetary value reported for actions on your ads, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.costPerActionType",
+          "label": "Cost per action type",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost for each action of a given type when broken down by action type.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.websiteCtr",
+          "label": "Website CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "The percentage of impressions that resulted in a link click to your website.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "instagramAds.uniqueClickShare",
+          "label": "Unique click share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of clicks from unique users: unique clicks ÷ total clicks.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Unique link clicks ÷ Link clicks"
+        },
+        {
+          "name": "instagramAds.reachPerSpend",
+          "label": "Reach per spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of unique people reached per dollar of spend.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Reach ÷ Amount spent"
+        },
+        {
+          "name": "instagramAds.uniqueToAllCtrRatio",
+          "label": "Unique to all CTR ratio",
+          "kind": "metric",
+          "type": "number",
+          "description": "Ratio of unique CTR to all-click CTR: unique CTR ÷ CTR. Indicates how much of your click traffic comes from distinct individuals. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Unique CTR ÷ CTR (all)"
+        },
+        {
+          "name": "instagramAds.uniqueClickSharePercent",
+          "label": "Unique click share %",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total clicks that came from unique users.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Unique click share × 100"
+        },
+        {
+          "name": "instagramAds.aggregatedUniqueClickShare",
+          "label": "Aggregated unique click share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Unique click share aggregated across all rows in the dataset (unique clicks ÷ total clicks).",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Unique link clicks ÷ Link clicks"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "instagramAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date when the ad metrics were recorded."
+        },
+        {
+          "name": "instagramAds.dateStop",
+          "label": "End date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "End date for the reporting period."
+        },
+        {
+          "name": "instagramAds.campaignName",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad campaign. Shown in campaign reports and breakdowns."
+        },
+        {
+          "name": "instagramAds.campaignId",
+          "label": "Campaign ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the campaign in Meta Ads Manager."
+        },
+        {
+          "name": "instagramAds.adGroupName",
+          "label": "Ad group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad group (adset)."
+        },
+        {
+          "name": "instagramAds.adGroupId",
+          "label": "Ad group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad group (adset) in Meta Ads Manager."
+        },
+        {
+          "name": "instagramAds.adName",
+          "label": "Ad",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad. Shown in ad-level reports and breakdowns."
+        },
+        {
+          "name": "instagramAds.adId",
+          "label": "Ad ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad in Meta Ads Manager."
+        },
+        {
+          "name": "instagramAds.publisherPlatform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Meta platform where the ad was shown (Facebook, Instagram, Audience Network, etc.)."
+        },
+        {
+          "name": "instagramAds.devicePlatform",
+          "label": "Device platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Device class where the ad was shown (mobile, desktop, etc.)."
+        },
+        {
+          "name": "instagramAds.country",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country where people who saw your ads were located."
+        },
+        {
+          "name": "instagramAds.age",
+          "label": "Age",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Age range of people who saw your ads."
+        },
+        {
+          "name": "instagramAds.gender",
+          "label": "Gender",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Gender of people who saw your ads."
+        },
+        {
+          "name": "instagramAds.platformPosition",
+          "label": "Platform position",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Position where the ad was shown within the platform (e.g. feed, stories, right column)."
+        },
+        {
+          "name": "instagramAds.impressionDevice",
+          "label": "Impression device",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Device on which the ad impression was recorded (e.g. mobile, desktop)."
+        },
+        {
+          "name": "instagramAds.region",
+          "label": "Region",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Region or state where people who saw your ads were located."
+        },
+        {
+          "name": "instagramAds.dma",
+          "label": "DMA region",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Designated market area (US TV markets) for geographic breakdowns."
+        },
+        {
+          "name": "instagramAds.hourlyStatsAggregatedByAdvertiserTimeZone",
+          "label": "Hour of day (advertiser time zone)",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Hour of the day the ad was served, aggregated in the advertiser's time zone."
+        }
+      ]
+    }
+  ]
+}

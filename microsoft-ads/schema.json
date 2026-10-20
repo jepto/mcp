@@ -1,0 +1,1184 @@
+{
+  "source": "microsoftAds",
+  "name": "Microsoft Ads",
+  "schemaVersion": "1.0.2",
+  "entities": [
+    {
+      "name": "reporting",
+      "metrics": [
+        {
+          "name": "microsoftAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ads were shown, including repeat views by the same person.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on your ads during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.ctr",
+          "label": "CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate: clicks divided by impressions, shown as a percentage.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.spend",
+          "label": "Spend",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total advertising spend during the reporting period, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.avgCpc",
+          "label": "Avg. CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click: spend divided by clicks, in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.avgCpm",
+          "label": "Avg. CPM",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per 1,000 impressions: spend divided by impressions (×1,000), in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.avgPosition",
+          "label": "Avg. position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average position of your ad on the search results page during the reporting period.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "microsoftAds.conversions",
+          "label": "Conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of completed conversion actions you are measuring (e.g. purchases, sign-ups, leads).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.conversionRate",
+          "label": "Conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Conversion rate as percentage: (Conversions / Clicks) × 100.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.costPerConversion",
+          "label": "Cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each conversion: spend divided by the number of conversion events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.viewThroughConversions",
+          "label": "View-through conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of conversions from users who saw your ad but didn't click, then converted within the attribution window.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.viewThroughConversionsQualified",
+          "label": "View-through conversions (qualified)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Qualified view-through conversions including partial values from external attribution.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.viewThroughRate",
+          "label": "View-through rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a view-through conversion: view-through conversions ÷ impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.viewThroughRevenue",
+          "label": "View-through revenue",
+          "kind": "metric",
+          "type": "number",
+          "description": "Revenue attributed to view-through conversions during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.conversionValue",
+          "label": "Conversion Value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total conversion value reported for attributed conversion events, in your account currency. Only populated when conversion tracking sends a value.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.revenueSpendRatio",
+          "label": "ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend: total revenue divided by total advertising spend.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "microsoftAds.revenuePerConversion",
+          "label": "Revenue per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per conversion: total conversion value ÷ conversions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.assists",
+          "label": "Assists",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times a click on your ad preceded a conversion that was ultimately attributed to a different ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.costPerAssist",
+          "label": "Cost per assist",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each assist: spend divided by the number of assist events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.revenuePerAssist",
+          "label": "Revenue per assist",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per assist: total revenue ÷ assists.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.impressionSharePercent",
+          "label": "Impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of available impressions your ads received: impressions ÷ total eligible impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.impressionLostToBudgetPercent",
+          "label": "Impression share lost (budget)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of eligible impressions your ads missed because your budget was too low.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.impressionLostToRankPercent",
+          "label": "Impression share lost (rank)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of eligible impressions your ads missed due to poor ad rank.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.qualityScore",
+          "label": "Quality Score",
+          "kind": "metric",
+          "type": "number",
+          "description": "Measures how relevant your ad, keywords, and landing page are to users.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.expectedCtr",
+          "label": "Expected CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Expected click-through rate component of quality score (1–3: Below Average, Average, Above Average).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.adRelevance",
+          "label": "Ad relevance",
+          "kind": "metric",
+          "type": "number",
+          "description": "Ad relevance score indicating how closely your ad matches user intent: 1=Below Average, 2=Average, 3=Above Average.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.landingPageExperience",
+          "label": "Landing page experience",
+          "kind": "metric",
+          "type": "number",
+          "description": "Landing page relevance score: 1=Below Average, 2=Average, 3=Above Average.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.lowQualityClicks",
+          "label": "Low quality clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on your ads flagged as low quality (invalid or fraudulent).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.lowQualityClicksPercent",
+          "label": "Low quality click rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total clicks flagged as low quality: low quality clicks ÷ total clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.lowQualityImpressions",
+          "label": "Low quality impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of impressions flagged as low quality.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.lowQualityImpressionsPercent",
+          "label": "Low quality impression rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total impressions flagged as low quality: low quality impressions ÷ total impressions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.phoneImpressions",
+          "label": "Phone impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your phone number was displayed with your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.phoneCalls",
+          "label": "Phone calls",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of calls made to the phone number displayed in your ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.ptr",
+          "label": "Phone-through rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Phone-through rate: percentage of phone impressions that resulted in a phone call.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.absoluteTopImpressionRatePercent",
+          "label": "Abs. top impression rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of your impressions that appeared in the absolute top position (above all search results).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.topImpressionRatePercent",
+          "label": "Top impression rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of your impressions that appeared in a top position above organic search results.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.absoluteTopImpressionSharePercent",
+          "label": "Abs. top impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total eligible impressions your ads received in the absolute top position.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.topImpressionSharePercent",
+          "label": "Top impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total eligible impressions your ads received in a top position above organic search results.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.clickSharePercent",
+          "label": "Click share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total eligible clicks your ads received: clicks ÷ total eligible clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.exactMatchImpressionSharePercent",
+          "label": "Exact match impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of eligible exact-match impressions your ads received for searches that exactly matched your keywords.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.conversionsQualified",
+          "label": "Conversions (qualified)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Conversions including partial externally attributed offline conversions.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.allConversionsQualified",
+          "label": "All conversions (qualified)",
+          "kind": "metric",
+          "type": "number",
+          "description": "All conversions including partial values, regardless of ExcludeFromBidding setting.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.allConversionRate",
+          "label": "All conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in any conversion (all types): all conversions ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.allCostPerConversion",
+          "label": "All cost per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend per all-type conversion: spend ÷ all conversions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.allRevenue",
+          "label": "All revenue",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total revenue attributed to all conversion types during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.allReturnOnAdSpend",
+          "label": "All ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend including all conversion types: all revenue ÷ spend.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          }
+        },
+        {
+          "name": "microsoftAds.allRevenuePerConversion",
+          "label": "All revenue per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per all-type conversion: all revenue ÷ all conversions.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.videoViews",
+          "label": "Video views",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was viewed.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.videoViewsAt25Percent",
+          "label": "Video views 25%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was watched to at least 25% completion.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.videoViewsAt50Percent",
+          "label": "Video views 50%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was watched to at least 50% completion.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.videoViewsAt75Percent",
+          "label": "Video views 75%",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was watched to at least 75% completion.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.completedVideoViews",
+          "label": "Video completions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your video ad was watched to completion.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.videoCompletionRate",
+          "label": "Video completion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of video views that were watched to completion: video completions ÷ video views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.avgCpv",
+          "label": "Avg. CPV",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per video view: spend ÷ video views.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.avgWatchTimePerVideoView",
+          "label": "Avg. watch time per view",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average time users spent watching your video ad per view.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "microsoftAds.avgWatchTimePerImpression",
+          "label": "Avg. watch time per impression",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average time users spent watching your video ad per impression.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "microsoftAds.sales",
+          "label": "Sales",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of sales events attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.costPerSale",
+          "label": "Cost per sale",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each sale: spend divided by the number of sale events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.revenuePerSale",
+          "label": "Revenue per sale",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per sale event: total revenue ÷ sales.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.installs",
+          "label": "Installs",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of app installs attributed to the ad.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.costPerInstall",
+          "label": "Cost per install",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each install: spend divided by the number of install events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.revenuePerInstall",
+          "label": "Revenue per install",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per install: total revenue ÷ installs.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.appInstalls",
+          "label": "App installs",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of app installs attributed to your ads.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "microsoftAds.relativeCtr",
+          "label": "Relative CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Your CTR compared to the average CTR of all other advertisers on the same websites: your CTR ÷ competitor average CTR.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "microsoftAds.conversionRateByClicksPct",
+          "label": "Conversion rate (by clicks)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Conversion rate (%) from clicks; same basis as API ConversionRate, as an explicit calculated measure. For session-based rates, join session data from another source—Microsoft Ads reports do not expose sessions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Conversions ÷ Clicks) × 100"
+        },
+        {
+          "name": "microsoftAds.conversionRateByImpressionPct",
+          "label": "Conversion rate (by impressions)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a conversion: conversions ÷ impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Conversions ÷ Impressions) × 100"
+        },
+        {
+          "name": "microsoftAds.allConversionRateByImpressionPct",
+          "label": "All conversion rate (by impressions)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in any conversion (all types): all conversions ÷ impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(All conversions (qualified) ÷ Impressions) × 100"
+        },
+        {
+          "name": "microsoftAds.revenuePerClick",
+          "label": "Revenue per click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per click: total conversion value ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Conversion Value ÷ Clicks"
+        },
+        {
+          "name": "microsoftAds.revenuePerImpression",
+          "label": "Revenue per impression",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average revenue per impression: total conversion value ÷ impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Conversion Value ÷ Impressions"
+        },
+        {
+          "name": "microsoftAds.netConversionValue",
+          "label": "Net conversion value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Profit from conversions after deducting ad spend: conversion value − spend. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "SUM",
+          "calculated": true,
+          "formula": "Conversion Value − Spend"
+        },
+        {
+          "name": "microsoftAds.conversionValueMarginPct",
+          "label": "Conversion value margin",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of conversion value remaining after deducting ad spend: (conversion value − spend) ÷ conversion value. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "((Conversion Value − Spend) ÷ Conversion Value) × 100"
+        },
+        {
+          "name": "microsoftAds.clickThroughRatio",
+          "label": "Click-through ratio",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through ratio: clicks ÷ impressions, expressed as a decimal ratio. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Clicks ÷ Impressions"
+        },
+        {
+          "name": "microsoftAds.costPerMilleFromSpend",
+          "label": "CPM (from spend)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per 1,000 impressions: spend ÷ impressions × 1,000. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Spend ÷ Impressions) × 1,000"
+        },
+        {
+          "name": "microsoftAds.assistsPerConversion",
+          "label": "Assists per conversion",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of assist clicks per recorded conversion: assists ÷ conversions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Assists ÷ Conversions"
+        },
+        {
+          "name": "microsoftAds.assistsPerClick",
+          "label": "Assists per click",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average number of assist clicks per total click: assists ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Assists ÷ Clicks"
+        },
+        {
+          "name": "microsoftAds.viewThroughToClickConversionRatio",
+          "label": "View-through to click conversion ratio",
+          "kind": "metric",
+          "type": "number",
+          "description": "Ratio of view-through conversions to click-based conversions: view-through conversions ÷ conversions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "View-through conversions ÷ Conversions"
+        },
+        {
+          "name": "microsoftAds.allConversionsPerClick",
+          "label": "All conversions per click",
+          "kind": "metric",
+          "type": "number",
+          "description": "All conversions per click: all qualified conversions ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "All conversions (qualified) ÷ Clicks"
+        },
+        {
+          "name": "microsoftAds.installRatePct",
+          "label": "Install rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in an install: installs ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Installs ÷ Clicks) × 100"
+        },
+        {
+          "name": "microsoftAds.appInstallRatePct",
+          "label": "App install rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in an app install: app installs ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(App installs ÷ Clicks) × 100"
+        },
+        {
+          "name": "microsoftAds.salesRatePct",
+          "label": "Sales rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a sale: sales ÷ clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Sales ÷ Clicks) × 100"
+        },
+        {
+          "name": "microsoftAds.videoViewsPerImpressionPct",
+          "label": "Video view rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a video view: video views ÷ impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Video views ÷ Impressions) × 100"
+        },
+        {
+          "name": "microsoftAds.completedVideoViewsPerImpressionPct",
+          "label": "Video completion rate (by impressions)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of impressions that resulted in a completed video view: video completions ÷ impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Video completions ÷ Impressions) × 100"
+        },
+        {
+          "name": "microsoftAds.avgWatchTimeMsPerImpressionDerived",
+          "label": "Avg. watch time per impression",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average total watch time in ms per impression (derived).",
+          "aggregation": "AVG",
+          "calculated": true
+        },
+        {
+          "name": "microsoftAds.lowQualityClickRatePct",
+          "label": "Low quality click rate (calculated)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of total clicks flagged as low quality: low quality clicks ÷ total clicks. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Low quality clicks ÷ Clicks) × 100"
+        },
+        {
+          "name": "microsoftAds.phoneThroughRatePctDerived",
+          "label": "Phone-through rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of phone impressions that resulted in a phone call: phone calls ÷ phone impressions. Calculated in Jepto from other fields in this report using the formula on the metric.",
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Phone calls ÷ Phone impressions) × 100"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "microsoftAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date of the reporting period."
+        },
+        {
+          "name": "microsoftAds.accountId",
+          "label": "Account ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the Microsoft Advertising account."
+        },
+        {
+          "name": "microsoftAds.accountName",
+          "label": "Account name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the Microsoft Advertising account."
+        },
+        {
+          "name": "microsoftAds.accountStatus",
+          "label": "Account status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status in the advertising platform (for example enabled, paused, or removed)."
+        },
+        {
+          "name": "microsoftAds.campaignId",
+          "label": "Campaign ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the campaign."
+        },
+        {
+          "name": "microsoftAds.campaignName",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the campaign. Shown in campaign reports and breakdowns."
+        },
+        {
+          "name": "microsoftAds.campaignStatus",
+          "label": "Campaign status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status in the advertising platform (for example enabled, paused, or removed)."
+        },
+        {
+          "name": "microsoftAds.campaignType",
+          "label": "Campaign type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of campaign (e.g. Search, Shopping, Audience, Dynamic Search Ads)."
+        },
+        {
+          "name": "microsoftAds.adGroupId",
+          "label": "Ad group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad group."
+        },
+        {
+          "name": "microsoftAds.adGroupName",
+          "label": "Ad group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad group. Shown in ad group reports and breakdowns."
+        },
+        {
+          "name": "microsoftAds.adGroupStatus",
+          "label": "Ad group status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the ad group (e.g. Active, Paused, Deleted)."
+        },
+        {
+          "name": "microsoftAds.adId",
+          "label": "Ad ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the ad."
+        },
+        {
+          "name": "microsoftAds.adName",
+          "label": "Ad name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Title or headline of the ad."
+        },
+        {
+          "name": "microsoftAds.adStatus",
+          "label": "Ad status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status in the advertising platform (for example enabled, paused, or removed)."
+        },
+        {
+          "name": "microsoftAds.adType",
+          "label": "Ad type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of ad (e.g. Expanded Text Ad, Responsive Search Ad, Dynamic Search Ad)."
+        },
+        {
+          "name": "microsoftAds.adDistribution",
+          "label": "Ad distribution",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Where your ad was distributed (e.g. Search, Content, Mixed)."
+        },
+        {
+          "name": "microsoftAds.deviceType",
+          "label": "Device type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of device your ad was shown on (e.g. Computer, Smartphone, Tablet)."
+        },
+        {
+          "name": "microsoftAds.deviceOs",
+          "label": "Device OS",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Operating system of the device your ad was shown on (e.g. Windows, iOS, Android)."
+        },
+        {
+          "name": "microsoftAds.language",
+          "label": "Language",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Language of the user query or ad targeting at the time of impression."
+        },
+        {
+          "name": "microsoftAds.network",
+          "label": "Network",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Search network where your ad was shown (e.g. Bing Search, Bing Search Partners, Bing and AOL)."
+        },
+        {
+          "name": "microsoftAds.topVsOther",
+          "label": "Top vs other",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether your ad appeared in a top position above organic results or in another position."
+        },
+        {
+          "name": "microsoftAds.bidMatchType",
+          "label": "Bid match type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The match type you bid on for this keyword (Exact, Phrase, Broad)."
+        },
+        {
+          "name": "microsoftAds.deliveredMatchType",
+          "label": "Delivered match type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The actual match type that triggered your ad for a given search (Exact, Phrase, Broad)."
+        },
+        {
+          "name": "microsoftAds.currencyCode",
+          "label": "Currency code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency code for the account (e.g. USD, EUR, AUD)."
+        },
+        {
+          "name": "microsoftAds.goal",
+          "label": "Goal",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the conversion goal attributed to this result."
+        },
+        {
+          "name": "microsoftAds.goalType",
+          "label": "Goal type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of conversion goal (e.g. URL, Duration, Pages Per Visit, Event, App Install)."
+        },
+        {
+          "name": "microsoftAds.destinationUrl",
+          "label": "Destination URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The URL of the webpage where users land after clicking the ad."
+        },
+        {
+          "name": "microsoftAds.displayUrl",
+          "label": "Display URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The URL displayed in your ad creative."
+        },
+        {
+          "name": "microsoftAds.finalUrl",
+          "label": "Final URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The final landing page URL users were directed to after clicking your ad."
+        },
+        {
+          "name": "microsoftAds.adDescription",
+          "label": "Ad description",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The description text of your ad."
+        },
+        {
+          "name": "microsoftAds.adDescription2",
+          "label": "Ad description 2",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The second description line of your ad."
+        },
+        {
+          "name": "microsoftAds.titlePart1",
+          "label": "Title part 1",
+          "kind": "dimension",
+          "type": "string",
+          "description": "First part of the ad title."
+        },
+        {
+          "name": "microsoftAds.titlePart2",
+          "label": "Title part 2",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Second part of the ad title."
+        },
+        {
+          "name": "microsoftAds.titlePart3",
+          "label": "Title part 3",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Third part of the ad title."
+        },
+        {
+          "name": "microsoftAds.headline",
+          "label": "Headline",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Headline text of your ad."
+        },
+        {
+          "name": "microsoftAds.longHeadline",
+          "label": "Long headline",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Long headline text used in multimedia or responsive ads."
+        },
+        {
+          "name": "microsoftAds.path1",
+          "label": "Path 1",
+          "kind": "dimension",
+          "type": "string",
+          "description": "First display path appended to your URL in the ad."
+        },
+        {
+          "name": "microsoftAds.path2",
+          "label": "Path 2",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Second display path appended to your URL in the ad."
+        },
+        {
+          "name": "microsoftAds.businessName",
+          "label": "Business name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Business name shown in your ad."
+        },
+        {
+          "name": "microsoftAds.customerId",
+          "label": "Customer ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Unique identifier for the Microsoft Advertising customer (manager account)."
+        },
+        {
+          "name": "microsoftAds.customerName",
+          "label": "Customer name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the Microsoft Advertising customer (manager account)."
+        }
+      ]
+    }
+  ]
+}

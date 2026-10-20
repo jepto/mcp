@@ -1,0 +1,638 @@
+{
+  "source": "googleAds",
+  "name": "Google Ads",
+  "schemaVersion": "1.4.3",
+  "entities": [
+    {
+      "name": "google_ads_search",
+      "metrics": [
+        {
+          "name": "googleAds.clicks",
+          "label": "Clicks",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of clicks on your ads during the reporting period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAds.impressions",
+          "label": "Impressions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of times your ads were shown, including repeat views by the same person.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAds.spend",
+          "label": "Cost",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total amount spent on your ads during the reporting period, in your account currency.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.ctr",
+          "label": "CTR",
+          "kind": "metric",
+          "type": "number",
+          "description": "Click-through rate: clicks divided by impressions, shown as a percentage.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Clicks ÷ Impressions"
+        },
+        {
+          "name": "googleAds.cpm",
+          "label": "CPM",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per 1,000 impressions: spend divided by impressions (×1,000), in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "(Cost ÷ Impressions) × 1,000"
+        },
+        {
+          "name": "googleAds.cpc",
+          "label": "CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click: spend divided by clicks, in account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Cost ÷ Clicks"
+        },
+        {
+          "name": "googleAds.costPerConversion",
+          "label": "Cost per conversion (CPA)",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average spend for each conversion: spend divided by the number of conversion events.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Cost ÷ Conversions"
+        },
+        {
+          "name": "googleAds.conversionValue",
+          "label": "Conversion value",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total value attributed to conversion events (e.g. revenue from purchases) during the reporting period.",
+          "aggregation": "SUM",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.roas",
+          "label": "ROAS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Return on ad spend for attributed revenue or value divided by spend.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 2,
+            "suffix": "×"
+          },
+          "calculated": true,
+          "formula": "Conversion value ÷ Cost"
+        },
+        {
+          "name": "googleAds.viewThroughConversions",
+          "label": "View-through conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Conversions recorded when a user saw (but did not click) your ad and later converted.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAds.conversions",
+          "label": "Conversions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of completed conversion actions you are measuring (e.g. purchases, sign-ups, leads).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "googleAds.conversionRate",
+          "label": "Conversion rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Percentage of clicks that resulted in a conversion: conversions ÷ clicks.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Conversions ÷ Clicks"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "googleAds.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Date when the ad metrics were recorded."
+        },
+        {
+          "name": "googleAds.adNetworkType",
+          "label": "Ad network",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Ad network where your ads were shown (e.g. Google Search, Display Network, YouTube)."
+        },
+        {
+          "name": "googleAds.campaignId",
+          "label": "Campaign ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the campaign."
+        },
+        {
+          "name": "googleAds.device",
+          "label": "Device",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Device type on which the ad was shown (mobile, desktop, tablet)."
+        },
+        {
+          "name": "googleAds.campaignName",
+          "label": "Campaign",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad campaign."
+        },
+        {
+          "name": "googleAds.campaignStatus",
+          "label": "Campaign status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the campaign (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.campaignServingStatus",
+          "label": "Campaign serving status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Serving status of the campaign indicating why it may not be delivering (e.g. ended, pending, serving)."
+        },
+        {
+          "name": "googleAds.advertisingChannelType",
+          "label": "Campaign type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Campaign type that determines where ads can appear (e.g. Search, Display, Shopping, Video)."
+        },
+        {
+          "name": "googleAds.advertisingChannelSubType",
+          "label": "Campaign sub-type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Sub-type of the campaign (e.g. Search Standard, Shopping Smart)."
+        },
+        {
+          "name": "googleAds.campaignBudgetId",
+          "label": "Campaign budget ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the campaign budget in Google Ads."
+        },
+        {
+          "name": "googleAds.campaignBudgetName",
+          "label": "Campaign budget name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the budget shared across campaigns."
+        },
+        {
+          "name": "googleAds.campaignBudgetAmountMicros",
+          "label": "Campaign daily budget",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Daily budget for the campaign, in the account's currency."
+        },
+        {
+          "name": "googleAds.campaignBudgetTotalAmountMicros",
+          "label": "Campaign total budget",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Total lifetime budget for the campaign, in the account's currency."
+        },
+        {
+          "name": "googleAds.campaignBudgetType",
+          "label": "Campaign budget type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The type of budget strategy used for the campaign (e.g., daily, shared)."
+        },
+        {
+          "name": "googleAds.campaignBudgetPeriod",
+          "label": "Campaign budget period",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Time period the campaign budget covers (e.g. daily, monthly)."
+        },
+        {
+          "name": "googleAds.campaignBudgetExplicitlyShared",
+          "label": "Shared budget",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the budget is explicitly shared across multiple campaigns."
+        },
+        {
+          "name": "googleAds.campaignCriterionId",
+          "label": "Campaign criterion ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the campaign-level targeting criterion in Google Ads."
+        },
+        {
+          "name": "googleAds.campaignCriterionType",
+          "label": "Campaign criterion type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of targeting criterion applied at the campaign level (e.g. location, keyword)."
+        },
+        {
+          "name": "googleAds.campaignCriterionNegative",
+          "label": "Negative criterion",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the criterion is excluded (negative targeting) at the campaign level."
+        },
+        {
+          "name": "googleAds.biddingStrategyId",
+          "label": "Bidding strategy ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the campaign's bidding strategy in Google Ads."
+        },
+        {
+          "name": "googleAds.biddingStrategyName",
+          "label": "Bidding strategy name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the bidding strategy applied to this campaign."
+        },
+        {
+          "name": "googleAds.biddingStrategyType",
+          "label": "Bidding strategy type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of bid strategy used (e.g. Target CPA, Maximize Conversions, Manual CPC)."
+        },
+        {
+          "name": "googleAds.adGroupId",
+          "label": "Ad group ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the ad group."
+        },
+        {
+          "name": "googleAds.adGroupName",
+          "label": "Ad group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad group."
+        },
+        {
+          "name": "googleAds.adGroupStatus",
+          "label": "Ad group status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the ad group (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.adGroupType",
+          "label": "Ad group type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of ad group (e.g. Standard, Dynamic Search Ads, Shopping)."
+        },
+        {
+          "name": "googleAds.keywordId",
+          "label": "Keyword ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the keyword in Google Ads."
+        },
+        {
+          "name": "googleAds.keywordText",
+          "label": "Keyword",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The keyword phrase that triggered your ad."
+        },
+        {
+          "name": "googleAds.keywordMatchType",
+          "label": "Match type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "How closely the keyword must match the user's search (Broad, Phrase, or Exact)."
+        },
+        {
+          "name": "googleAds.keywordStatus",
+          "label": "Keyword status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the keyword (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.keywordNegative",
+          "label": "Negative keyword",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the keyword is excluded as a negative keyword."
+        },
+        {
+          "name": "googleAds.searchTerm",
+          "label": "Search term",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The actual search query entered by a user that triggered your ad."
+        },
+        {
+          "name": "googleAds.searchTermStatus",
+          "label": "Search term status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the search term is included or excluded in your targeting."
+        },
+        {
+          "name": "googleAds.adStatus",
+          "label": "Ad status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Current delivery status of the ad (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.adId",
+          "label": "Ad ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the ad."
+        },
+        {
+          "name": "googleAds.adName",
+          "label": "Ad",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the ad."
+        },
+        {
+          "name": "googleAds.adType",
+          "label": "Ad type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Format of the ad (e.g. Responsive Search Ad, Responsive Display Ad)."
+        },
+        {
+          "name": "googleAds.adGroupAssetFieldType",
+          "label": "Asset field type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of asset associated with the ad group (e.g. headline, image, description)."
+        },
+        {
+          "name": "googleAds.adGroupAssetStatus",
+          "label": "Asset status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Delivery status of the ad group asset (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.assetId",
+          "label": "Asset ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the asset in Google Ads."
+        },
+        {
+          "name": "googleAds.assetName",
+          "label": "Asset name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the asset (e.g. image, headline, video)."
+        },
+        {
+          "name": "googleAds.assetType",
+          "label": "Asset type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of the asset (e.g. image, text, video, call to action)."
+        },
+        {
+          "name": "googleAds.assetGroupId",
+          "label": "Asset group ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the asset group in Google Ads."
+        },
+        {
+          "name": "googleAds.assetGroupName",
+          "label": "Asset group name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the asset group within a Performance Max campaign."
+        },
+        {
+          "name": "googleAds.assetGroupStatus",
+          "label": "Asset group status",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Delivery status of the asset group (enabled, paused, or removed)."
+        },
+        {
+          "name": "googleAds.assetGroupListingGroupFilterType",
+          "label": "Listing group filter type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of listing group filter applied to this asset group (e.g. Subdivision, Unit)."
+        },
+        {
+          "name": "googleAds.merchantId",
+          "label": "Merchant ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the Google Merchant Center account."
+        },
+        {
+          "name": "googleAds.storeCode",
+          "label": "Store code",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Store identifier for local inventory ad reporting."
+        },
+        {
+          "name": "googleAds.offerId",
+          "label": "Offer ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Product offer ID from Google Merchant Center."
+        },
+        {
+          "name": "googleAds.productTitle",
+          "label": "Product title",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Title of the product as listed in Google Merchant Center."
+        },
+        {
+          "name": "googleAds.productBrand",
+          "label": "Product brand",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Brand of the product as listed in Google Merchant Center."
+        },
+        {
+          "name": "googleAds.productCategoryLevel1",
+          "label": "Product category (L1)",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Top-level product category (e.g. Apparel, Electronics)."
+        },
+        {
+          "name": "googleAds.productCategoryLevel2",
+          "label": "Product category (L2)",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Second-level product category breakdown (e.g. Shirts within Apparel)."
+        },
+        {
+          "name": "googleAds.productTypeL1",
+          "label": "Product type (L1)",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Top-level custom product type label used for product segmentation."
+        },
+        {
+          "name": "googleAds.productTypeL2",
+          "label": "Product type (L2)",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Second-level custom product type label."
+        },
+        {
+          "name": "googleAds.unexpandedFinalUrl",
+          "label": "Landing page URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "The destination URL for the landing page before any URL expansion by Google."
+        },
+        {
+          "name": "googleAds.detailPlacement",
+          "label": "Placement",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Specific website or app where your Display ad was shown."
+        },
+        {
+          "name": "googleAds.displayKeywordText",
+          "label": "Display keyword",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Keyword used to target Display Network placements."
+        },
+        {
+          "name": "googleAds.ageRangeType",
+          "label": "Age range",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Age range of users targeted or who saw your ads (e.g. 18–24, 25–34)."
+        },
+        {
+          "name": "googleAds.genderType",
+          "label": "Gender",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Gender of users targeted or who saw your ads."
+        },
+        {
+          "name": "googleAds.countryCriterionId",
+          "label": "Country criterion ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Numeric code identifying the targeted country in Google Ads."
+        },
+        {
+          "name": "googleAds.userLocationCountryCriterionId",
+          "label": "User location country ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Numeric code identifying the country where the user was physically located when the ad was shown."
+        },
+        {
+          "name": "googleAds.performanceMaxPlacementDisplayName",
+          "label": "Performance Max placement name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display name of the placement where your Performance Max ad appeared."
+        },
+        {
+          "name": "googleAds.performanceMaxPlacement",
+          "label": "Performance Max placement",
+          "kind": "dimension",
+          "type": "string",
+          "description": "URL or app where your Performance Max ad was shown."
+        },
+        {
+          "name": "googleAds.performanceMaxPlacementType",
+          "label": "Performance Max placement type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Type of placement for Performance Max (e.g. website, YouTube, app)."
+        },
+        {
+          "name": "googleAds.customerId",
+          "label": "Account ID",
+          "kind": "dimension",
+          "type": "number",
+          "description": "Unique identifier for the Google Ads account (customer ID)."
+        },
+        {
+          "name": "googleAds.customerDescriptiveName",
+          "label": "Account name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Name of the Google Ads account."
+        },
+        {
+          "name": "googleAds.customerCurrencyCode",
+          "label": "Account currency",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Currency used by the Google Ads account."
+        },
+        {
+          "name": "googleAds.customerTimeZone",
+          "label": "Account time zone",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Time zone configured for the Google Ads account."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1079 @@
+{
+  "source": "aiVisibility",
+  "name": "Jepto AI Visibility",
+  "schemaVersion": "2.7.0",
+  "entities": [
+    {
+      "name": "answers",
+      "label": "Answers",
+      "description": "Each AI engine answer to a tracked prompt, with whether it named or cited you.",
+      "metrics": [
+        {
+          "name": "aiVisibility.answers.answerCount",
+          "label": "Answer count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Number of AI engine answers for the selected filters.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.mentionedCount",
+          "label": "Mentioned answers",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Answers that mention the brand (numerator for namedRate rollups).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.citedCount",
+          "label": "Cited answers",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Answers citing owned domains (numerator for citedRate rollups).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.namedRate",
+          "label": "Named rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers mentioning the brand (0–100). Weighted ratio: sum(mentionedCount)/sum(answerCount).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.citedRate",
+          "label": "Cited rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers citing owned domains (0–100). Weighted ratio: sum(citedCount)/sum(answerCount).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.avgCitedPosition",
+          "label": "Avg cited position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average citation position when the brand is cited (lower is better).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.answers.distinctSources",
+          "label": "Distinct sources",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct citation domains across answers for the prompt.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.answers.promptCount",
+          "label": "Prompt count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct tracked prompts in the filtered answers.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.answers.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Run date (warehouse partition key)."
+        },
+        {
+          "name": "aiVisibility.answers.id",
+          "label": "Answer ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable 16-character hex id derived from the run key (promptId#platform#date). Join claims via claim.answerId = answers.id."
+        },
+        {
+          "name": "aiVisibility.answers.promptId",
+          "label": "Prompt ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Tracked prompt that produced this answer."
+        },
+        {
+          "name": "aiVisibility.answers.platform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engine that generated the answer (for example ChatGPT, Claude, or Gemini)."
+        },
+        {
+          "name": "aiVisibility.answers.ranAt",
+          "label": "Ran at",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Timestamp when the answer was fetched."
+        },
+        {
+          "name": "aiVisibility.answers.country",
+          "label": "Country",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Country context used when the prompt was run."
+        },
+        {
+          "name": "aiVisibility.answers.excerpt",
+          "label": "Excerpt",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Short preview of the answer text shown in list views."
+        },
+        {
+          "name": "aiVisibility.answers.answerMarkdown",
+          "label": "Answer markdown",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Full answer content in markdown format."
+        },
+        {
+          "name": "aiVisibility.answers.mentioned",
+          "label": "Mentioned",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the brand was mentioned in the answer."
+        },
+        {
+          "name": "aiVisibility.answers.cited",
+          "label": "Cited",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether owned brand domains were cited as sources in the answer."
+        },
+        {
+          "name": "aiVisibility.answers.citedPosition",
+          "label": "Cited position",
+          "kind": "dimension",
+          "type": "integer",
+          "description": "Position of the brand citation in the answer source list (1-based; 0 when not cited)."
+        },
+        {
+          "name": "aiVisibility.answers.sourceDomains",
+          "label": "Source domains",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Domains cited as sources in the answer."
+        },
+        {
+          "name": "aiVisibility.answers.competitorsNamed",
+          "label": "Competitors named",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Competitor brands named in the answer."
+        },
+        {
+          "name": "aiVisibility.answers.sources",
+          "label": "Sources JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON array of citations in display order: position, label, url (Answers tab Sources accordion)."
+        },
+        {
+          "name": "aiVisibility.answers.entities",
+          "label": "Entities JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON array of brand/entity names also named in the answer (Also Named accordion)."
+        },
+        {
+          "name": "aiVisibility.answers.map",
+          "label": "Map JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON array of local/map listings: name, lat, lng, rating, reviews, category, open, address, image, url."
+        },
+        {
+          "name": "aiVisibility.answers.relatedQueries",
+          "label": "Related queries JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON array of related follow-up query strings (e.g. Perplexity)."
+        },
+        {
+          "name": "aiVisibility.answers.citationPills",
+          "label": "Citation pills JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON array of ChatGPT citation pill metadata when present."
+        },
+        {
+          "name": "aiVisibility.answers.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "sources",
+      "label": "Sources",
+      "description": "The domains and pages AI engines cite, and how often.",
+      "metrics": [
+        {
+          "name": "aiVisibility.sources.citations",
+          "label": "Citations",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Total citation count for the domain in the period.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.sources.citationShare",
+          "label": "Citation share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of all citations attributed to this domain (0–100).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.sources.citationChange",
+          "label": "Citation change",
+          "kind": "metric",
+          "type": "number",
+          "description": "Period-over-period change in citation share.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.sources.promptsInfluenced",
+          "label": "Prompts influenced",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct tracked prompts where this domain was cited (per domain snapshot).",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "aiVisibility.sources.lastSeenMax",
+          "label": "Last seen",
+          "kind": "metric",
+          "type": "time",
+          "description": "Most recent citation time for the domain (use instead of grouping by lastSeen).",
+          "aggregation": "MAX"
+        },
+        {
+          "name": "aiVisibility.sources.avgPosition",
+          "label": "Avg position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average citation position for this domain in AI answers (lower is better).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.sources.pageCount",
+          "label": "Pages cited",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct canonical cited page URLs for this domain (pages JSON length after merge; UTM and text fragments deduped).",
+          "aggregation": "MAX"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.sources.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Run date for citation aggregates."
+        },
+        {
+          "name": "aiVisibility.sources.id",
+          "label": "Source ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable 16-character hex id derived from the canonical citation domain. Use domain for display."
+        },
+        {
+          "name": "aiVisibility.sources.domain",
+          "label": "Domain",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Citation domain influencing AI answers."
+        },
+        {
+          "name": "aiVisibility.sources.ownership",
+          "label": "Ownership",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Whether the domain is owned by the brand or an earned third-party source."
+        },
+        {
+          "name": "aiVisibility.sources.category",
+          "label": "Category",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Domain category (for example news, review, or social)."
+        },
+        {
+          "name": "aiVisibility.sources.platforms",
+          "label": "Platforms",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engines where this domain was cited."
+        },
+        {
+          "name": "aiVisibility.sources.pages",
+          "label": "Pages JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON list of cited pages with URL, title, and position details."
+        },
+        {
+          "name": "aiVisibility.sources.claimIds",
+          "label": "Claim IDs",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Claim IDs linked to this citation source."
+        },
+        {
+          "name": "aiVisibility.sources.recommendedAction",
+          "label": "Recommended action",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Suggested action to improve visibility for this source."
+        },
+        {
+          "name": "aiVisibility.sources.lastSeen",
+          "label": "Last seen",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Most recent time this domain was cited."
+        },
+        {
+          "name": "aiVisibility.sources.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "retrieval",
+      "label": "Searches",
+      "description": "The searches AI engines ran while writing their answers (fan-out queries).",
+      "metrics": [
+        {
+          "name": "aiVisibility.retrieval.occurrences",
+          "label": "Occurrences",
+          "kind": "metric",
+          "type": "integer",
+          "description": "How many times this query was used during AI answer generation.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.retrieval.searchConsolePosition",
+          "label": "Search Console position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average Google Search Console position for this query when GSC is connected.",
+          "aggregation": "AVG"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.retrieval.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Run date for retrieval query aggregates."
+        },
+        {
+          "name": "aiVisibility.retrieval.id",
+          "label": "Retrieval ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable 16-character hex id derived from the canonical (lowercase) retrieval query text. Use query for display."
+        },
+        {
+          "name": "aiVisibility.retrieval.query",
+          "label": "Query",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Search or retrieval query the AI engine used when answering."
+        },
+        {
+          "name": "aiVisibility.retrieval.promptIds",
+          "label": "Prompt IDs",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Tracked prompts that triggered this retrieval query."
+        },
+        {
+          "name": "aiVisibility.retrieval.platforms",
+          "label": "Platforms",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engines that issued this retrieval query."
+        },
+        {
+          "name": "aiVisibility.retrieval.ownedPageRetrieved",
+          "label": "Owned page retrieved",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether an owned brand page appeared in retrieval results."
+        },
+        {
+          "name": "aiVisibility.retrieval.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "label": "Claims",
+      "description": "Statements AI engines make about you, checked for accuracy.",
+      "metrics": [
+        {
+          "name": "aiVisibility.claim.claimCount",
+          "label": "Claim count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Number of claim rows.",
+          "aggregation": "COUNT"
+        },
+        {
+          "name": "aiVisibility.claim.answerCount",
+          "label": "Answer count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct answers that made the claim.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "aiVisibility.claim.promptCount",
+          "label": "Prompt count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct prompts whose answers made the claim.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "aiVisibility.claim.claimsOk",
+          "label": "Accurate claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Claims graded accurate vs the client profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.claim.claimsConflict",
+          "label": "Conflict claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Claims that conflict with the client profile (wrong claims).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.claim.claimsUnverified",
+          "label": "Unverified claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Claims that could not be verified against the profile.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.claim.accuracyRate",
+          "label": "Accuracy rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of claims graded accurate (0–100).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.claim.coveragePrompts",
+          "label": "Coverage prompts",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct prompts where this claim group appeared.",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "aiVisibility.claim.coverageUnsolicited",
+          "label": "Unsolicited coverage",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct prompts where the claim appeared and no row for that prompt shows prompt influence (prompts minus prompt-driven).",
+          "aggregation": "COUNT_DISTINCT"
+        },
+        {
+          "name": "aiVisibility.claim.coveragePromptDriven",
+          "label": "Prompt-driven coverage",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct prompts where the claim appeared because the prompt asked about the claim group.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.claim.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Answer run date (shared AI Visibility time dimension)."
+        },
+        {
+          "name": "aiVisibility.claim.answerId",
+          "label": "Answer ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Answer that made the claim."
+        },
+        {
+          "name": "aiVisibility.claim.promptId",
+          "label": "Prompt ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Tracked prompt for the answer."
+        },
+        {
+          "name": "aiVisibility.claim.platform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engine."
+        },
+        {
+          "name": "aiVisibility.claim.claimId",
+          "label": "Claim ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable claim id per answer and statement."
+        },
+        {
+          "name": "aiVisibility.claim.subject",
+          "label": "Subject",
+          "kind": "dimension",
+          "type": "string",
+          "description": "brand, competitor, or category."
+        },
+        {
+          "name": "aiVisibility.claim.claimGroupId",
+          "label": "Claim group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Group id for paraphrases of the same claim."
+        },
+        {
+          "name": "aiVisibility.claim.claimGroupLabel",
+          "label": "Claim group label",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Display label for the claim group."
+        },
+        {
+          "name": "aiVisibility.claim.claimType",
+          "label": "Claim type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "identity, capability, audience, pricing, or limitation."
+        },
+        {
+          "name": "aiVisibility.claim.statement",
+          "label": "Statement",
+          "kind": "dimension",
+          "type": "string",
+          "description": "This answer's wording of the claim."
+        },
+        {
+          "name": "aiVisibility.claim.excerpt",
+          "label": "Excerpt",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Quote from the answer prose."
+        },
+        {
+          "name": "aiVisibility.claim.accuracy",
+          "label": "Accuracy",
+          "kind": "dimension",
+          "type": "string",
+          "description": "accurate or conflict for brand claims."
+        },
+        {
+          "name": "aiVisibility.claim.promptInfluence",
+          "label": "Prompt influence",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether the prompt asked about this claim group."
+        },
+        {
+          "name": "aiVisibility.claim.comparisonGroupId",
+          "label": "Comparison group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Head-to-head comparison group id."
+        },
+        {
+          "name": "aiVisibility.claim.comparisonDimension",
+          "label": "Comparison dimension",
+          "kind": "dimension",
+          "type": "string",
+          "description": "What is compared with a competitor."
+        },
+        {
+          "name": "aiVisibility.claim.competitor",
+          "label": "Competitor",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Competitor name for comparison claims."
+        },
+        {
+          "name": "aiVisibility.claim.competitorDomain",
+          "label": "Competitor domain",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Competitor primary domain."
+        },
+        {
+          "name": "aiVisibility.claim.brandComparison",
+          "label": "Brand comparison",
+          "kind": "dimension",
+          "type": "string",
+          "description": "stronger, weaker, or neutral."
+        },
+        {
+          "name": "aiVisibility.claim.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "claimSources",
+      "label": "Claim sources",
+      "description": "The pages and passages behind each claim.",
+      "metrics": [
+        {
+          "name": "aiVisibility.claimSources.claimCount",
+          "label": "Claim count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct claims the pages support.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.claimSources.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Answer run date."
+        },
+        {
+          "name": "aiVisibility.claimSources.answerId",
+          "label": "Answer ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Answer for the claim."
+        },
+        {
+          "name": "aiVisibility.claimSources.promptId",
+          "label": "Prompt ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Prompt for the answer."
+        },
+        {
+          "name": "aiVisibility.claimSources.platform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engine."
+        },
+        {
+          "name": "aiVisibility.claimSources.claimId",
+          "label": "Claim ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Claim this passage supports."
+        },
+        {
+          "name": "aiVisibility.claimSources.claimGroupId",
+          "label": "Claim group ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Claim group id."
+        },
+        {
+          "name": "aiVisibility.claimSources.claimGroupLabel",
+          "label": "Claim group label",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Claim group label."
+        },
+        {
+          "name": "aiVisibility.claimSources.claimType",
+          "label": "Claim type",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Claim type for the group."
+        },
+        {
+          "name": "aiVisibility.claimSources.url",
+          "label": "URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Canonical cited page URL."
+        },
+        {
+          "name": "aiVisibility.claimSources.domain",
+          "label": "Domain",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Page domain."
+        },
+        {
+          "name": "aiVisibility.claimSources.title",
+          "label": "Title",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Page title."
+        },
+        {
+          "name": "aiVisibility.claimSources.passage",
+          "label": "Passage",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Words on the page that support the claim."
+        },
+        {
+          "name": "aiVisibility.claimSources.highlightUrl",
+          "label": "Highlight URL",
+          "kind": "dimension",
+          "type": "string",
+          "description": "URL opening the page with passage highlighted."
+        },
+        {
+          "name": "aiVisibility.claimSources.owned",
+          "label": "Owned",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Page is on a client-owned domain."
+        },
+        {
+          "name": "aiVisibility.claimSources.via",
+          "label": "Via",
+          "kind": "dimension",
+          "type": "string",
+          "description": "page, engine, or engine_and_page."
+        },
+        {
+          "name": "aiVisibility.claimSources.rank",
+          "label": "Rank",
+          "kind": "dimension",
+          "type": "integer",
+          "description": "1 = best supporting page for the claim."
+        },
+        {
+          "name": "aiVisibility.claimSources.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "competitors",
+      "label": "Competitors",
+      "description": "Which competitors are named and cited, and where they beat you.",
+      "metrics": [
+        {
+          "name": "aiVisibility.competitors.answerShare",
+          "label": "Answer share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answer runs that named this entity (0–100).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.competitors.answerShareChange",
+          "label": "Answer share change",
+          "kind": "metric",
+          "type": "number",
+          "description": "Period-over-period change in answer share.",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.competitors.mentionRate",
+          "label": "Mention rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers mentioning this entity (0–100).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.competitors.citationRate",
+          "label": "Citation rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers citing this entity's domains (0–100).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.competitors.avgPosition",
+          "label": "Avg position",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average citation position when this entity is cited (lower is better).",
+          "aggregation": "AVG"
+        },
+        {
+          "name": "aiVisibility.competitors.citedSources",
+          "label": "Cited sources",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Number of distinct domains cited for this entity.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.competitors.winningPrompts",
+          "label": "Winning prompts",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Number of prompts where this entity's mention rate exceeds the brand's.",
+          "aggregation": "SUM"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.competitors.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Run date for competitor aggregates."
+        },
+        {
+          "name": "aiVisibility.competitors.id",
+          "label": "Competitor ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Stable 16-character hex id derived from the canonical (lowercase) competitor or brand name. Use name for display."
+        },
+        {
+          "name": "aiVisibility.competitors.name",
+          "label": "Name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Competitor or brand name mentioned in AI answers."
+        },
+        {
+          "name": "aiVisibility.competitors.domain",
+          "label": "Domain",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Primary domain associated with the competitor."
+        },
+        {
+          "name": "aiVisibility.competitors.isBrand",
+          "label": "Is brand",
+          "kind": "dimension",
+          "type": "boolean",
+          "description": "Whether this row represents the tracked brand rather than a competitor."
+        },
+        {
+          "name": "aiVisibility.competitors.exclusiveSources",
+          "label": "Exclusive sources",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Domains cited for this entity but not for the brand."
+        },
+        {
+          "name": "aiVisibility.competitors.byPlatform",
+          "label": "By platform JSON",
+          "kind": "dimension",
+          "type": "string",
+          "description": "JSON breakdown of mention rate by AI engine."
+        },
+        {
+          "name": "aiVisibility.competitors.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    },
+    {
+      "name": "overview",
+      "label": "Overview",
+      "description": "Headline totals: named rate, cited rate, share of voice and claim accuracy.",
+      "metrics": [
+        {
+          "name": "aiVisibility.overview.answerCount",
+          "label": "Answer count",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Number of AI engine answers for the selected filters.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.mentionedCount",
+          "label": "Mentioned answers",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Answers that mention the brand (numerator for namedRate rollups).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.citedCount",
+          "label": "Cited answers",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Answers citing owned domains (numerator for citedRate rollups).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.namedRate",
+          "label": "Named rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers mentioning the brand (0–100). Weighted ratio: sum(mentionedCount)/sum(answerCount).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.citedRate",
+          "label": "Cited rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of answers citing owned domains (0–100). Weighted ratio: sum(citedCount)/sum(answerCount).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.distinctSources",
+          "label": "Distinct sources",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct citation domains across answers.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.claimsNeedingAttention",
+          "label": "Claims needing attention",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Brand claims with accuracy conflict in the selected date range (alias of wrongClaims).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.wrongClaims",
+          "label": "Wrong claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Count of claims with accuracy conflict in the selected date range.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.wrongClaimAnswers",
+          "label": "Wrong claim answers",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Distinct answers containing at least one conflict claim in range.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.claimsOk",
+          "label": "Accurate claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Claims graded accurate in the selected date range.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.claimsConflict",
+          "label": "Conflict claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Claims with accuracy conflict in the selected date range.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.claimsUnverified",
+          "label": "Unverified claims",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Unverified claims in the selected date range.",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.accuracyRate",
+          "label": "Accuracy rate",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of claims graded accurate in range (0–100).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.shareOfVoice",
+          "label": "Share of voice",
+          "kind": "metric",
+          "type": "number",
+          "description": "Brand mention slots as a share of all brand and competitor mention slots in answers (0–100).",
+          "aggregation": "SUM"
+        },
+        {
+          "name": "aiVisibility.overview.citations",
+          "label": "Citations",
+          "kind": "metric",
+          "type": "integer",
+          "description": "Total citation count across all domains.",
+          "aggregation": "SUM"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "aiVisibility.overview.date",
+          "label": "Date",
+          "kind": "dimension",
+          "type": "time",
+          "description": "Run date for overview aggregates."
+        },
+        {
+          "name": "aiVisibility.overview.platform",
+          "label": "Platform",
+          "kind": "dimension",
+          "type": "string",
+          "description": "AI engine for platform-level overview breakdowns."
+        },
+        {
+          "name": "aiVisibility.overview.ownership",
+          "label": "Ownership",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Citation ownership (owned vs earned) for overview breakdowns."
+        },
+        {
+          "name": "aiVisibility.overview.category",
+          "label": "Category",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Citation domain category for overview breakdowns."
+        },
+        {
+          "name": "aiVisibility.overview.clientId",
+          "label": "Client ID",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client id (account-level portfolio rollups)."
+        },
+        {
+          "name": "aiVisibility.overview.clientName",
+          "label": "Client name",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Client display name (account-level queries only)."
+        }
+      ]
+    }
+  ]
+}
