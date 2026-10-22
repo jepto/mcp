@@ -1,6 +1,6 @@
 # Jepto MCP
 
-Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
+Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI, Antigravity and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
 
 ```
 https://mcp.jepto.com
@@ -47,6 +47,14 @@ gemini extensions install https://github.com/jepto/mcp
 ```
 
 Then run `/mcp auth jepto` to sign in. Sign-in opens a browser on your computer, so run it locally rather than over SSH.
+
+### Antigravity
+
+```bash
+agy plugin install https://github.com/jepto/mcp
+```
+
+Then sign in. In the CLI, open `/mcp`, select `jepto` and choose Authenticate. In the Antigravity app, open Agent settings, go to Customizations and click Authenticate next to `jepto`. After you sign in with your Jepto login, paste the code you're shown back into Antigravity.
 
 ### Cursor
 
