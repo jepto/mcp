@@ -1,0 +1,12 @@
+{
+  "name": "jepto",
+  "owner": { "name": "Jepto", "url": "https://www.jepto.com" },
+  "description": "Jepto's plugins for Claude Code",
+  "plugins": [
+    {
+      "name": "jepto",
+      "source": "./",
+      "description": "Live Google Ads, GA4, Search Console, Meta Ads and Google Business Profile data in Claude Code."
+    }
+  ]
+}

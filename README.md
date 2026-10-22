@@ -34,11 +34,21 @@ Open the apps directory and search for "Jepto" or go to [https://chatgpt.com/plu
 
 ### Claude Code
 
-```bash
-claude mcp add --transport http jepto https://mcp.jepto.com
+Install the Jepto plugin, which adds the server and a skill that helps Claude find your data:
+
+```
+/plugin install jepto --marketplace jepto/mcp
 ```
 
-Then run `/mcp` to sign in.
+On Claude Code versions before 2.1.275, run `/plugin marketplace add jepto/mcp` and then `/plugin install jepto@jepto`.
+
+To add only the server, run:
+
+```bash
+claude mcp add --transport http --callback-port 8787 jepto https://mcp.jepto.com
+```
+
+Either way, run `/mcp` and select `jepto` to sign in. Keep `--callback-port 8787`: Jepto's sign-in only returns to that port.
 
 ### Gemini CLI
 
