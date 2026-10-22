@@ -1,6 +1,6 @@
 # Jepto MCP
 
-Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
+Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
 
 ```
 https://mcp.jepto.com
@@ -39,6 +39,14 @@ claude mcp add --transport http jepto https://mcp.jepto.com
 ```
 
 Then run `/mcp` to sign in.
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/jepto/mcp
+```
+
+Then run `/mcp auth jepto` to sign in. Sign-in opens a browser on your computer, so run it locally rather than over SSH.
 
 ### Cursor
 
