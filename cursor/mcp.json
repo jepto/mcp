@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jepto": {
+      "type": "http",
+      "url": "https://mcp.jepto.com"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "jepto",
+  "displayName": "Jepto",
+  "version": "1.1.0",
+  "description": "Live Google Ads, GA4, Search Console, Meta Ads and Google Business Profile data in Cursor. Ask about campaigns, KPIs and budgets for every client in your Jepto account.",
+  "author": { "name": "Jepto" },
+  "homepage": "https://www.jepto.com/integration/mcp",
+  "repository": "https://github.com/jepto/mcp",
+  "license": "MIT",
+  "logo": "logo.png",
+  "keywords": ["jepto", "mcp", "marketing", "analytics", "google-ads", "ga4", "search-console", "meta-ads", "google-business-profile"],
+  "rules": "./cursor/rules/",
+  "mcpServers": "./cursor/mcp.json"
+}
