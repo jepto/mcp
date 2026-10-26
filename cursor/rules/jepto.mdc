@@ -5,7 +5,7 @@ alwaysApply: false
 
 # Jepto
 
-The `jepto` MCP server gives you live marketing data from the user's Jepto account: Google Ads, Google Analytics 4, Search Console, Meta Ads, Microsoft Ads, LinkedIn Ads, TikTok Ads, Google Business Profile, Xero and more. It also reads and manages the account's KPIs and budgets.
+The `jepto` MCP server gives you live marketing data from the user's Jepto account: Google Ads, Google Analytics 4, Search Console, Meta Ads, Microsoft Ads, LinkedIn Ads, TikTok Ads, Google Business Profile, Xero and more. It also reads and manages the account's KPIs and budgets, and builds and edits Jepto reports.
 
 ## Signing in
 
@@ -21,6 +21,17 @@ The user needs a Jepto account with at least one data source connected. Signing 
 4. Query with measures, dimensions, filters and a date range. Date tokens such as `last30days`, `yesterday` and `30DaysAgo` work, as do ISO dates.
 
 Ask which client, platform and date range the user means when it isn't clear.
+
+## Building reports
+
+When the user asks for a report or dashboard, build it in Jepto:
+
+1. Create the report with all its tabs in one call. This only makes empty tabs.
+2. For each metric, query it first and make sure rows come back for the date range.
+3. Add chart and table cards one at a time with complete configs that use exact field names from the schema, then place them with the tab's full layout.
+4. Optionally write the analysis, then load the report to check every tab has cards.
+
+Aim for 3 to 6 cards per tab, pairing number cards with trend or breakdown charts. Report changes save immediately; pass the latest `revisions` on updates and re-read on a conflict. Give the user the editor or preview link when you're done. The `dataChatReport` skill has the full workflow.
 
 ## Making changes
 

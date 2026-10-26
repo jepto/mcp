@@ -1,6 +1,6 @@
 # Jepto MCP
 
-Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI, Antigravity and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, and get answers from your live data without leaving the chat.
+Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI, Antigravity and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, get answers from your live data, and build full Jepto reports without leaving the chat.
 
 ```
 https://mcp.jepto.com
@@ -30,7 +30,7 @@ Open the apps directory and search for "Jepto" or go to [https://claude.ai/direc
 
 ### ChatGPT
 
-Open the apps directory and search for "Jepto" or go to [https://chatgpt.com/plugins/jepto](https://chatgpt.com/plugins/jepto)
+Open **Plugins** in the sidebar and search for "Jepto" or go to [https://chatgpt.com/plugins/jepto](https://chatgpt.com/plugins/jepto)
 
 ### Claude Code
 
@@ -118,6 +118,11 @@ You don't need to name tools. Ask a question and the assistant picks the right o
 - "What's Homer's Donuts' target audience and brand tone?"
 - "Pull up the latest strategy notes for Homer's Donuts."
 
+**Build reports**
+- "Build a monthly report for Homer's Donuts for last month with Executive Overview, Paid Search and Organic Search tabs."
+- "Add a campaign table to the Paid Search tab and switch the spend chart to columns."
+- "Apply our brand theme and write an executive summary for this report."
+
 **Make changes** (always previewed first)
 - "Create a CPA KPI for Homer's Donuts: under $50, monthly."
 - "Create a budget for Homer's Donuts: $1,500 over 65 days, all Google Ads campaigns."
@@ -162,23 +167,56 @@ You don't need to name tools. Ask a question and the assistant picks the right o
 
 ## Tools
 
-Read tools return data and never change anything. Write tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes.
+Read tools return data and never change anything. KPI, budget and platform action tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes. Report tools save their changes straight away, so you can watch the report take shape in Jepto.
+
+The server has 43 tools.
 
 | Tool | What it does | Mode |
 |---|---|---|
-| `Account_Info` | Account name, plan, status, timezone, week start, and counts of clients, KPIs and budgets | Read |
-| `Client_List` | Every client, with its `clientId`, name and domain | Read |
-| `Client_Info` | A client's profile: industry, location, products and services, contacts and business model | Read |
-| `Client_Knowledgebase` | Searches a client's stored notes, briefs and brand guidelines | Read |
-| `Datasource_List` | A client's connected data sources, or every source type Jepto supports | Read |
-| `Analytics_Schema` | The metrics and dimensions available for a client | Read |
-| `Analytics_Query` | Queries live data with measures, dimensions, filters, date ranges, period comparisons and sorting | Read |
-| `KPI_Forecasting` | Lists, reads, creates, updates and deletes KPIs and their forecasts | Read + write |
-| `Budget_Tracker` | Lists, reads, creates, updates and deletes ad spend budgets | Read + write |
-| `Actions_List` | The catalog of platform actions you can run, with inputs and risk level | Read |
-| `Actions_Execute` | Runs a platform action after you confirm it | Write |
-| `Skills_List` | Jepto's catalog of skills: task guides the assistant can follow | Read |
-| `Skills_Get` | One skill's full instructions | Read |
+| `account_info` | Account name, plan, status, timezone, week start, and counts of clients, KPIs and budgets | Read |
+| `client_list` | Every client, with its `clientId`, name and domain | Read |
+| `client_info` | A client's profile: industry, location, products and services, contacts and business model | Read |
+| `client_knowledgebase` | Searches a client's stored notes, briefs and brand guidelines | Read |
+| `datasource_list` | A client's connected data sources, or every source type Jepto supports | Read |
+| `analytics_schema` | The metrics and dimensions available for a client | Read |
+| `analytics_query` | Queries live data with measures, dimensions, filters, date ranges, period comparisons and sorting | Read |
+| `kpi_forecasting` | Lists, reads, creates, updates and deletes KPIs and their forecasts | Read + write (preview first) |
+| `budget_tracker` | Lists, reads, creates, updates and deletes ad spend budgets | Read + write (preview first) |
+| `actions_list` | The catalog of platform actions you can run, with inputs and risk level | Read |
+| `actions_execute` | Runs a platform action after you confirm it | Write (preview first) |
+| `skills_list` | Jepto's catalog of skills: task guides the assistant can follow | Read |
+| `skills_get` | One skill's full instructions | Read |
+| `help_article` | Searches the Jepto Help Center, or fetches an article | Read |
+| `web_search` | Searches the public web for outside context | Read |
+| `web_fetch` | Reads a public web page by URL | Read |
+
+### Report tools
+
+| Tool | What it does | Mode |
+|---|---|---|
+| `report_list` | Lists reports for the account, or for one client | Read |
+| `report_get` | Loads a report: tabs, layouts, cards and editor, preview and public links | Read |
+| `report_create` | Creates a report and all its tabs (empty, ready for cards) | Write |
+| `report_update` | Changes a report's title, description, date range or theme | Write |
+| `report_delete` | Deletes a report | Write |
+| `report_page_get` | Loads one tab and its layout | Read |
+| `report_page_create` | Adds a tab to a report | Write |
+| `report_page_update` | Changes a tab's title, description or layout | Write |
+| `report_page_delete` | Removes a tab | Write |
+| `report_card_get` | Loads one card's settings | Read |
+| `report_card_generate` | Creates a chart or table card from Data Model fields or a plain-language prompt, after checking the data | Write |
+| `report_card_create` | Creates a markdown, HTML, image, analysis or date filter card | Write |
+| `report_card_update` | Changes a card's metrics, chart type, comparison, palette or tab | Write |
+| `report_card_delete` | Deletes a card | Write |
+| `report_analysis_run` | Writes the report's analysis with Jepto's report-analysis agent | Write |
+| `report_analysis_list` | Lists saved analyses for a report | Read |
+| `report_analysis_save` | Saves analysis text to the report | Write |
+| `report_theme_list`, `report_theme_get` | Lists themes, or loads one | Read |
+| `report_theme_create`, `report_theme_update`, `report_theme_delete` | Creates, changes or deletes a theme | Write |
+| `report_palette_list`, `report_palette_get` | Lists color palettes, or loads one | Read |
+| `report_palette_create`, `report_palette_update`, `report_palette_delete` | Creates, changes or deletes a palette | Write |
+
+Page, card and report updates check the latest saved version, so the assistant never overwrites someone else's change. Charts can be number, line, area, bar, column, donut or scatter; map cards aren't available over MCP yet. See [Build Reports with Jepto MCP](https://www.jepto.com/help/build-reports-with-mcp).
 
 ### Platform actions
 
@@ -187,11 +225,11 @@ Today the catalog has two Google Ads actions. Both are medium risk and reversibl
 - `googleAdsPauseCampaign`: pauses campaigns. Ad delivery stops immediately.
 - `googleAdsEnableCampaign`: re-enables paused campaigns. Ad delivery resumes immediately.
 
-More actions will be added. `Actions_List` always shows what's available.
+More actions will be added. `actions_list` always shows what's available.
 
 ### How the assistant finds your data
 
-The usual order is `Client_List` → `Datasource_List` → `Analytics_Schema` → `Analytics_Query`. Fields use the same names as Jepto Reports and Data Chat, for example `googleAds.spend` or `googleAds.campaignName`. Dates accept tokens like `last30days`, `yesterday` and `30DaysAgo`, as well as ISO dates. See [Data Model](https://www.jepto.com/help/data-model) and [Data Query](https://www.jepto.com/help/data-query).
+The usual order is `client_list` → `datasource_list` → `analytics_schema` → `analytics_query`. To build a report, the assistant then calls `report_create`, adds cards with `report_card_generate`, places them with `report_page_update` and can finish with `report_analysis_run`. Fields use the same names as Jepto Reports and Data Chat, for example `googleAds.spend` or `googleAds.campaignName`. Dates accept tokens like `last30days`, `yesterday` and `30DaysAgo`, as well as ISO dates. See [Data Model](https://www.jepto.com/help/data-model) and [Data Query](https://www.jepto.com/help/data-query).
 
 ## Data sources
 
@@ -232,7 +270,7 @@ Signing in to the MCP doesn't connect new platforms. [Connect a data source](htt
 - The connection covers your whole Jepto account, not one client. Without a `clientId`, list tools return everything your login can see.
 - Access tokens last 60 minutes and refresh tokens 30 days, with rotation on each refresh.
 - Your Google, Meta and other platform credentials stay in Jepto. They're never sent to the AI client or the conversation.
-- Anything that changes data goes through a preview and confirmation step.
+- KPI, budget and platform action changes go through a preview and confirmation step. Report changes save straight away and stay inside Jepto.
 - In Claude, you can require approval before each tool call.
 
 More detail: [OAuth & Authentication](https://www.jepto.com/help/oauth-authentication).
@@ -241,6 +279,7 @@ More detail: [OAuth & Authentication](https://www.jepto.com/help/oauth-authentic
 
 - [Jepto MCP](https://www.jepto.com/integration/mcp)
 - [Jepto MCP Server Overview](https://www.jepto.com/help/mcp)
+- [Build Reports with Jepto MCP](https://www.jepto.com/help/build-reports-with-mcp)
 - [Jepto Data Model](https://www.jepto.com/help/data-model)
 - [Jepto Data Query](https://www.jepto.com/help/data-query)
 - [OAuth & Authentication](https://www.jepto.com/help/oauth-authentication)
