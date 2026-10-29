@@ -1,4 +1,4 @@
-# Jepto MCP
+# Jepto MCP: hosted Google Ads, GA4 & Search Console MCP server for Claude and ChatGPT
 
 Your Google Ads, Google Analytics 4 (GA4), Search Console, Meta Ads and Google Business Profile data in Claude, ChatGPT, Cursor, Gemini CLI, Antigravity and any other app that supports MCP (Model Context Protocol). Ask about campaigns, KPIs, budgets and clients in plain English, get answers from your live data, and build full Jepto reports without leaving the chat.
 
@@ -14,6 +14,20 @@ Jepto runs this as a hosted, remote MCP server, so there's nothing to install or
 - **Agencies and consultants** managing many brands. One connection covers every brand in your Jepto account.
 - **Multi-location businesses** tracking Google Business Profile calls, direction requests and reviews across locations.
 - **Developers building agents** who need a hosted server with OAuth, a documented data model, and a confirmation step on every change.
+
+## Jepto MCP vs the official Google Analytics MCP server
+
+Google publishes an experimental [Google Analytics MCP server](https://github.com/googleanalytics/google-analytics-mcp) for GA4. Use it if you only need GA4 and are happy to run a local server. Use Jepto if you want GA4, Google Ads, Search Console and your other marketing platforms in one hosted connection.
+
+| | Jepto MCP | Official Google Analytics MCP |
+|---|---|---|
+| Setup | Hosted. Paste `https://mcp.jepto.com` and sign in | Runs locally: Python (pipx), a Google Cloud project with the Analytics APIs enabled, and Application Default Credentials |
+| Data sources | Google Ads, GA4, Search Console, Meta Ads, Microsoft Ads, LinkedIn Ads, TikTok Ads, Google Business Profile and more | GA4 only |
+| Multiple clients | Every client in your Jepto account in one connection | The GA4 properties your Google credentials can access |
+| Sign-in | OAuth with your Jepto login | Google Cloud credentials you configure |
+| Changes | KPIs, budgets and campaign pause/enable, each previewed and confirmed in the chat | Read-only by default; property annotations with `--allow-write` |
+
+See how Jepto compares with other marketing MCP servers: [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers).
 
 ## Connect
 
@@ -275,9 +289,27 @@ Signing in to the MCP doesn't connect new platforms. [Connect a data source](htt
 
 More detail: [OAuth & Authentication](https://www.jepto.com/help/oauth-authentication).
 
+## FAQ
+
+**Is there one MCP server for Google Analytics, Google Ads and Search Console?**
+Yes. Jepto MCP connects GA4, Google Ads, Search Console, Meta Ads and more through one hosted server at `https://mcp.jepto.com`.
+
+**Can I use my Google Ads and GA4 data in ChatGPT?**
+Yes. Add Jepto from the [ChatGPT apps directory](https://chatgpt.com/plugins/jepto) and sign in with your Jepto login.
+
+**Can I use it in Claude?**
+Yes. Add Jepto from the [Claude directory](https://claude.ai/directory/jepto), or use the Claude Code plugin described in [Connect](#connect).
+
+**Do I need to install or code anything?**
+No. Jepto hosts the server and you sign in with OAuth. You only need a Jepto account with at least one data source connected.
+
+**Does it work for agencies with many clients?**
+Yes. One connection covers every client in your Jepto account, and a single question can span all of them.
+
 ## Links
 
 - [Jepto MCP](https://www.jepto.com/integration/mcp)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP Server Overview](https://www.jepto.com/help/mcp)
 - [Build Reports with Jepto MCP](https://www.jepto.com/help/build-reports-with-mcp)
 - [Jepto Data Model](https://www.jepto.com/help/data-model)
