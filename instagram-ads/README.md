@@ -70,9 +70,27 @@ Instagram Ads is read-only through the MCP: the assistant can query your data bu
 | `instagramAds.dma` | DMA region | string | Designated market area (US TV markets) for geographic breakdowns. |
 | `instagramAds.hourlyStatsAggregatedByAdvertiserTimeZone` | Hour of day (advertiser time zone) | string | Hour of the day the ad was served, aggregated in the advertiser's time zone. |
 
+## FAQ
+
+**Is there an Instagram Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Instagram Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Instagram Ads field in the Jepto data model.
+
+**Which Instagram Ads metrics can I report on?**
+Jepto includes Instagram Ads metrics such as Impressions, Link clicks, Amount spent, Reach, Frequency, Unique link clicks, CTR (all) and Unique CTR. You can break them down by dimensions for Campaign, ad set & ad, Date & time, Location, Device & placement and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Instagram Ads?**
+No. Through the Jepto MCP, Instagram Ads data is read-only: the assistant can query it but can't change anything in Instagram Ads.
+
+**Can I see feed, stories and reels separately?**
+Yes. The Platform position dimension breaks delivery down by placement, so you can compare feed, stories and reels.
+
+**Can I combine Instagram Ads with Google Ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. Cross-platform fields such as unified.spend also add Instagram Ads to totals across your other ad platforms.
+
 ## Links
 
 - [Instagram Ads on jepto.com](https://www.jepto.com/data-sources/instagram-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

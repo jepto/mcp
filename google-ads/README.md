@@ -176,9 +176,36 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `unified.placement` | Placement | `googleAds.adNetworkType` |
 | `unified.device` | Device | `googleAds.device` |
 
+## FAQ
+
+**Is there a Google Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Google Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Google Ads field in the Jepto data model.
+
+**Which Google Ads metrics can I report on?**
+Jepto includes Google Ads metrics such as Clicks, Impressions, Cost, CTR, CPM, CPC, Cost per conversion (CPA) and Conversion value. You can break them down by dimensions for Account, Asset group (Performance Max), Asset, Bidding & budget, Campaign, Ad group, Keyword, Shopping product, Ad & creative and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Google Ads?**
+Only to pause and re-enable campaigns. The assistant shows you a preview first, and nothing changes until you confirm it in the chat. Everything else is read-only.
+
+**What Google Ads data isn't included?**
+Impression share, Quality Score, video view metrics and conversion action breakdowns aren't in the Google Ads data model yet.
+
+**Can I combine Google Ads and GA4 in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. Cross-platform fields such as unified.spend also add Google Ads to totals across your other ad platforms.
+
+**Does Jepto support Performance Max and Shopping campaigns?**
+Yes. You can break Google Ads metrics down by Performance Max asset group, listing group filter type and placement, and by Shopping product title, brand, category, type and offer ID.
+
+**How fresh is the data, and how far back does it go?**
+Jepto reads your data through the Google Ads API, so freshness and history follow the Google Ads API's own limits. Whatever the API makes available for your account, you can report on in Jepto.
+
+**Does each Google Ads account count towards my plan?**
+Yes. Each Google Ads account counts as one data source. Every plan includes a set number of data sources, and you can add more without changing plan.
+
 ## Links
 
 - [Google Ads on jepto.com](https://www.jepto.com/data-sources/google-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

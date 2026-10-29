@@ -1,12 +1,14 @@
-# Google Analytics 4 MCP server
+# Google Analytics 4 (GA4) MCP server
 
-Connect Google Analytics 4 to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about users, sessions, engagement, conversions and revenue, broken down by channel, source, landing page, device and location.
+Connect Google Analytics 4 (GA4) to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about users, sessions, engagement, conversions and revenue, broken down by channel, source, landing page, device and location.
 
 ```
 https://mcp.jepto.com
 ```
 
 There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your GA4 data comes from the GA4 account you've connected in Jepto, with the same 30 metrics and 28 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
+
+Using Google's official Google Analytics MCP server? See [how Jepto compares](https://github.com/jepto/mcp#jepto-mcp-vs-the-official-google-analytics-mcp-server).
 
 ## What you can ask
 
@@ -135,9 +137,27 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `unified.country` | Country | `googleAnalytics4.country` |
 | `unified.device` | Device | `googleAnalytics4.deviceCategory` |
 
+## FAQ
+
+**Is there a Google Analytics 4 MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Google Analytics 4 data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every GA4 field in the Jepto data model.
+
+**Which Google Analytics 4 metrics can I report on?**
+Jepto includes GA4 metrics such as Active users, Total users, New users, Sessions, Sessions per user, Engaged sessions, Page views and Events. You can break them down by dimensions for Date & time, Traffic source, Page & content, Location, Device & placement and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Google Analytics 4?**
+No. Through the Jepto MCP, GA4 data is read-only: the assistant can query it but can't change anything in GA4.
+
+**Can I combine GA4 with Google Ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. GA4 also includes linked ad metrics such as Total ad cost, Ad clicks and ROAS.
+
+**Can I report on individual pages?**
+Yes. Page path, page title, landing page and page path / screen name are all dimensions, so you can break sessions, engagement and conversions down by page.
+
 ## Links
 
 - [Google Analytics 4 on jepto.com](https://www.jepto.com/data-sources/google-analytics-4)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

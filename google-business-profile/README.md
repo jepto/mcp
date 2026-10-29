@@ -201,9 +201,27 @@ The search terms people used to find each profile, by month.
 | `unified.clicks` | Clicks | `googleBusinessProfile.clicks` |
 | `unified.date` | Date | `googleBusinessProfile.date` |
 
+## FAQ
+
+**Is there a Google Business Profile MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Google Business Profile data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Business Profile field in the Jepto data model.
+
+**Which Google Business Profile metrics can I report on?**
+Jepto includes Business Profile metrics such as Profile rating, Total reviews, Star rating, Review count, Replied reviews, Unreplied reviews, Reply rate and Search impressions. The fields cover locations, reviews, posts, photos & media, performance and search keywords. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Google Business Profile?**
+No. Through the Jepto MCP, Business Profile data is read-only: the assistant can query it but can't change anything in Business Profile.
+
+**Can I report on many locations at once?**
+Yes. Every location's performance, reviews and posts come through with its location details, so you can total across all locations or filter to one.
+
+**Can I see which locations have unreplied reviews?**
+Yes. Reviews include star rating, replied and unreplied counts and reply rate for each location.
+
 ## Links
 
 - [Google Business Profile on jepto.com](https://www.jepto.com/data-sources/google-business-profile)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

@@ -317,9 +317,27 @@ TikTok Ads is read-only through the MCP: the assistant can query your data but c
 | `unified.placement` | Placement | `tiktokAds.placement` |
 | `unified.country` | Country | `tiktokAds.countryCode` |
 
+## FAQ
+
+**Is there a TikTok Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your TikTok Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every TikTok Ads field in the Jepto data model.
+
+**Which TikTok Ads metrics can I report on?**
+Jepto includes TikTok Ads metrics such as Spend, Impressions, Clicks, Reach, Results, Conversions, Cost per conversion and Conversion rate. You can break them down by dimensions for Account, Bidding & budget, Campaign, Ad group, Ad & creative, Audience and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in TikTok Ads?**
+No. Through the Jepto MCP, TikTok Ads data is read-only: the assistant can query it but can't change anything in TikTok Ads.
+
+**Can I report on video completion?**
+Yes. Video views at 25%, 50%, 75% and 100%, 2-second and 6-second views and average play time are all metrics.
+
+**Can I compare TikTok with Meta ads?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. Cross-platform fields such as unified.spend also add TikTok Ads to totals across your other ad platforms.
+
 ## Links
 
 - [TikTok Ads on jepto.com](https://www.jepto.com/data-sources/tiktok-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

@@ -1,4 +1,4 @@
-# X Ads MCP server
+# X Ads (Twitter Ads) MCP server
 
 Connect X Ads (Twitter Ads) to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about spend, impressions and link clicks from your X (Twitter) campaigns.
 
@@ -48,9 +48,27 @@ X Ads is read-only through the MCP: the assistant can query your data but can't 
 | `unified.date` | Date | `twitterAds.date` |
 | `unified.campaignId` | Campaign ID | `twitterAds.campaignId` |
 
+## FAQ
+
+**Is there an X Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your X Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every X Ads field in the Jepto data model.
+
+**Which X Ads metrics can I report on?**
+Jepto includes X Ads metrics: Impressions, Link clicks and Spend. You can break them down by dimensions such as Date, Campaign ID and Segment. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in X Ads?**
+No. Through the Jepto MCP, X Ads data is read-only: the assistant can query it but can't change anything in X Ads.
+
+**What X Ads data isn't included?**
+Engagements, conversions and ad-level breakdowns aren't in the X Ads data model yet. Today it covers spend, impressions and link clicks by campaign and segment.
+
+**Can I combine X Ads with Google Ads or Meta ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two.
+
 ## Links
 
 - [X Ads on jepto.com](https://www.jepto.com/data-sources/x-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

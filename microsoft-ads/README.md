@@ -1,6 +1,6 @@
-# Microsoft Ads MCP server
+# Microsoft Ads (Bing Ads) MCP server
 
-Connect Microsoft Ads to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about your Microsoft Advertising (Bing) campaigns, ad groups and ads: spend, conversions, revenue, impression share and Quality Score.
+Connect Microsoft Ads (Bing Ads) to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about your Microsoft Advertising (Bing) campaigns, ad groups and ads: spend, conversions, revenue, impression share and Quality Score.
 
 ```
 https://mcp.jepto.com
@@ -185,9 +185,30 @@ Microsoft Ads is read-only through the MCP: the assistant can query your data bu
 | `unified.placement` | Placement | `microsoftAds.adDistribution` |
 | `unified.device` | Device | `microsoftAds.deviceType` |
 
+## FAQ
+
+**Is there a Microsoft Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Microsoft Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Microsoft Ads field in the Jepto data model.
+
+**Which Microsoft Ads metrics can I report on?**
+Jepto includes Microsoft Ads metrics such as Impressions, Clicks, CTR, Spend, Avg. CPC, Avg. CPM, Avg. position and Conversions. You can break them down by dimensions for Account, Campaign, Ad group, Ad & creative, Device & placement and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Microsoft Ads?**
+No. Through the Jepto MCP, Microsoft Ads data is read-only: the assistant can query it but can't change anything in Microsoft Ads.
+
+**What Microsoft Ads data isn't included?**
+Keyword and search term dimensions aren't in the Microsoft Ads data model yet.
+
+**Can I combine Microsoft Ads with Google Ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. Cross-platform fields such as unified.spend also add Microsoft Ads to totals across your other ad platforms.
+
+**Can I report on impression share and Quality Score?**
+Yes. Impression share, impression share lost to budget and rank, Quality Score, expected CTR, ad relevance and landing page experience are all metrics.
+
 ## Links
 
 - [Microsoft Ads on jepto.com](https://www.jepto.com/data-sources/microsoft-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

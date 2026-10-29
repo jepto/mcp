@@ -1,6 +1,6 @@
-# Facebook Ads MCP server
+# Facebook Ads (Meta Ads) MCP server
 
-Connect Facebook Ads to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about your Meta campaigns, ad sets and ads: amount spent, reach, frequency, link clicks and results, broken down by platform, placement, age, gender and region.
+Connect Facebook Ads (Meta Ads) to Claude, ChatGPT, Cursor and any other MCP client with the hosted Jepto MCP server. Ask about your Meta campaigns, ad sets and ads: amount spent, reach, frequency, link clicks and results, broken down by platform, placement, age, gender and region.
 
 ```
 https://mcp.jepto.com
@@ -115,9 +115,30 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `unified.country` | Country | `facebookAds.country` |
 | `unified.device` | Device | `facebookAds.devicePlatform` |
 
+## FAQ
+
+**Is there a Facebook Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Facebook Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Facebook Ads field in the Jepto data model.
+
+**Which Facebook Ads metrics can I report on?**
+Jepto includes Facebook Ads metrics such as Impressions, Link clicks, Amount spent, Reach, Frequency, Unique link clicks, CTR (all) and Unique CTR. You can break them down by dimensions for Campaign, ad set & ad, Date & time, Location, Device & placement and Segments. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Facebook Ads?**
+No. Through the Jepto MCP, Facebook Ads data is read-only: the assistant can query it but can't change anything in Facebook Ads.
+
+**Are Facebook Ads and Instagram Ads separate data sources?**
+Yes. They're separate sources in Jepto, so you can report on each on its own, and the Platform dimension splits Facebook and Instagram delivery within either.
+
+**Can I compare ad creative?**
+Yes. Ad name and ad ID are dimensions, so you can compare amount spent, CTR and results for each ad within a campaign or ad set.
+
+**Can I combine Facebook Ads with Google Ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. Cross-platform fields such as unified.spend also add Facebook Ads to totals across your other ad platforms.
+
 ## Links
 
 - [Facebook Ads on jepto.com](https://www.jepto.com/data-sources/facebook-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

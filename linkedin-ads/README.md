@@ -184,9 +184,27 @@ LinkedIn Ads is read-only through the MCP: the assistant can query your data but
 | `unified.country` | Country | `linkedInAds.country` |
 | `unified.device` | Device | `linkedInAds.device` |
 
+## FAQ
+
+**Is there a LinkedIn Ads MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your LinkedIn Ads data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every LinkedIn Ads field in the Jepto data model.
+
+**Which LinkedIn Ads metrics can I report on?**
+Jepto includes LinkedIn Ads metrics such as Impressions, Clicks, Spend, Cost (USD), Cost per qualified lead, Website conversions, Post-click conversions and Post-view conversions. You can break them down by dimensions for Campaign, Ad & creative, Audience, Location, Segments and Other dimensions. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in LinkedIn Ads?**
+No. Through the Jepto MCP, LinkedIn Ads data is read-only: the assistant can query it but can't change anything in LinkedIn Ads.
+
+**Can I report on Lead Gen Forms?**
+Yes. Lead Gen Form opens and submissions, qualified leads and cost per qualified lead are all metrics.
+
+**Can I break results down by job title or company size?**
+Yes. Job function, job title, seniority, industry, company size and member company are all dimensions.
+
 ## Links
 
 - [LinkedIn Ads on jepto.com](https://www.jepto.com/data-sources/linkedin-ads)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)

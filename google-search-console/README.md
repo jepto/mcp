@@ -84,9 +84,27 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 |---|---|---|
 | `unified.date` | Date | `googleSearchConsole.date` |
 
+## FAQ
+
+**Is there a Google Search Console MCP server?**
+Yes. Jepto hosts an MCP server at https://mcp.jepto.com that gives Claude, ChatGPT, Cursor and other MCP clients access to your Google Search Console data. There's nothing to install: you sign in to Jepto with OAuth, and the assistant can query every Search Console field in the Jepto data model.
+
+**Which Google Search Console metrics can I report on?**
+Jepto includes Search Console metrics: Clicks, Impressions, CTR and Average position. You can break them down by dimensions such as Date, Country, Device, Page, Query and Search appearance. Every field, with its definition, is listed on this page.
+
+**Can an AI assistant make changes in Google Search Console?**
+No. Through the Jepto MCP, Search Console data is read-only: the assistant can query it but can't change anything in Search Console.
+
+**Can I combine Search Console with Google Ads in one report?**
+Yes. When both are connected to the same brand, any report or chart can use fields from either source, and Data Chat and the Jepto MCP can answer questions that span the two. That lets you put organic queries next to paid search terms.
+
+**Why are the most recent days missing?**
+Google publishes Search Console data with a delay of a couple of days. Jepto fills those days in as Google releases them.
+
 ## Links
 
 - [Google Search Console on jepto.com](https://www.jepto.com/data-sources/google-search-console)
+- [Compare marketing MCP servers](https://www.jepto.com/compare/marketing-mcp-servers)
 - [Jepto MCP README](https://github.com/jepto/mcp): connecting, tools, security
 - [Data Model](https://www.jepto.com/help/data-model)
 - [Connect a data source](https://www.jepto.com/help/connect-a-data-source)
