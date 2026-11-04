@@ -278,7 +278,7 @@ More detail: [OAuth & Authentication](https://www.jepto.com/help/oauth-authentic
 
 ## Links
 
-- [Jepto MCP](https://www.jepto.com/integration/mcp)
+- [Jepto MCP](https://www.jepto.com/mcp)
 - [Jepto MCP Server Overview](https://www.jepto.com/help/mcp)
 - [Build Reports with Jepto MCP](https://www.jepto.com/help/build-reports-with-mcp)
 - [Jepto Data Model](https://www.jepto.com/help/data-model)

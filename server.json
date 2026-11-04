@@ -4,7 +4,7 @@
   "title": "Jepto",
   "description": "Live ad, analytics and GBP data plus Jepto report building in Claude, ChatGPT and any MCP client",
   "version": "1.2.0",
-  "websiteUrl": "https://www.jepto.com/integration/mcp",
+  "websiteUrl": "https://www.jepto.com/mcp",
   "repository": {
     "url": "https://github.com/jepto/mcp",
     "source": "github"
