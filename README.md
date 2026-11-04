@@ -167,9 +167,9 @@ You don't need to name tools. Ask a question and the assistant picks the right o
 
 ## Tools
 
-Read tools return data and never change anything. KPI, budget and platform action tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes. Report tools save their changes straight away, so you can watch the report take shape in Jepto.
+Read tools return data and never change anything. KPI, budget and platform action tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes. Report and custom field tools save their changes straight away, so you can watch the report take shape in Jepto.
 
-The server has 43 tools.
+The server has 44 tools.
 
 | Tool | What it does | Mode |
 |---|---|---|
@@ -180,6 +180,7 @@ The server has 43 tools.
 | `datasource_list` | A client's connected data sources, or every source type Jepto supports | Read |
 | `analytics_schema` | The metrics and dimensions available for a client | Read |
 | `analytics_query` | Queries live data with measures, dimensions, filters, date ranges, period comparisons and sorting | Read |
+| `analytics_custom_field_create` | Creates a calculated metric or dimension for a client from a formula | Write |
 | `kpi_forecasting` | Lists, reads, creates, updates and deletes KPIs and their forecasts | Read + write (preview first) |
 | `budget_tracker` | Lists, reads, creates, updates and deletes ad spend budgets | Read + write (preview first) |
 | `actions_list` | The catalog of platform actions you can run, with inputs and risk level | Read |
@@ -196,6 +197,7 @@ The server has 43 tools.
 |---|---|---|
 | `report_list` | Lists reports for the account, or for one client | Read |
 | `report_get` | Loads a report: tabs, layouts, cards and editor, preview and public links | Read |
+| `view_report` | Shows a report inline in the chat | Read |
 | `report_create` | Creates a report and all its tabs (empty, ready for cards) | Write |
 | `report_update` | Changes a report's title, description, date range or theme | Write |
 | `report_delete` | Deletes a report | Write |
@@ -204,8 +206,7 @@ The server has 43 tools.
 | `report_page_update` | Changes a tab's title, description or layout | Write |
 | `report_page_delete` | Removes a tab | Write |
 | `report_card_get` | Loads one card's settings | Read |
-| `report_card_generate` | Creates a chart or table card from Data Model fields or a plain-language prompt, after checking the data | Write |
-| `report_card_create` | Creates a markdown, HTML, image, analysis or date filter card | Write |
+| `report_card_create` | Creates any card (chart, table, number, markdown, HTML, image, analysis or date filter), after checking the data | Write |
 | `report_card_update` | Changes a card's metrics, chart type, comparison, palette or tab | Write |
 | `report_card_delete` | Deletes a card | Write |
 | `report_analysis_run` | Writes the report's analysis with Jepto's report-analysis agent | Write |
@@ -229,7 +230,7 @@ More actions will be added. `actions_list` always shows what's available.
 
 ### How the assistant finds your data
 
-The usual order is `client_list` → `datasource_list` → `analytics_schema` → `analytics_query`. To build a report, the assistant then calls `report_create`, adds cards with `report_card_generate`, places them with `report_page_update` and can finish with `report_analysis_run`. Fields use the same names as Jepto Reports and Data Chat, for example `googleAds.spend` or `googleAds.campaignName`. Dates accept tokens like `last30days`, `yesterday` and `30DaysAgo`, as well as ISO dates. See [Data Model](https://www.jepto.com/help/data-model) and [Data Query](https://www.jepto.com/help/data-query).
+The usual order is `client_list` → `datasource_list` → `analytics_schema` → `analytics_query`. To build a report, the assistant then calls `report_create`, adds cards with `report_card_create`, places them with `report_page_update`, can finish with `report_analysis_run` and can show the result in the chat with `view_report`. Fields use the same names as Jepto Reports and Data Chat, for example `googleAds.spend` or `googleAds.campaignName`. Dates accept tokens like `last30days`, `yesterday` and `30DaysAgo`, as well as ISO dates. See [Data Model](https://www.jepto.com/help/data-model) and [Data Query](https://www.jepto.com/help/data-query).
 
 ## Data sources
 
