@@ -3,8 +3,17 @@
   "name": "com.jepto/mcp",
   "title": "Jepto",
   "description": "Live ad, analytics and GBP data plus Jepto report building in Claude, ChatGPT and any MCP client",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "websiteUrl": "https://www.jepto.com/mcp",
+  "icons": [
+    {
+      "src": "https://static.jepto.com/image/jepto-logo.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/jepto/mcp",
     "source": "github"
