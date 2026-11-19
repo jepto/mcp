@@ -13,7 +13,7 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "What did I spend on X Ads last month, by campaign?"
 - "Show daily impressions and link clicks for the last 30 days."
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 X Ads is read-only through the MCP: the assistant can query your data but can't change anything in X Ads.
 
@@ -43,6 +43,7 @@ X Ads is read-only through the MCP: the assistant can query your data but can't 
 
 | Unified field | Label | From |
 |---|---|---|
+| `unified.spend` | Spend | `twitterAds.spend` |
 | `unified.impressions` | Impressions | `twitterAds.impressions` |
 | `unified.clicks` | Clicks | `twitterAds.clicks` |
 | `unified.date` | Date | `twitterAds.date` |

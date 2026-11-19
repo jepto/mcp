@@ -167,9 +167,9 @@ You don't need to name tools. Ask a question and the assistant picks the right o
 
 ## Tools
 
-Read tools return data and never change anything. KPI, budget and platform action tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes. Report and custom field tools save their changes straight away, so you can watch the report take shape in Jepto.
+Read tools return data and never change anything. KPI, budget and platform action tools return a preview first, and nothing is saved in Jepto or changed in an ad platform until you confirm it in the chat. Pending confirmations expire after about 10 minutes. Report, memory and custom field tools save their changes straight away, so you can watch the report take shape in Jepto. Every report change is kept in Change History, so you can restore an earlier version.
 
-The server has 44 tools.
+The server has 54 tools.
 
 | Tool | What it does | Mode |
 |---|---|---|
@@ -185,6 +185,8 @@ The server has 44 tools.
 | `budget_tracker` | Lists, reads, creates, updates and deletes ad spend budgets | Read + write (preview first) |
 | `actions_list` | The catalog of platform actions you can run, with inputs and risk level | Read |
 | `actions_execute` | Runs a platform action after you confirm it | Write (preview first) |
+| `memory_list` | Your saved memories: personal preferences, and each client's rules, targets and definitions | Read |
+| `memory_create` | Saves a rule or preference so later Data Chat and MCP sessions use it. Client memories are shared with your team; user memories are private | Write |
 | `skills_list` | Jepto's catalog of skills: task guides the assistant can follow | Read |
 | `skills_get` | One skill's full instructions | Read |
 | `help_article` | Searches the Jepto Help Center, or fetches an article | Read |
@@ -198,6 +200,7 @@ The server has 44 tools.
 | `report_list` | Lists reports for the account, or for one client | Read |
 | `report_get` | Loads a report: tabs, layouts, cards and editor, preview and public links | Read |
 | `view_report` | Shows a report inline in the chat | Read |
+| `view_card` | Shows one chart or table card inline in the chat, with live data | Read |
 | `report_create` | Creates a report and all its tabs (empty, ready for cards) | Write |
 | `report_update` | Changes a report's title, description, date range or theme | Write |
 | `report_delete` | Deletes a report | Write |
@@ -209,9 +212,16 @@ The server has 44 tools.
 | `report_card_create` | Creates any card (chart, table, number, markdown, HTML, image, analysis or date filter), after checking the data | Write |
 | `report_card_update` | Changes a card's metrics, chart type, comparison, palette or tab | Write |
 | `report_card_delete` | Deletes a card | Write |
-| `report_analysis_run` | Writes the report's analysis with Jepto's report-analysis agent | Write |
+| `image_upload` | Uploads a JPG or PNG (up to 2 MB) and returns a hosted URL for image cards | Write |
+| `report_version_list` | Lists a report's Change History | Read |
+| `report_version_get` | Loads one earlier version of a report | Read |
+| `report_version_restore` | Restores a whole report to an earlier version | Write |
+| `report_card_version_get` | Loads one earlier version of a card | Read |
+| `report_card_version_restore` | Restores a card to an earlier version | Write |
+| `report_analysis_run` | Writes the report's analysis with Jepto's report-analysis agent. Uses Jepto AI credits | Write |
 | `report_analysis_list` | Lists saved analyses for a report | Read |
-| `report_analysis_save` | Saves analysis text to the report | Write |
+| `report_analysis_create` | Saves a new analysis (headline and text) the assistant wrote | Write |
+| `report_analysis_update` | Changes the headline or text of a saved analysis | Write |
 | `report_theme_list`, `report_theme_get` | Lists themes, or loads one | Read |
 | `report_theme_create`, `report_theme_update`, `report_theme_delete` | Creates, changes or deletes a theme | Write |
 | `report_palette_list`, `report_palette_get` | Lists color palettes, or loads one | Read |
@@ -249,13 +259,13 @@ Each source has its own page with example questions and every metric and dimensi
 <!-- sources:start -->
 | Data source | Metrics | Dimensions | Field reference |
 |---|---|---|---|
-| Google Ads | 12 | 69 | [google-ads/](google-ads/) |
-| Google Analytics 4 | 30 | 28 | [google-analytics-4/](google-analytics-4/) |
+| Google Ads | 19 | 69 | [google-ads/](google-ads/) |
+| Google Analytics 4 | 31 | 29 | [google-analytics-4/](google-analytics-4/) |
 | Google Search Console | 4 | 6 | [google-search-console/](google-search-console/) |
-| Google Business Profile | 29 | 70 | [google-business-profile/](google-business-profile/) |
+| Google Business Profile | 30 | 70 | [google-business-profile/](google-business-profile/) |
 | Facebook Ads | 17 | 19 | [facebook-ads/](facebook-ads/) |
 | Instagram Ads | 20 | 18 | [instagram-ads/](instagram-ads/) |
-| LinkedIn Ads | 98 | 26 | [linkedin-ads/](linkedin-ads/) |
+| LinkedIn Ads | 96 | 25 | [linkedin-ads/](linkedin-ads/) |
 | Microsoft Ads | 85 | 41 | [microsoft-ads/](microsoft-ads/) |
 | TikTok Ads | 203 | 55 | [tiktok-ads/](tiktok-ads/) |
 | X Ads | 3 | 3 | [x-ads/](x-ads/) |
@@ -268,7 +278,7 @@ Signing in to the MCP doesn't connect new platforms. [Connect a data source](htt
 ## Security and permissions
 
 - You sign in with your Jepto login. Every tool call runs with the same permissions you have in the app.
-- The connection covers your whole Jepto account, not one client. Without a `clientId`, list tools return everything your login can see.
+- The connection covers your whole Jepto account, not one client. To work across every client at once, `report_list`, `kpi_forecasting` and `budget_tracker` take `clientId: "all_clients"`. Every other tool works on one client.
 - Access tokens last 60 minutes and refresh tokens 30 days, with rotation on each refresh.
 - Your Google, Meta and other platform credentials stay in Jepto. They're never sent to the AI client or the conversation.
 - KPI, budget and platform action changes go through a preview and confirmation step. Report changes save straight away and stay inside Jepto.

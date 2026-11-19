@@ -6,7 +6,7 @@ Connect Google Business Profile to Claude, ChatGPT, Cursor and any other MCP cli
 https://mcp.jepto.com
 ```
 
-There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your Business Profile data comes from the Business Profile account you've connected in Jepto, with the same 29 metrics and 70 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
+There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your Business Profile data comes from the Business Profile account you've connected in Jepto, with the same 30 metrics and 70 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
 
 ## What you can ask
 
@@ -15,24 +15,17 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Which search keywords found my profiles this month?"
 - "Compare Search and Maps impressions on mobile vs desktop for the last 90 days."
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 Google Business Profile is read-only through the MCP: the assistant can query your data but can't change anything in Business Profile.
 
 ## Fields
 
-99 fields (29 metrics, 70 dimensions), from version 1.1.11 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+100 fields (30 metrics, 70 dimensions), from version 1.1.12 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Locations
 
 Each location's profile details, categories, address and rating.
-
-#### Metrics
-
-| Field | Label | Aggregation | Format | Description |
-|---|---|---|---|---|
-| `googleBusinessProfile.profileRating` | Profile rating | Calculated | Decimal | Rating for the Profile as shown on Google. |
-| `googleBusinessProfile.totalReviewCount` | Total reviews | Calculated |  | Total number of reviews on the location as reported by Google Business Profile (value is updated daily). |
 
 #### Dimensions
 
@@ -105,6 +98,12 @@ Customer reviews, star ratings and whether you've replied.
 
 Updates, offers and events published to your profiles.
 
+#### Metrics
+
+| Field | Label | Aggregation | Format | Description |
+|---|---|---|---|---|
+| `googleBusinessProfile.postCount` | Post count | COUNT_DISTINCT |  | Number of distinct local posts in the queried date range. |
+
 #### Dimensions
 
 | Field | Label | Type | Description |
@@ -164,8 +163,8 @@ Daily calls, direction requests, website clicks, bookings and Search and Maps im
 | `googleBusinessProfile.foodOrders` | Food orders | SUM |  | Number of food orders placed through the business profile. |
 | `googleBusinessProfile.conversations` | Messages | SUM |  | Number of messages sent to the business through the profile. |
 | `googleBusinessProfile.bookings` | Bookings | SUM |  | Number of bookings made through the business profile. |
-| `googleBusinessProfile.clicks` | Clicks | Calculated: (Website clicks + Call clicks) + Direction requests |  | Number of clicks on the business profile. (Website + Call + Direction Requests) |
-| `googleBusinessProfile.impressions` | Impressions | Calculated: Search impressions + Maps impressions |  | Number of times the business profile appeared in Google Search and Maps results. (Desktop + Mobile) |
+| `googleBusinessProfile.clicks` | Clicks | Calculated: (Website clicks + Call clicks) + Direction requests |  | Number of clicks on the business profile: website clicks, calls and direction requests combined. |
+| `googleBusinessProfile.impressions` | Impressions | Calculated: Search impressions + Maps impressions |  | Number of times the business profile appeared in Google Search and Maps, on desktop and mobile. |
 | `googleBusinessProfile.desktopImpressions` | Impressions (desktop) | Calculated: Search impressions (desktop) + Maps impressions (desktop) |  | Number of times the business profile appeared in Google Search and Maps on desktop. Multiple impressions by a unique user within a single day are counted once. |
 | `googleBusinessProfile.mobileImpressions` | Impressions (mobile) | Calculated: Search impressions (mobile) + Maps impressions (mobile) |  | Number of times the business profile appeared in Google Search and Maps on mobile. Multiple impressions by a unique user within a single day are counted once. |
 | `googleBusinessProfile.searchClickThroughRate` | Search CTR | Calculated: Website clicks ÷ Search impressions | Percentage | Percentage of Search impressions that resulted in a website click: web clicks ÷ search impressions. |
@@ -189,7 +188,18 @@ The search terms people used to find each profile, by month.
 | Field | Label | Type | Description |
 |---|---|---|---|
 | `googleBusinessProfile.searchKeyword` | Search Keyword | string | Search keyword that triggered an impression of your business profile. |
-| `googleBusinessProfile.isBranded` | Branded search | boolean | True when the search keyword contains the location title (case-insensitive). Requires locationName in the same query. |
+| `googleBusinessProfile.isBranded` | Branded search | boolean | True when the search keyword includes the location's name (not case-sensitive). |
+
+### Rating history
+
+Your Google rating and total review count, recorded every day.
+
+#### Metrics
+
+| Field | Label | Aggregation | Format | Description |
+|---|---|---|---|---|
+| `googleBusinessProfile.profileRating` | Profile rating | AVG | Decimal | Rating for the Profile as shown on Google, as recorded on the latest day in the date range (history is kept daily). |
+| `googleBusinessProfile.totalReviewCount` | Total reviews | MAX |  | Total number of reviews on the location as reported by Google Business Profile, as recorded on the latest day in the date range (history is kept daily). |
 
 ## Cross-platform fields
 

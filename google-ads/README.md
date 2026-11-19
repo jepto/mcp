@@ -6,7 +6,7 @@ Connect Google Ads to Claude, ChatGPT, Cursor and any other MCP client with the 
 https://mcp.jepto.com
 ```
 
-There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your Google Ads data comes from the Google Ads account you've connected in Jepto, with the same 12 metrics and 69 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
+There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your Google Ads data comes from the Google Ads account you've connected in Jepto, with the same 19 metrics and 69 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
 
 ## What you can ask
 
@@ -16,7 +16,7 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Which Performance Max asset groups drove the most conversion value last month?"
 - "Compare CTR and avg. CPC by device for my brand campaign over the last 14 days."
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 ## Actions
 
@@ -27,15 +27,15 @@ Besides reading data, the Jepto MCP can make changes in Google Ads. Every action
 | `googleAdsPauseCampaign` | Pause campaigns. Ad delivery stops immediately. |
 | `googleAdsEnableCampaign` | Re-enable paused campaigns. Ad delivery resumes immediately. |
 
-`Actions_List` returns the current catalog and `Actions_Execute` runs an action after you confirm it.
+`actions_list` returns the current catalog and `actions_execute` runs an action after you confirm it.
 
 ## Example query
 
-This is the kind of `Analytics_Query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
+This is the kind of `analytics_query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
 
 ```json
 {
-  "clientId": "<clientId from Client_List>",
+  "clientId": "<clientId from client_list>",
   "measures": [
     "googleAds.spend",
     "googleAds.conversions",
@@ -56,7 +56,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ## Fields
 
-81 fields (12 metrics, 69 dimensions), from version 1.4.3 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+88 fields (19 metrics, 69 dimensions), from version 1.4.3 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Metrics
 
@@ -64,16 +64,23 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 |---|---|---|---|---|
 | `googleAds.clicks` | Clicks | SUM |  | Number of clicks on your ads during the reporting period. |
 | `googleAds.impressions` | Impressions | SUM |  | Number of times your ads were shown, including repeat views by the same person. |
-| `googleAds.spend` | Cost | SUM | Currency | Total amount spent on your ads during the reporting period, in your account currency. |
+| `googleAds.spend` | Cost (spend) | SUM | Currency | Total amount spent on your ads during the reporting period, in your account currency. |
 | `googleAds.ctr` | CTR | Calculated: Clicks ÷ Impressions | Percentage | Click-through rate: clicks divided by impressions, shown as a percentage. |
-| `googleAds.cpm` | CPM | Calculated: (Cost ÷ Impressions) × 1,000 | Currency | Average cost per 1,000 impressions: spend divided by impressions (×1,000), in account currency. |
-| `googleAds.cpc` | CPC | Calculated: Cost ÷ Clicks | Currency | Average cost per click: spend divided by clicks, in account currency. |
-| `googleAds.costPerConversion` | Cost per conversion (CPA) | Calculated: Cost ÷ Conversions | Currency | Average spend for each conversion: spend divided by the number of conversion events. |
+| `googleAds.cpm` | CPM | Calculated: (Cost (spend) ÷ Impressions) × 1,000 | Currency | Average cost per 1,000 impressions: spend divided by impressions (×1,000), in account currency. |
+| `googleAds.cpc` | CPC | Calculated: Cost (spend) ÷ Clicks | Currency | Average cost per click: spend divided by clicks, in account currency. |
+| `googleAds.averageCpc` | Average CPC | Calculated: Cost (spend) ÷ Clicks | Currency | Average cost per click: spend divided by clicks, in your account currency. |
+| `googleAds.costPerConversion` | Cost per conversion (CPA) | Calculated: Cost (spend) ÷ Conversions | Currency | Average spend for each conversion: spend divided by the number of conversion events. |
 | `googleAds.conversionValue` | Conversion value | SUM | Currency | Total value attributed to conversion events (e.g. revenue from purchases) during the reporting period. |
-| `googleAds.roas` | ROAS | Calculated: Conversion value ÷ Cost | Decimal (×) | Return on ad spend for attributed revenue or value divided by spend. |
+| `googleAds.roas` | ROAS | Calculated: Conversion value ÷ Cost (spend) | Decimal (×) | Return on ad spend: conversion value divided by spend. |
 | `googleAds.viewThroughConversions` | View-through conversions | SUM |  | Conversions recorded when a user saw (but did not click) your ad and later converted. |
 | `googleAds.conversions` | Conversions | SUM |  | Number of completed conversion actions you are measuring (e.g. purchases, sign-ups, leads). |
 | `googleAds.conversionRate` | Conversion rate | Calculated: Conversions ÷ Clicks | Percentage | Percentage of clicks that resulted in a conversion: conversions ÷ clicks. |
+| `googleAds.searchImpressionShare` | Search impression share | AVG | Percentage | Impressions your Search ads received, as a share of the impressions they were eligible to get. |
+| `googleAds.searchTopImpressionShare` | Search top impression share | AVG | Percentage | Share of eligible impressions where your ad showed anywhere above the organic search results. |
+| `googleAds.searchAbsoluteTopImpressionShare` | Search abs. top impression share | AVG | Percentage | Share of eligible impressions where your ad showed as the very first ad above the organic search results. |
+| `googleAds.searchClickShare` | Search click share | AVG | Percentage | Clicks your Search ads received, as a share of the clicks they could have received. |
+| `googleAds.searchBudgetLostImpressionShare` | Search budget lost IS | AVG | Percentage | Share of eligible Search impressions your ads missed because the budget ran out. |
+| `googleAds.searchRankLostImpressionShare` | Search rank lost IS | AVG | Percentage | Share of eligible Search impressions your ads missed because of low Ad Rank. |
 
 ### Dimensions
 
@@ -81,7 +88,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 |---|---|---|---|
 | `googleAds.date` | Date | string | Date when the ad metrics were recorded. |
 | `googleAds.adNetworkType` | Ad network | string | Ad network where your ads were shown (e.g. Google Search, Display Network, YouTube). |
-| `googleAds.campaignId` | Campaign ID | number | Unique identifier for the campaign. |
+| `googleAds.campaignId` | Campaign ID | number | Unique ID for the campaign. Stays the same when the campaign is renamed. |
 | `googleAds.device` | Device | string | Device type on which the ad was shown (mobile, desktop, tablet). |
 | `googleAds.campaignName` | Campaign | string | Name of the ad campaign. |
 | `googleAds.campaignStatus` | Campaign status | string | Current delivery status of the campaign (enabled, paused, or removed). |
@@ -134,7 +141,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `googleAds.productCategoryLevel2` | Product category (L2) | string | Second-level product category breakdown (e.g. Shirts within Apparel). |
 | `googleAds.productTypeL1` | Product type (L1) | string | Top-level custom product type label used for product segmentation. |
 | `googleAds.productTypeL2` | Product type (L2) | string | Second-level custom product type label. |
-| `googleAds.unexpandedFinalUrl` | Landing page URL | string | The destination URL for the landing page before any URL expansion by Google. |
+| `googleAds.unexpandedFinalUrl` | Landing page URL | string | Landing page URL set on the ad, before Google expands it. Ad spend by landing page uses this URL. |
 | `googleAds.detailPlacement` | Placement | string | Specific website or app where your Display ad was shown. |
 | `googleAds.displayKeywordText` | Display keyword | string | Keyword used to target Display Network placements. |
 | `googleAds.ageRangeType` | Age range | string | Age range of users targeted or who saw your ads (e.g. 18–24, 25–34). |

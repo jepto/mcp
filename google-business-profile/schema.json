@@ -1,36 +1,13 @@
 {
   "source": "googleBusinessProfile",
   "name": "Google Business Profile",
-  "schemaVersion": "1.1.11",
+  "schemaVersion": "1.1.12",
   "entities": [
     {
       "name": "locations",
       "label": "Locations",
       "description": "Each location's profile details, categories, address and rating.",
-      "metrics": [
-        {
-          "name": "googleBusinessProfile.profileRating",
-          "label": "Profile rating",
-          "kind": "metric",
-          "type": "number",
-          "description": "Rating for the Profile as shown on Google.",
-          "aggregation": "SUM",
-          "format": {
-            "type": "decimal",
-            "precision": 1
-          },
-          "calculated": true
-        },
-        {
-          "name": "googleBusinessProfile.totalReviewCount",
-          "label": "Total reviews",
-          "kind": "metric",
-          "type": "number",
-          "description": "Total number of reviews on the location as reported by Google Business Profile (value is updated daily).",
-          "aggregation": "SUM",
-          "calculated": true
-        }
-      ],
+      "metrics": [],
       "dimensions": [
         {
           "name": "googleBusinessProfile.locationName",
@@ -414,7 +391,16 @@
       "name": "posts",
       "label": "Posts",
       "description": "Updates, offers and events published to your profiles.",
-      "metrics": [],
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.postCount",
+          "label": "Post count",
+          "kind": "metric",
+          "type": "number",
+          "description": "Number of distinct local posts in the queried date range.",
+          "aggregation": "COUNT_DISTINCT"
+        }
+      ],
       "dimensions": [
         {
           "name": "googleBusinessProfile.postId",
@@ -714,7 +700,7 @@
           "label": "Clicks",
           "kind": "metric",
           "type": "number",
-          "description": "Number of clicks on the business profile. (Website + Call + Direction Requests)",
+          "description": "Number of clicks on the business profile: website clicks, calls and direction requests combined.",
           "aggregation": "SUM",
           "calculated": true,
           "formula": "(Website clicks + Call clicks) + Direction requests"
@@ -724,7 +710,7 @@
           "label": "Impressions",
           "kind": "metric",
           "type": "number",
-          "description": "Number of times the business profile appeared in Google Search and Maps results. (Desktop + Mobile)",
+          "description": "Number of times the business profile appeared in Google Search and Maps, on desktop and mobile.",
           "aggregation": "SUM",
           "calculated": true,
           "formula": "Search impressions + Maps impressions"
@@ -843,9 +829,37 @@
           "label": "Branded search",
           "kind": "dimension",
           "type": "boolean",
-          "description": "True when the search keyword contains the location title (case-insensitive). Requires locationName in the same query."
+          "description": "True when the search keyword includes the location's name (not case-sensitive)."
         }
       ]
+    },
+    {
+      "name": "ratingSnapshots",
+      "label": "Rating history",
+      "description": "Your Google rating and total review count, recorded every day.",
+      "metrics": [
+        {
+          "name": "googleBusinessProfile.profileRating",
+          "label": "Profile rating",
+          "kind": "metric",
+          "type": "number",
+          "description": "Rating for the Profile as shown on Google, as recorded on the latest day in the date range (history is kept daily).",
+          "aggregation": "AVG",
+          "format": {
+            "type": "decimal",
+            "precision": 1
+          }
+        },
+        {
+          "name": "googleBusinessProfile.totalReviewCount",
+          "label": "Total reviews",
+          "kind": "metric",
+          "type": "number",
+          "description": "Total number of reviews on the location as reported by Google Business Profile, as recorded on the latest day in the date range (history is kept daily).",
+          "aggregation": "MAX"
+        }
+      ],
+      "dimensions": []
     }
   ]
 }

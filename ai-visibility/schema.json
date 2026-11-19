@@ -1,7 +1,7 @@
 {
   "source": "aiVisibility",
   "name": "AI Visibility",
-  "schemaVersion": "2.7.0",
+  "schemaVersion": "2.7.3",
   "entities": [
     {
       "name": "answers",
@@ -10,7 +10,7 @@
       "metrics": [
         {
           "name": "aiVisibility.answers.answerCount",
-          "label": "Answer count",
+          "label": "Tracked answers",
           "kind": "metric",
           "type": "integer",
           "description": "Number of AI engine answers for the selected filters.",
@@ -18,7 +18,7 @@
         },
         {
           "name": "aiVisibility.answers.mentionedCount",
-          "label": "Mentioned answers",
+          "label": "Brand-mentioned answers",
           "kind": "metric",
           "type": "integer",
           "description": "Answers that mention the brand (numerator for namedRate rollups).",
@@ -26,7 +26,7 @@
         },
         {
           "name": "aiVisibility.answers.citedCount",
-          "label": "Cited answers",
+          "label": "Answers citing owned domains",
           "kind": "metric",
           "type": "integer",
           "description": "Answers citing owned domains (numerator for citedRate rollups).",
@@ -34,19 +34,23 @@
         },
         {
           "name": "aiVisibility.answers.namedRate",
-          "label": "Named rate",
+          "label": "Brand mention rate",
           "kind": "metric",
           "type": "number",
           "description": "Share of answers mentioning the brand (0–100). Weighted ratio: sum(mentionedCount)/sum(answerCount).",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Brand-mentioned answers ÷ Tracked answers) × 100"
         },
         {
           "name": "aiVisibility.answers.citedRate",
-          "label": "Cited rate",
+          "label": "Owned-domain citation rate",
           "kind": "metric",
           "type": "number",
           "description": "Share of answers citing owned domains (0–100). Weighted ratio: sum(citedCount)/sum(answerCount).",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Answers citing owned domains ÷ Tracked answers) × 100"
         },
         {
           "name": "aiVisibility.answers.avgCitedPosition",
@@ -58,7 +62,7 @@
         },
         {
           "name": "aiVisibility.answers.distinctSources",
-          "label": "Distinct sources",
+          "label": "Distinct cited domains (answers)",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct citation domains across answers for the prompt.",
@@ -66,7 +70,7 @@
         },
         {
           "name": "aiVisibility.answers.promptCount",
-          "label": "Prompt count",
+          "label": "Distinct prompts answered",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct tracked prompts in the filtered answers.",
@@ -76,28 +80,28 @@
       "dimensions": [
         {
           "name": "aiVisibility.answers.date",
-          "label": "Date",
+          "label": "Answer run date",
           "kind": "dimension",
           "type": "time",
           "description": "Run date (warehouse partition key)."
         },
         {
           "name": "aiVisibility.answers.id",
-          "label": "Answer ID",
+          "label": "Answer row ID",
           "kind": "dimension",
           "type": "string",
           "description": "Stable 16-character hex id derived from the run key (promptId#platform#date). Join claims via claim.answerId = answers.id."
         },
         {
           "name": "aiVisibility.answers.promptId",
-          "label": "Prompt ID",
+          "label": "Tracked prompt",
           "kind": "dimension",
           "type": "string",
           "description": "Tracked prompt that produced this answer."
         },
         {
           "name": "aiVisibility.answers.platform",
-          "label": "Platform",
+          "label": "Answer AI engine",
           "kind": "dimension",
           "type": "string",
           "description": "AI engine that generated the answer (for example ChatGPT, Claude, or Gemini)."
@@ -118,7 +122,7 @@
         },
         {
           "name": "aiVisibility.answers.excerpt",
-          "label": "Excerpt",
+          "label": "Answer preview excerpt",
           "kind": "dimension",
           "type": "string",
           "description": "Short preview of the answer text shown in list views."
@@ -191,7 +195,7 @@
           "label": "Related queries JSON",
           "kind": "dimension",
           "type": "string",
-          "description": "JSON array of related follow-up query strings (e.g. Perplexity)."
+          "description": "JSON array of related follow-up query strings, where the platform returns them."
         },
         {
           "name": "aiVisibility.answers.citationPills",
@@ -202,7 +206,7 @@
         },
         {
           "name": "aiVisibility.answers.clientName",
-          "label": "Client name",
+          "label": "Client on answer rows",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -216,7 +220,7 @@
       "metrics": [
         {
           "name": "aiVisibility.sources.citations",
-          "label": "Citations",
+          "label": "Citations to domain",
           "kind": "metric",
           "type": "integer",
           "description": "Total citation count for the domain in the period.",
@@ -248,7 +252,7 @@
         },
         {
           "name": "aiVisibility.sources.lastSeenMax",
-          "label": "Last seen",
+          "label": "Latest domain citation (max)",
           "kind": "metric",
           "type": "time",
           "description": "Most recent citation time for the domain (use instead of grouping by lastSeen).",
@@ -256,7 +260,7 @@
         },
         {
           "name": "aiVisibility.sources.avgPosition",
-          "label": "Avg position",
+          "label": "Avg citation rank (domain)",
           "kind": "metric",
           "type": "number",
           "description": "Average citation position for this domain in AI answers (lower is better).",
@@ -274,7 +278,7 @@
       "dimensions": [
         {
           "name": "aiVisibility.sources.date",
-          "label": "Date",
+          "label": "Sources rollup date",
           "kind": "dimension",
           "type": "time",
           "description": "Run date for citation aggregates."
@@ -288,28 +292,28 @@
         },
         {
           "name": "aiVisibility.sources.domain",
-          "label": "Domain",
+          "label": "Citation domain",
           "kind": "dimension",
           "type": "string",
           "description": "Citation domain influencing AI answers."
         },
         {
           "name": "aiVisibility.sources.ownership",
-          "label": "Ownership",
+          "label": "Domain ownership",
           "kind": "dimension",
           "type": "string",
           "description": "Whether the domain is owned by the brand or an earned third-party source."
         },
         {
           "name": "aiVisibility.sources.category",
-          "label": "Category",
+          "label": "Domain category",
           "kind": "dimension",
           "type": "string",
           "description": "Domain category (for example news, review, or social)."
         },
         {
           "name": "aiVisibility.sources.platforms",
-          "label": "Platforms",
+          "label": "Engines citing domain",
           "kind": "dimension",
           "type": "string",
           "description": "AI engines where this domain was cited."
@@ -337,14 +341,14 @@
         },
         {
           "name": "aiVisibility.sources.lastSeen",
-          "label": "Last seen",
+          "label": "Domain last cited at",
           "kind": "dimension",
           "type": "time",
           "description": "Most recent time this domain was cited."
         },
         {
           "name": "aiVisibility.sources.clientName",
-          "label": "Client name",
+          "label": "Client on source domains",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -376,7 +380,7 @@
       "dimensions": [
         {
           "name": "aiVisibility.retrieval.date",
-          "label": "Date",
+          "label": "Retrieval query date",
           "kind": "dimension",
           "type": "time",
           "description": "Run date for retrieval query aggregates."
@@ -404,7 +408,7 @@
         },
         {
           "name": "aiVisibility.retrieval.platforms",
-          "label": "Platforms",
+          "label": "Engines on retrieval query",
           "kind": "dimension",
           "type": "string",
           "description": "AI engines that issued this retrieval query."
@@ -418,7 +422,7 @@
         },
         {
           "name": "aiVisibility.retrieval.clientName",
-          "label": "Client name",
+          "label": "Client on retrieval queries",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -432,7 +436,7 @@
       "metrics": [
         {
           "name": "aiVisibility.claim.claimCount",
-          "label": "Claim count",
+          "label": "Claim rows",
           "kind": "metric",
           "type": "integer",
           "description": "Number of claim rows.",
@@ -440,7 +444,7 @@
         },
         {
           "name": "aiVisibility.claim.answerCount",
-          "label": "Answer count",
+          "label": "Distinct answers making claim",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct answers that made the claim.",
@@ -448,7 +452,7 @@
         },
         {
           "name": "aiVisibility.claim.promptCount",
-          "label": "Prompt count",
+          "label": "Distinct prompts with claim",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct prompts whose answers made the claim.",
@@ -456,7 +460,7 @@
         },
         {
           "name": "aiVisibility.claim.claimsOk",
-          "label": "Accurate claims",
+          "label": "Accurate claim rows",
           "kind": "metric",
           "type": "integer",
           "description": "Claims graded accurate vs the client profile.",
@@ -464,7 +468,7 @@
         },
         {
           "name": "aiVisibility.claim.claimsConflict",
-          "label": "Conflict claims",
+          "label": "Conflict claim rows",
           "kind": "metric",
           "type": "integer",
           "description": "Claims that conflict with the client profile (wrong claims).",
@@ -472,7 +476,7 @@
         },
         {
           "name": "aiVisibility.claim.claimsUnverified",
-          "label": "Unverified claims",
+          "label": "Unverified claim rows",
           "kind": "metric",
           "type": "integer",
           "description": "Claims that could not be verified against the profile.",
@@ -480,11 +484,13 @@
         },
         {
           "name": "aiVisibility.claim.accuracyRate",
-          "label": "Accuracy rate",
+          "label": "Claim accuracy rate",
           "kind": "metric",
           "type": "number",
           "description": "Share of claims graded accurate (0–100).",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Accurate claim rows ÷ Claim rows) × 100"
         },
         {
           "name": "aiVisibility.claim.coveragePrompts",
@@ -514,35 +520,35 @@
       "dimensions": [
         {
           "name": "aiVisibility.claim.date",
-          "label": "Date",
+          "label": "Claim run date",
           "kind": "dimension",
           "type": "time",
           "description": "Answer run date (shared AI Visibility time dimension)."
         },
         {
           "name": "aiVisibility.claim.answerId",
-          "label": "Answer ID",
+          "label": "Answer that made claim",
           "kind": "dimension",
           "type": "string",
           "description": "Answer that made the claim."
         },
         {
           "name": "aiVisibility.claim.promptId",
-          "label": "Prompt ID",
+          "label": "Prompt for claim answer",
           "kind": "dimension",
           "type": "string",
           "description": "Tracked prompt for the answer."
         },
         {
           "name": "aiVisibility.claim.platform",
-          "label": "Platform",
+          "label": "Claim answer engine",
           "kind": "dimension",
           "type": "string",
           "description": "AI engine."
         },
         {
           "name": "aiVisibility.claim.claimId",
-          "label": "Claim ID",
+          "label": "Claim row ID",
           "kind": "dimension",
           "type": "string",
           "description": "Stable claim id per answer and statement."
@@ -563,7 +569,7 @@
         },
         {
           "name": "aiVisibility.claim.claimGroupLabel",
-          "label": "Claim group label",
+          "label": "Claim group title",
           "kind": "dimension",
           "type": "string",
           "description": "Display label for the claim group."
@@ -584,7 +590,7 @@
         },
         {
           "name": "aiVisibility.claim.excerpt",
-          "label": "Excerpt",
+          "label": "Claim quote excerpt",
           "kind": "dimension",
           "type": "string",
           "description": "Quote from the answer prose."
@@ -626,7 +632,7 @@
         },
         {
           "name": "aiVisibility.claim.competitorDomain",
-          "label": "Competitor domain",
+          "label": "Comparison competitor domain",
           "kind": "dimension",
           "type": "string",
           "description": "Competitor primary domain."
@@ -640,7 +646,7 @@
         },
         {
           "name": "aiVisibility.claim.clientName",
-          "label": "Client name",
+          "label": "Client on claim rows",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -654,7 +660,7 @@
       "metrics": [
         {
           "name": "aiVisibility.claimSources.claimCount",
-          "label": "Claim count",
+          "label": "Claim source rows",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct claims the pages support.",
@@ -664,56 +670,56 @@
       "dimensions": [
         {
           "name": "aiVisibility.claimSources.date",
-          "label": "Date",
+          "label": "Claim source date",
           "kind": "dimension",
           "type": "time",
           "description": "Answer run date."
         },
         {
           "name": "aiVisibility.claimSources.answerId",
-          "label": "Answer ID",
+          "label": "Answer for source passage",
           "kind": "dimension",
           "type": "string",
           "description": "Answer for the claim."
         },
         {
           "name": "aiVisibility.claimSources.promptId",
-          "label": "Prompt ID",
+          "label": "Prompt for source passage",
           "kind": "dimension",
           "type": "string",
           "description": "Prompt for the answer."
         },
         {
           "name": "aiVisibility.claimSources.platform",
-          "label": "Platform",
+          "label": "Claim source engine",
           "kind": "dimension",
           "type": "string",
           "description": "AI engine."
         },
         {
           "name": "aiVisibility.claimSources.claimId",
-          "label": "Claim ID",
+          "label": "Linked claim ID",
           "kind": "dimension",
           "type": "string",
           "description": "Claim this passage supports."
         },
         {
           "name": "aiVisibility.claimSources.claimGroupId",
-          "label": "Claim group ID",
+          "label": "Source claim group ID",
           "kind": "dimension",
           "type": "string",
           "description": "Claim group id."
         },
         {
           "name": "aiVisibility.claimSources.claimGroupLabel",
-          "label": "Claim group label",
+          "label": "Source claim group title",
           "kind": "dimension",
           "type": "string",
           "description": "Claim group label."
         },
         {
           "name": "aiVisibility.claimSources.claimType",
-          "label": "Claim type",
+          "label": "Source claim type",
           "kind": "dimension",
           "type": "string",
           "description": "Claim type for the group."
@@ -727,7 +733,7 @@
         },
         {
           "name": "aiVisibility.claimSources.domain",
-          "label": "Domain",
+          "label": "Passage domain",
           "kind": "dimension",
           "type": "string",
           "description": "Page domain."
@@ -776,7 +782,7 @@
         },
         {
           "name": "aiVisibility.claimSources.clientName",
-          "label": "Client name",
+          "label": "Client on claim sources",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -822,7 +828,7 @@
         },
         {
           "name": "aiVisibility.competitors.avgPosition",
-          "label": "Avg position",
+          "label": "Avg citation rank (competitor)",
           "kind": "metric",
           "type": "number",
           "description": "Average citation position when this entity is cited (lower is better).",
@@ -848,7 +854,7 @@
       "dimensions": [
         {
           "name": "aiVisibility.competitors.date",
-          "label": "Date",
+          "label": "Competitor metric date",
           "kind": "dimension",
           "type": "time",
           "description": "Run date for competitor aggregates."
@@ -869,7 +875,7 @@
         },
         {
           "name": "aiVisibility.competitors.domain",
-          "label": "Domain",
+          "label": "Competitor domain",
           "kind": "dimension",
           "type": "string",
           "description": "Primary domain associated with the competitor."
@@ -897,7 +903,7 @@
         },
         {
           "name": "aiVisibility.competitors.clientName",
-          "label": "Client name",
+          "label": "Client on competitor rows",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."
@@ -911,7 +917,7 @@
       "metrics": [
         {
           "name": "aiVisibility.overview.answerCount",
-          "label": "Answer count",
+          "label": "Overview answer total",
           "kind": "metric",
           "type": "integer",
           "description": "Number of AI engine answers for the selected filters.",
@@ -919,7 +925,7 @@
         },
         {
           "name": "aiVisibility.overview.mentionedCount",
-          "label": "Mentioned answers",
+          "label": "Overview mentioned-answer total",
           "kind": "metric",
           "type": "integer",
           "description": "Answers that mention the brand (numerator for namedRate rollups).",
@@ -927,7 +933,7 @@
         },
         {
           "name": "aiVisibility.overview.citedCount",
-          "label": "Cited answers",
+          "label": "Overview owned-citation answer total",
           "kind": "metric",
           "type": "integer",
           "description": "Answers citing owned domains (numerator for citedRate rollups).",
@@ -935,23 +941,27 @@
         },
         {
           "name": "aiVisibility.overview.namedRate",
-          "label": "Named rate",
+          "label": "Overview brand mention rate",
           "kind": "metric",
           "type": "number",
           "description": "Share of answers mentioning the brand (0–100). Weighted ratio: sum(mentionedCount)/sum(answerCount).",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Overview mentioned-answer total ÷ Overview answer total) × 100"
         },
         {
           "name": "aiVisibility.overview.citedRate",
-          "label": "Cited rate",
+          "label": "Overview owned-citation rate",
           "kind": "metric",
           "type": "number",
           "description": "Share of answers citing owned domains (0–100). Weighted ratio: sum(citedCount)/sum(answerCount).",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "(Overview owned-citation answer total ÷ Overview answer total) × 100"
         },
         {
           "name": "aiVisibility.overview.distinctSources",
-          "label": "Distinct sources",
+          "label": "Distinct cited domains (overview)",
           "kind": "metric",
           "type": "integer",
           "description": "Distinct citation domains across answers.",
@@ -983,7 +993,7 @@
         },
         {
           "name": "aiVisibility.overview.claimsOk",
-          "label": "Accurate claims",
+          "label": "Accurate claims in period",
           "kind": "metric",
           "type": "integer",
           "description": "Claims graded accurate in the selected date range.",
@@ -991,7 +1001,7 @@
         },
         {
           "name": "aiVisibility.overview.claimsConflict",
-          "label": "Conflict claims",
+          "label": "Conflict claims in period",
           "kind": "metric",
           "type": "integer",
           "description": "Claims with accuracy conflict in the selected date range.",
@@ -999,7 +1009,7 @@
         },
         {
           "name": "aiVisibility.overview.claimsUnverified",
-          "label": "Unverified claims",
+          "label": "Unverified claims in period",
           "kind": "metric",
           "type": "integer",
           "description": "Unverified claims in the selected date range.",
@@ -1007,11 +1017,11 @@
         },
         {
           "name": "aiVisibility.overview.accuracyRate",
-          "label": "Accuracy rate",
+          "label": "Period claim accuracy rate",
           "kind": "metric",
           "type": "number",
-          "description": "Share of claims graded accurate in range (0–100).",
-          "aggregation": "SUM"
+          "description": "Share of claims graded accurate in range (0–100). Overview entity does not expose claim numerators for weighted period rollup; value comes from the adapter aggregate.",
+          "aggregation": "AVG"
         },
         {
           "name": "aiVisibility.overview.shareOfVoice",
@@ -1019,11 +1029,11 @@
           "kind": "metric",
           "type": "number",
           "description": "Brand mention slots as a share of all brand and competitor mention slots in answers (0–100).",
-          "aggregation": "SUM"
+          "aggregation": "AVG"
         },
         {
           "name": "aiVisibility.overview.citations",
-          "label": "Citations",
+          "label": "All-domain citation total",
           "kind": "metric",
           "type": "integer",
           "description": "Total citation count across all domains.",
@@ -1033,28 +1043,28 @@
       "dimensions": [
         {
           "name": "aiVisibility.overview.date",
-          "label": "Date",
+          "label": "Overview period date",
           "kind": "dimension",
           "type": "time",
           "description": "Run date for overview aggregates."
         },
         {
           "name": "aiVisibility.overview.platform",
-          "label": "Platform",
+          "label": "Overview breakdown engine",
           "kind": "dimension",
           "type": "string",
           "description": "AI engine for platform-level overview breakdowns."
         },
         {
           "name": "aiVisibility.overview.ownership",
-          "label": "Ownership",
+          "label": "Overview ownership breakdown",
           "kind": "dimension",
           "type": "string",
           "description": "Citation ownership (owned vs earned) for overview breakdowns."
         },
         {
           "name": "aiVisibility.overview.category",
-          "label": "Category",
+          "label": "Overview category breakdown",
           "kind": "dimension",
           "type": "string",
           "description": "Citation domain category for overview breakdowns."
@@ -1068,7 +1078,7 @@
         },
         {
           "name": "aiVisibility.overview.clientName",
-          "label": "Client name",
+          "label": "Client on overview rollups",
           "kind": "dimension",
           "type": "string",
           "description": "Client display name (account-level queries only)."

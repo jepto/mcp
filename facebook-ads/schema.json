@@ -1,7 +1,7 @@
 {
   "source": "facebookAds",
   "name": "Facebook Ads",
-  "schemaVersion": "1.2.5",
+  "schemaVersion": "1.2.6",
   "entities": [
     {
       "name": "insights",
@@ -122,10 +122,10 @@
         },
         {
           "name": "facebookAds.cpp",
-          "label": "Cost per purchase",
+          "label": "Cost per action",
           "kind": "metric",
           "type": "number",
-          "description": "The average cost for each purchase attributed to your ads.",
+          "description": "Average cost for each action on your ads (spend ÷ actions). Use action breakdowns for purchase-specific costs.",
           "aggregation": "AVG",
           "format": {
             "type": "currency",
@@ -168,10 +168,10 @@
         },
         {
           "name": "facebookAds.websiteCtr",
-          "label": "Website CTR",
+          "label": "CTR (all clicks)",
           "kind": "metric",
           "type": "number",
-          "description": "The percentage of impressions that resulted in a link click to your website.",
+          "description": "Percentage of impressions that resulted in any click. Matches CTR; based on all clicks, not link clicks only.",
           "aggregation": "AVG",
           "format": {
             "type": "percentage",
@@ -232,17 +232,17 @@
         },
         {
           "name": "facebookAds.adGroupName",
-          "label": "Ad group",
+          "label": "Ad set",
           "kind": "dimension",
           "type": "string",
-          "description": "Name of the ad group (adset)."
+          "description": "Name of the ad set in Meta Ads Manager."
         },
         {
           "name": "facebookAds.adGroupId",
-          "label": "Ad group ID",
+          "label": "Ad set ID",
           "kind": "dimension",
           "type": "string",
-          "description": "Unique identifier for the ad group (adset) in Facebook Ads Manager."
+          "description": "Unique identifier for the ad set in Meta Ads Manager."
         },
         {
           "name": "facebookAds.adName",

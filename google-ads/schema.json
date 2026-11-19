@@ -24,7 +24,7 @@
         },
         {
           "name": "googleAds.spend",
-          "label": "Cost",
+          "label": "Cost (spend)",
           "kind": "metric",
           "type": "number",
           "description": "Total amount spent on your ads during the reporting period, in your account currency.",
@@ -60,7 +60,7 @@
             "precision": 2
           },
           "calculated": true,
-          "formula": "(Cost ÷ Impressions) × 1,000"
+          "formula": "(Cost (spend) ÷ Impressions) × 1,000"
         },
         {
           "name": "googleAds.cpc",
@@ -74,7 +74,21 @@
             "precision": 2
           },
           "calculated": true,
-          "formula": "Cost ÷ Clicks"
+          "formula": "Cost (spend) ÷ Clicks"
+        },
+        {
+          "name": "googleAds.averageCpc",
+          "label": "Average CPC",
+          "kind": "metric",
+          "type": "number",
+          "description": "Average cost per click: spend divided by clicks, in your account currency.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "currency",
+            "precision": 2
+          },
+          "calculated": true,
+          "formula": "Cost (spend) ÷ Clicks"
         },
         {
           "name": "googleAds.costPerConversion",
@@ -88,7 +102,7 @@
             "precision": 2
           },
           "calculated": true,
-          "formula": "Cost ÷ Conversions"
+          "formula": "Cost (spend) ÷ Conversions"
         },
         {
           "name": "googleAds.conversionValue",
@@ -107,7 +121,7 @@
           "label": "ROAS",
           "kind": "metric",
           "type": "number",
-          "description": "Return on ad spend for attributed revenue or value divided by spend.",
+          "description": "Return on ad spend: conversion value divided by spend.",
           "aggregation": "AVG",
           "format": {
             "type": "decimal",
@@ -115,7 +129,7 @@
             "suffix": "×"
           },
           "calculated": true,
-          "formula": "Conversion value ÷ Cost"
+          "formula": "Conversion value ÷ Cost (spend)"
         },
         {
           "name": "googleAds.viewThroughConversions",
@@ -146,6 +160,78 @@
           },
           "calculated": true,
           "formula": "Conversions ÷ Clicks"
+        },
+        {
+          "name": "googleAds.searchImpressionShare",
+          "label": "Search impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Impressions your Search ads received, as a share of the impressions they were eligible to get.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.searchTopImpressionShare",
+          "label": "Search top impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of eligible impressions where your ad showed anywhere above the organic search results.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.searchAbsoluteTopImpressionShare",
+          "label": "Search abs. top impression share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of eligible impressions where your ad showed as the very first ad above the organic search results.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.searchClickShare",
+          "label": "Search click share",
+          "kind": "metric",
+          "type": "number",
+          "description": "Clicks your Search ads received, as a share of the clicks they could have received.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.searchBudgetLostImpressionShare",
+          "label": "Search budget lost IS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of eligible Search impressions your ads missed because the budget ran out.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
+        },
+        {
+          "name": "googleAds.searchRankLostImpressionShare",
+          "label": "Search rank lost IS",
+          "kind": "metric",
+          "type": "number",
+          "description": "Share of eligible Search impressions your ads missed because of low Ad Rank.",
+          "aggregation": "AVG",
+          "format": {
+            "type": "percentage",
+            "precision": 2
+          }
         }
       ],
       "dimensions": [
@@ -168,7 +254,7 @@
           "label": "Campaign ID",
           "kind": "dimension",
           "type": "number",
-          "description": "Unique identifier for the campaign."
+          "description": "Unique ID for the campaign. Stays the same when the campaign is renamed."
         },
         {
           "name": "googleAds.device",
@@ -539,7 +625,7 @@
           "label": "Landing page URL",
           "kind": "dimension",
           "type": "string",
-          "description": "The destination URL for the landing page before any URL expansion by Google."
+          "description": "Landing page URL set on the ad, before Google expands it. Ad spend by landing page uses this URL."
         },
         {
           "name": "googleAds.detailPlacement",

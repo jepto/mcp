@@ -6,7 +6,7 @@ Connect LinkedIn Ads to Claude, ChatGPT, Cursor and any other MCP client with th
 https://mcp.jepto.com
 ```
 
-There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your LinkedIn Ads data comes from the LinkedIn Ads account you've connected in Jepto, with the same 98 metrics and 26 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
+There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your LinkedIn Ads data comes from the LinkedIn Ads account you've connected in Jepto, with the same 96 metrics and 25 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
 
 ## What you can ask
 
@@ -14,13 +14,13 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Which job functions and seniorities clicked most last month?"
 - "How many Lead Gen Form opens turned into submissions this month?"
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 LinkedIn Ads is read-only through the MCP: the assistant can query your data but can't change anything in LinkedIn Ads.
 
 ## Fields
 
-124 fields (98 metrics, 26 dimensions), from version 1.0.3 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+121 fields (96 metrics, 25 dimensions), from version 1.0.4 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Metrics
 
@@ -28,12 +28,10 @@ LinkedIn Ads is read-only through the MCP: the assistant can query your data but
 |---|---|---|---|---|
 | `linkedInAds.impressions` | Impressions | SUM |  | Number of times your ad was shown (or messages sent for Sponsored Messaging). |
 | `linkedInAds.clicks` | Clicks | SUM |  | Chargeable clicks on your LinkedIn ads during the reporting period. |
-| `linkedInAds.costInLocalCurrency` | Spend | SUM | Currency | Total amount spent in your account currency during the reporting period. |
 | `linkedInAds.spend` | Spend | SUM | Currency | Total amount spent in your account currency during the reporting period. |
 | `linkedInAds.costInUsd` | Cost (USD) | SUM | Currency | Total amount spent in USD during the reporting period. |
 | `linkedInAds.costPerQualifiedLead` | Cost per qualified lead | AVG | Currency | Average spend per qualified lead: spend ÷ qualified leads. |
 | `linkedInAds.conversions` | Website conversions | SUM |  | Number of website conversion events attributed to your ads. |
-| `linkedInAds.externalWebsiteConversions` | Website conversions | SUM |  | Number of website conversion events attributed to your ads. |
 | `linkedInAds.externalWebsitePostClickConversions` | Post-click conversions | SUM |  | Website conversions attributed to clicks on your ads. |
 | `linkedInAds.externalWebsitePostViewConversions` | Post-view conversions | SUM |  | Website conversions attributed to viewing your ads without clicking. |
 | `linkedInAds.conversionValueInLocalCurrency` | Conversion value | SUM | Currency | Total revenue attributed to conversion events in your account currency. |
@@ -129,7 +127,6 @@ LinkedIn Ads is read-only through the MCP: the assistant can query your data but
 
 | Field | Label | Type | Description |
 |---|---|---|---|
-| `linkedInAds.pivotValues` | Breakdown values | string[] | Values identifying the breakdown category for this row (e.g. campaign name, country, device). |
 | `linkedInAds.date` | Date | string | Date when the ad metrics were recorded. |
 | `linkedInAds.account` | Account | string | LinkedIn ad account associated with these results. |
 | `linkedInAds.campaignId` | Campaign | string | Name of the campaign in LinkedIn Campaign Manager. |

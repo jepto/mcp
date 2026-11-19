@@ -6,7 +6,7 @@ Connect Google Analytics 4 to Claude, ChatGPT, Cursor and any other MCP client w
 https://mcp.jepto.com
 ```
 
-There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your GA4 data comes from the GA4 account you've connected in Jepto, with the same 30 metrics and 28 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
+There's nothing to install: Jepto hosts the server and you sign in with OAuth. Your GA4 data comes from the GA4 account you've connected in Jepto, with the same 31 metrics and 29 dimensions you get in Jepto Reports and Data Chat. [Connection steps for each client](https://github.com/jepto/mcp#connect) are in the main README.
 
 ## What you can ask
 
@@ -15,17 +15,17 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "What's my purchase revenue by session source for the last 30 days?"
 - "Which cities have the highest engagement rate on mobile?"
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 Google Analytics 4 is read-only through the MCP: the assistant can query your data but can't change anything in GA4.
 
 ## Example query
 
-This is the kind of `Analytics_Query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
+This is the kind of `analytics_query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
 
 ```json
 {
-  "clientId": "<clientId from Client_List>",
+  "clientId": "<clientId from client_list>",
   "measures": [
     "googleAnalytics4.sessions",
     "googleAnalytics4.engagementRate",
@@ -45,17 +45,17 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ## Fields
 
-58 fields (30 metrics, 28 dimensions), from version 1.1.2 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+60 fields (31 metrics, 29 dimensions), from version 1.1.2 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Metrics
 
 | Field | Label | Aggregation | Format | Description |
 |---|---|---|---|---|
-| `googleAnalytics4.activeUsers` | Active users | MAX |  | Active users. Users who had an engaged session, or when Analytics collected first_visit or engagement_time from a page. |
-| `googleAnalytics4.totalUsers` | Total users | MAX |  | Users who logged at least one event, new or returning. |
+| `googleAnalytics4.activeUsers` | Active users | MAX |  | Users who had an engaged session, or who had a first visit or engagement time recorded. This is the Users figure in standard GA4 reports. |
+| `googleAnalytics4.totalUsers` | Total users | MAX |  | Users who logged at least one event in the period, new or returning. Matches the Total users figure in GA4 Explorations. |
 | `googleAnalytics4.newUsers` | New users | MAX |  | Users who interacted with your site or app for the first time. |
 | `googleAnalytics4.sessions` | Sessions | SUM |  | Periods when users are actively engaged with your site or app. |
-| `googleAnalytics4.sessionsPerUser` | Sessions per user | SUM |  | Average number of sessions per user. |
+| `googleAnalytics4.sessionsPerUser` | Sessions per user | Calculated: Sessions ÷ Total users |  | Average number of sessions per user. |
 | `googleAnalytics4.engagedSessions` | Engaged sessions | SUM |  | Sessions that lasted longer than 10 seconds, had a conversion event, or had at least 2 page views. |
 | `googleAnalytics4.screenPageViews` | Page views | SUM |  | Total count of screen or page views recorded. |
 | `googleAnalytics4.eventCount` | Events | SUM |  | Count of event instances recorded. |
@@ -63,16 +63,17 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `googleAnalytics4.itemViews` | Item views | SUM |  | Total count of item views recorded. |
 | `googleAnalytics4.addToCarts` | Add-to-carts | SUM |  | Number of times users added items to their shopping cart. |
 | `googleAnalytics4.itemsPurchased` | Items purchased | SUM |  | Number of items purchased by users. |
+| `googleAnalytics4.transactions` | Transactions | SUM |  | Count of purchase transactions. |
 | `googleAnalytics4.purchaseRevenue` | Purchase revenue | SUM | Currency | Total revenue generated from purchases, in your account currency. |
 | `googleAnalytics4.totalRevenue` | Total revenue | SUM | Currency | Total revenue across all transaction types recorded, in your account currency. |
-| `googleAnalytics4.transactionsPerPurchaser` | Transactions per purchaser | SUM |  | Average number of transactions per user who made a purchase. |
-| `googleAnalytics4.averagePurchaseRevenue` | Avg. purchase revenue | SUM | Currency | Average revenue generated per purchase transaction. |
-| `googleAnalytics4.purchaserRate` | Purchaser rate | AVG | Percentage | Percentage of active users who made a purchase: purchasers ÷ active users. |
+| `googleAnalytics4.transactionsPerPurchaser` | Transactions per purchaser | AVG |  | Average number of transactions per user who made a purchase. |
+| `googleAnalytics4.averagePurchaseRevenue` | Avg. purchase revenue | Calculated: Purchase revenue ÷ Transactions | Currency | Average revenue generated per purchase transaction. |
+| `googleAnalytics4.purchaserRate` | Purchaser rate | Calculated: Transactions ÷ Active users | Percentage | Percentage of active users who made a purchase: purchasers ÷ active users. |
 | `googleAnalytics4.conversions` | Conversions | SUM |  | Number of completed conversion actions you are measuring (e.g. purchases, sign-ups, leads). |
-| `googleAnalytics4.engagementRate` | Engagement rate | AVG | Percentage | Percentage of sessions that were engaged (lasted 10+ seconds, had a conversion, or had 2+ page views): engaged sessions ÷ total sessions. |
-| `googleAnalytics4.userEngagementDuration` | User engagement duration | AVG | Decimal (×) | Total time users spent engaged with your site or app, in seconds. |
-| `googleAnalytics4.averageSessionDuration` | Avg. session duration | AVG | Decimal (×) | Average duration of each session in seconds. |
-| `googleAnalytics4.bounceRate` | Bounce rate | AVG | Percentage | Percentage of sessions that were not engaged sessions: non-engaged sessions ÷ total sessions. |
+| `googleAnalytics4.engagementRate` | Engagement rate | Calculated: Engaged sessions ÷ Sessions | Percentage | Percentage of sessions that were engaged (lasted 10+ seconds, had a conversion, or had 2+ page views): engaged sessions ÷ total sessions. |
+| `googleAnalytics4.userEngagementDuration` | User engagement duration | SUM | duration | Total time users spent engaged with your site or app, in seconds. |
+| `googleAnalytics4.averageSessionDuration` | Avg. session duration | AVG | duration | Average duration of each session in seconds. |
+| `googleAnalytics4.bounceRate` | Bounce rate | Calculated: (Sessions − Engaged sessions) ÷ Sessions | Percentage | Percentage of sessions that weren't engaged: non-engaged sessions ÷ total sessions. |
 | `googleAnalytics4.totalAdCost` | Total ad cost | SUM | Currency | Total amount spent on linked ads (e.g. Google Ads), in your account currency. |
 | `googleAnalytics4.advertiserAdClicks` | Ad clicks | SUM |  | Number of clicks on your ads. |
 | `googleAnalytics4.advertiserAdImpressions` | Ad impressions | SUM |  | Number of times your ads were displayed to users. |
@@ -108,32 +109,13 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `googleAnalytics4.sessionDefaultChannelGroup` | Default channel group | string | Marketing channel group for the session (e.g. Paid Search, Organic). |
 | `googleAnalytics4.firstUserSource` | First user source | string | Traffic source that first acquired the user (e.g. google, direct). |
 | `googleAnalytics4.firstUserMedium` | First user medium | string | Traffic medium through which the user was first acquired (e.g. cpc, organic). |
+| `googleAnalytics4.firstUserDefaultChannelGroup` | First user default channel group | string | Channel group that first brought the user to your site or app (e.g. Direct, Organic Search, Paid Search). |
 | `googleAnalytics4.currencyCode` | Currency code | string | Currency code for the transaction data. |
 | `googleAnalytics4.eventName` | Event name | string | Name of the collected event. |
 | `googleAnalytics4.pagePath` | Page path | string | Path portion of the page URL. |
 | `googleAnalytics4.pageTitle` | Page title | string | HTML document title of the page as collected by Google Analytics. |
-| `googleAnalytics4.landingPage` | Landing page | string | Page path where the session began. |
+| `googleAnalytics4.landingPage` | Landing page | string | Page path where the session began. GA4 doesn't assign ad spend to landing pages, so cost and ROAS by landing page aren't available. |
 | `googleAnalytics4.unifiedPagePathScreen` | Page path / screen name | string | Unified path for both web pages and app screens. |
-
-## Cross-platform fields
-
-`unified.*` fields add Google Analytics 4 to totals across all your ad platforms, so one question can cover Google Ads, Meta, Microsoft, LinkedIn and TikTok together.
-
-| Unified field | Label | From |
-|---|---|---|
-| `unified.spend` | Spend | `googleAnalytics4.totalAdCost` |
-| `unified.impressions` | Impressions | `googleAnalytics4.advertiserAdImpressions` |
-| `unified.reach` | Reach | `googleAnalytics4.activeUsers` |
-| `unified.clicks` | Clicks | `googleAnalytics4.advertiserAdClicks` |
-| `unified.ctr` | CTR | `googleAnalytics4.advertiserAdCtr` |
-| `unified.cpc` | CPC | `googleAnalytics4.advertiserAdCostPerClick` |
-| `unified.conversions` | Conversions | `googleAnalytics4.conversions` |
-| `unified.costPerConversion` | Cost per conversion | `googleAnalytics4.adCostPerConversion` |
-| `unified.roas` | ROAS | `googleAnalytics4.returnOnAdSpend` |
-| `unified.date` | Date | `googleAnalytics4.date` |
-| `unified.campaignName` | Campaign | `googleAnalytics4.sessionCampaignName` |
-| `unified.country` | Country | `googleAnalytics4.country` |
-| `unified.device` | Device | `googleAnalytics4.deviceCategory` |
 
 ## Links
 

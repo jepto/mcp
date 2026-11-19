@@ -11,7 +11,7 @@
           "label": "Active users",
           "kind": "metric",
           "type": "number",
-          "description": "Active users. Users who had an engaged session, or when Analytics collected first_visit or engagement_time from a page.",
+          "description": "Users who had an engaged session, or who had a first visit or engagement time recorded. This is the Users figure in standard GA4 reports.",
           "aggregation": "MAX"
         },
         {
@@ -19,7 +19,7 @@
           "label": "Total users",
           "kind": "metric",
           "type": "number",
-          "description": "Users who logged at least one event, new or returning.",
+          "description": "Users who logged at least one event in the period, new or returning. Matches the Total users figure in GA4 Explorations.",
           "aggregation": "MAX"
         },
         {
@@ -44,7 +44,9 @@
           "kind": "metric",
           "type": "number",
           "description": "Average number of sessions per user.",
-          "aggregation": "SUM"
+          "aggregation": "AVG",
+          "calculated": true,
+          "formula": "Sessions ÷ Total users"
         },
         {
           "name": "googleAnalytics4.engagedSessions",
@@ -107,6 +109,14 @@
           "aggregation": "SUM"
         },
         {
+          "name": "googleAnalytics4.transactions",
+          "label": "Transactions",
+          "kind": "metric",
+          "type": "number",
+          "description": "Count of purchase transactions.",
+          "aggregation": "SUM"
+        },
+        {
           "name": "googleAnalytics4.purchaseRevenue",
           "label": "Purchase revenue",
           "kind": "metric",
@@ -136,7 +146,7 @@
           "kind": "metric",
           "type": "number",
           "description": "Average number of transactions per user who made a purchase.",
-          "aggregation": "SUM"
+          "aggregation": "AVG"
         },
         {
           "name": "googleAnalytics4.averagePurchaseRevenue",
@@ -144,11 +154,13 @@
           "kind": "metric",
           "type": "number",
           "description": "Average revenue generated per purchase transaction.",
-          "aggregation": "SUM",
+          "aggregation": "AVG",
           "format": {
             "type": "currency",
             "precision": 2
-          }
+          },
+          "calculated": true,
+          "formula": "Purchase revenue ÷ Transactions"
         },
         {
           "name": "googleAnalytics4.purchaserRate",
@@ -160,7 +172,9 @@
           "format": {
             "type": "percentage",
             "precision": 2
-          }
+          },
+          "calculated": true,
+          "formula": "Transactions ÷ Active users"
         },
         {
           "name": "googleAnalytics4.conversions",
@@ -180,7 +194,9 @@
           "format": {
             "type": "percentage",
             "precision": 2
-          }
+          },
+          "calculated": true,
+          "formula": "Engaged sessions ÷ Sessions"
         },
         {
           "name": "googleAnalytics4.userEngagementDuration",
@@ -188,11 +204,9 @@
           "kind": "metric",
           "type": "number",
           "description": "Total time users spent engaged with your site or app, in seconds.",
-          "aggregation": "AVG",
+          "aggregation": "SUM",
           "format": {
-            "type": "decimal",
-            "precision": 2,
-            "suffix": "×"
+            "type": "duration"
           }
         },
         {
@@ -203,9 +217,7 @@
           "description": "Average duration of each session in seconds.",
           "aggregation": "AVG",
           "format": {
-            "type": "decimal",
-            "precision": 2,
-            "suffix": "×"
+            "type": "duration"
           }
         },
         {
@@ -213,12 +225,14 @@
           "label": "Bounce rate",
           "kind": "metric",
           "type": "number",
-          "description": "Percentage of sessions that were not engaged sessions: non-engaged sessions ÷ total sessions.",
+          "description": "Percentage of sessions that weren't engaged: non-engaged sessions ÷ total sessions.",
           "aggregation": "AVG",
           "format": {
             "type": "percentage",
             "precision": 2
-          }
+          },
+          "calculated": true,
+          "formula": "(Sessions − Engaged sessions) ÷ Sessions"
         },
         {
           "name": "googleAnalytics4.totalAdCost",
@@ -472,6 +486,13 @@
           "description": "Traffic medium through which the user was first acquired (e.g. cpc, organic)."
         },
         {
+          "name": "googleAnalytics4.firstUserDefaultChannelGroup",
+          "label": "First user default channel group",
+          "kind": "dimension",
+          "type": "string",
+          "description": "Channel group that first brought the user to your site or app (e.g. Direct, Organic Search, Paid Search)."
+        },
+        {
           "name": "googleAnalytics4.currencyCode",
           "label": "Currency code",
           "kind": "dimension",
@@ -504,7 +525,7 @@
           "label": "Landing page",
           "kind": "dimension",
           "type": "string",
-          "description": "Page path where the session began."
+          "description": "Page path where the session began. GA4 doesn't assign ad spend to landing pages, so cost and ROAS by landing page aren't available."
         },
         {
           "name": "googleAnalytics4.unifiedPagePathScreen",

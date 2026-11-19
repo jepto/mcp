@@ -14,13 +14,13 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Show reach and frequency by age group for the last 30 days."
 - "Which ads got the most link clicks this week?"
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 Instagram Ads is read-only through the MCP: the assistant can query your data but can't change anything in Instagram Ads.
 
 ## Fields
 
-38 fields (20 metrics, 18 dimensions), from version 1.2.3 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+38 fields (20 metrics, 18 dimensions), from version 1.2.4 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Metrics
 
@@ -55,8 +55,8 @@ Instagram Ads is read-only through the MCP: the assistant can query your data bu
 | `instagramAds.dateStop` | End date | string | End date for the reporting period. |
 | `instagramAds.campaignName` | Campaign | string | Name of the ad campaign. Shown in campaign reports and breakdowns. |
 | `instagramAds.campaignId` | Campaign ID | string | Unique identifier for the campaign in Meta Ads Manager. |
-| `instagramAds.adGroupName` | Ad group | string | Name of the ad group (adset). |
-| `instagramAds.adGroupId` | Ad group ID | string | Unique identifier for the ad group (adset) in Meta Ads Manager. |
+| `instagramAds.adGroupName` | Ad set | string | Name of the ad set in Meta Ads Manager. |
+| `instagramAds.adGroupId` | Ad set ID | string | Unique identifier for the ad set in Meta Ads Manager. |
 | `instagramAds.adName` | Ad | string | Name of the ad. Shown in ad-level reports and breakdowns. |
 | `instagramAds.adId` | Ad ID | string | Unique identifier for the ad in Meta Ads Manager. |
 | `instagramAds.publisherPlatform` | Platform | string | Meta platform where the ad was shown (Facebook, Instagram, Audience Network, etc.). |

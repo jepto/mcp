@@ -32,7 +32,9 @@
           "format": {
             "type": "percentage",
             "precision": 2
-          }
+          },
+          "calculated": true,
+          "formula": "Clicks ÷ Impressions"
         },
         {
           "name": "googleSearchConsole.position",

@@ -1,7 +1,7 @@
 {
   "source": "xero",
   "name": "Xero",
-  "schemaVersion": "1.1.1",
+  "schemaVersion": "1.1.2",
   "entities": [
     {
       "name": "invoices",
@@ -449,7 +449,7 @@
           "label": "Days to pay",
           "kind": "metric",
           "type": "number",
-          "description": "Average days between invoice date and payment date for invoices that have been paid.",
+          "description": "Average days between invoice date and payment date for matched records.",
           "aggregation": "SUM",
           "calculated": true,
           "formula": "Payment date − Invoice date"

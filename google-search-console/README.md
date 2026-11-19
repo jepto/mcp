@@ -14,17 +14,17 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Which pages lost the most clicks this month compared with last month?"
 - "Break down clicks and CTR by device and country for the last 28 days."
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 Google Search Console is read-only through the MCP: the assistant can query your data but can't change anything in Search Console.
 
 ## Example query
 
-This is the kind of `Analytics_Query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
+This is the kind of `analytics_query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
 
 ```json
 {
-  "clientId": "<clientId from Client_List>",
+  "clientId": "<clientId from client_list>",
   "measures": [
     "googleSearchConsole.clicks",
     "googleSearchConsole.impressions",
@@ -62,7 +62,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 |---|---|---|---|---|
 | `googleSearchConsole.clicks` | Clicks | SUM |  | Number of times users clicked through to your site from Google Search results. |
 | `googleSearchConsole.impressions` | Impressions | SUM |  | Number of times your pages appeared in Google Search results. |
-| `googleSearchConsole.ctr` | CTR | AVG | Percentage | Click-through rate: clicks divided by impressions. Shown as a percentage in Search Console. |
+| `googleSearchConsole.ctr` | CTR | Calculated: Clicks ÷ Impressions | Percentage | Click-through rate: clicks divided by impressions. Shown as a percentage in Search Console. |
 | `googleSearchConsole.position` | Average position | AVG |  | Average ranking position of your pages in search results (lower is better). |
 
 ### Dimensions
@@ -82,7 +82,12 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 | Unified field | Label | From |
 |---|---|---|
+| `unified.impressions` | Impressions | `googleSearchConsole.impressions` |
+| `unified.clicks` | Clicks | `googleSearchConsole.clicks` |
+| `unified.ctr` | CTR | `googleSearchConsole.ctr` |
 | `unified.date` | Date | `googleSearchConsole.date` |
+| `unified.country` | Country | `googleSearchConsole.country` |
+| `unified.device` | Device | `googleSearchConsole.device` |
 
 ## Links
 

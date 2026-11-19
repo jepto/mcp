@@ -1,7 +1,7 @@
 {
   "source": "linkedInAds",
   "name": "LinkedIn Ads",
-  "schemaVersion": "1.0.3",
+  "schemaVersion": "1.0.4",
   "entities": [
     {
       "name": "analytics",
@@ -21,18 +21,6 @@
           "type": "number",
           "description": "Chargeable clicks on your LinkedIn ads during the reporting period.",
           "aggregation": "SUM"
-        },
-        {
-          "name": "linkedInAds.costInLocalCurrency",
-          "label": "Spend",
-          "kind": "metric",
-          "type": "number",
-          "description": "Total amount spent in your account currency during the reporting period.",
-          "aggregation": "SUM",
-          "format": {
-            "type": "currency",
-            "precision": 2
-          }
         },
         {
           "name": "linkedInAds.spend",
@@ -72,14 +60,6 @@
         },
         {
           "name": "linkedInAds.conversions",
-          "label": "Website conversions",
-          "kind": "metric",
-          "type": "number",
-          "description": "Number of website conversion events attributed to your ads.",
-          "aggregation": "SUM"
-        },
-        {
-          "name": "linkedInAds.externalWebsiteConversions",
           "label": "Website conversions",
           "kind": "metric",
           "type": "number",
@@ -874,13 +854,6 @@
         }
       ],
       "dimensions": [
-        {
-          "name": "linkedInAds.pivotValues",
-          "label": "Breakdown values",
-          "kind": "dimension",
-          "type": "string[]",
-          "description": "Values identifying the breakdown category for this row (e.g. campaign name, country, device)."
-        },
         {
           "name": "linkedInAds.date",
           "label": "Date",

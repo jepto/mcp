@@ -14,17 +14,17 @@ There's nothing to install: Jepto hosts the server and you sign in with OAuth. Y
 - "Which ads have the highest frequency this month?"
 - "Break down reach by age and gender for my prospecting campaigns."
 
-You don't need to name fields or tools. The assistant looks up the fields below with `Analytics_Schema` and runs the query with `Analytics_Query`.
+You don't need to name fields or tools. The assistant looks up the fields below with `analytics_schema` and runs the query with `analytics_query`.
 
 Facebook Ads is read-only through the MCP: the assistant can query your data but can't change anything in Facebook Ads.
 
 ## Example query
 
-This is the kind of `Analytics_Query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
+This is the kind of `analytics_query` call an assistant makes for you. Field names are the same as in Jepto Reports and Data Chat.
 
 ```json
 {
-  "clientId": "<clientId from Client_List>",
+  "clientId": "<clientId from client_list>",
   "measures": [
     "facebookAds.spend",
     "facebookAds.reach",
@@ -42,7 +42,7 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 
 ## Fields
 
-36 fields (17 metrics, 19 dimensions), from version 1.2.5 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
+36 fields (17 metrics, 19 dimensions), from version 1.2.6 of the Jepto data model. `schema.json` in this folder has the same list in machine-readable form.
 
 ### Metrics
 
@@ -58,11 +58,11 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `facebookAds.uniqueCtr` | Unique CTR | Calculated: Unique link clicks ÷ Reach | Percentage | The percentage of people who saw your ad and clicked a link (unique link clicks divided by reach). |
 | `facebookAds.cpc` | CPC (all) | Calculated: Amount spent ÷ Link clicks | Currency | The average cost for each click of any type (amount spent divided by all clicks). |
 | `facebookAds.cpm` | CPM | Calculated: (Amount spent ÷ Impressions) × 1,000 | Currency | The average cost per 1,000 impressions (amount spent divided by impressions, ×1,000). |
-| `facebookAds.cpp` | Cost per purchase | Calculated: Amount spent ÷ Actions | Currency | The average cost for each purchase attributed to your ads. |
+| `facebookAds.cpp` | Cost per action | Calculated: Amount spent ÷ Actions | Currency | Average cost for each action on your ads (spend ÷ actions). Use action breakdowns for purchase-specific costs. |
 | `facebookAds.actions` | Actions | SUM |  | Counts of specific action types on your ads (for example purchases, leads, or other standard events), often used with action breakdowns. |
 | `facebookAds.actionValues` | Action value | SUM | Currency | The total monetary value reported for actions on your ads, in your account currency. |
 | `facebookAds.costPerActionType` | Cost per action type | AVG | Currency | Average cost for each action of a given type when broken down by action type. |
-| `facebookAds.websiteCtr` | Website CTR | Calculated: Link clicks ÷ Impressions | Percentage | The percentage of impressions that resulted in a link click to your website. |
+| `facebookAds.websiteCtr` | CTR (all clicks) | Calculated: Link clicks ÷ Impressions | Percentage | Percentage of impressions that resulted in any click. Matches CTR; based on all clicks, not link clicks only. |
 | `facebookAds.reachPerSpend` | Reach per spend | Calculated: Reach ÷ Amount spent |  | People reached per unit of currency spent (reach / spend). Distinct from cpp and other native cost metrics. |
 | `facebookAds.uniqueClickSharePercent` | Unique click share % | Calculated: (Unique link clicks ÷ Link clicks) × 100 |  | Percentage of total clicks that came from unique users: unique clicks ÷ total clicks. |
 
@@ -74,8 +74,8 @@ This is the kind of `Analytics_Query` call an assistant makes for you. Field nam
 | `facebookAds.dateStop` | End date | string | End date for the reporting period. |
 | `facebookAds.campaignName` | Campaign | string | Name of the ad campaign. Shown in campaign reports and breakdowns. |
 | `facebookAds.campaignId` | Campaign ID | string | Unique identifier for the ad campaign in Facebook Ads Manager. |
-| `facebookAds.adGroupName` | Ad group | string | Name of the ad group (adset). |
-| `facebookAds.adGroupId` | Ad group ID | string | Unique identifier for the ad group (adset) in Facebook Ads Manager. |
+| `facebookAds.adGroupName` | Ad set | string | Name of the ad set in Meta Ads Manager. |
+| `facebookAds.adGroupId` | Ad set ID | string | Unique identifier for the ad set in Meta Ads Manager. |
 | `facebookAds.adName` | Ad | string | Name of the ad. Shown in ad-level reports and breakdowns. |
 | `facebookAds.adId` | Ad ID | string | Unique identifier for the ad in Facebook Ads Manager. |
 | `facebookAds.publisherPlatform` | Platform | string | Meta platform where the ad was shown (Facebook, Instagram, Audience Network, etc.). |
